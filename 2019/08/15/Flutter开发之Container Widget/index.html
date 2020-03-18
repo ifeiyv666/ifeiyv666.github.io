@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Flutter开发之Container Widget - 飞羽的博客</title>
+  
+    <meta name="keywords" content="Flutter Container">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            飞羽的博客 <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/">
+        Flutter开发之Container Widget
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h3 id="Container-Widget"><a href="#Container-Widget" class="headerlink" title="Container Widget"></a>Container Widget</h3><blockquote>
+<p>一个方便的小部件, 结合了普通的绘画、定位和大小的小部件。</p>
+</blockquote>
+<p>容器首先用填充物（由装饰中存在的任何边界膨胀）包围子对象，然后对填充范围应用附加约束（如果其中一个为非空，则将宽度和高度合并为约束）。然后容器被从边缘描述的额外的空白空间包围。</p>
+<p>在绘画过程中，容器首先应用给定的变换，然后绘制装饰填充填充范围，然后绘制子对象，最后绘制前场装饰，也填充填充填充范围。</p>
+<p>没有子对象的容器尽量大，除非传入的约束是无限的，在这种情况下，它们尽量小。有子对象的容器会根据子对象的大小来调整大小。构造函数的width、height和constraints参数重写了这一点。</p>
+<h4 id="布局行为介绍-Layout-behavior"><a href="#布局行为介绍-Layout-behavior" class="headerlink" title="布局行为介绍(Layout behavior)"></a>布局行为介绍(Layout behavior)</h4><blockquote>
+<p>有关框布局模型的介绍，请参阅<a href="https://api.flutter.dev/flutter/rendering/BoxConstraints-class.html" target="_blank" rel="noopener">BoxConstraints</a>。</p>
+</blockquote>
+<p>由于Container结合了许多其他小部件，每个小部件都有自己的布局行为，因此Container的布局行为有点复杂。</p>
+<p>摘要：容器尝试按顺序：遵循对齐，将自身大小调整为子对象，以符合宽度，高度和约束，以扩展以适合父对象，尽可能小。</p>
+<p>进一步来说：</p>
+<p>如果窗口小部件没有子节点，没有高度，没有宽度，没有约束，并且父节点提供无限制约束，则Container尝试尽可能小。</p>
+<p>如果窗口小部件没有子节点且没有对齐，但提供了高度，宽度或约束，则在给定这些约束和父节点约束的组合的情况下，Container会尽可能小。</p>
+<p>如果窗口小部件没有子节点，没有高度，没有宽度，没有约束，没有对齐，但是父节点提供了有界约束，那么Container会扩展以适应父节点提供的约束。</p>
+<p>如果窗口小部件具有对齐，并且父窗口提供无限制约束，则Container会尝试围绕子窗口调整自身大小。</p>
+<p>如果窗口小部件具有对齐，并且父窗口提供有界约束，则Container会尝试展开以适合父窗口，然后根据对齐方式将子项置于其自身内部。</p>
+<p>否则，窗口小部件具有子级但没有高度，没有宽度，没有约束，也没有对齐，并且Container将约束从父级传递给子级并调整其大小以匹配子级。</p>
+<p>边距和填充属性也会影响布局，如这些属性的文档中所述。 （它们的效果仅仅增加了上述规则。）装饰可以隐含地增加填充（例如，BoxDecoration中的边界有助于填充）;请参阅<a href="https://api.flutter.dev/flutter/widgets/Container/padding.html" target="_blank" rel="noopener">Decoration.padding</a>。</p>
+<p><strong>此示例显示一个48x48琥珀色方块（放置在中心小部件内，以防父小部件对容器应采用的大小有自己的意见），并留有一个空白，使其远离相邻小部件：</strong><br><img src="https://upload-images.jianshu.io/upload_images/11100630-9aafd0dda6e7ffd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/567" alt="Container"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Center(</span><br><span class="line">  child: Container(</span><br><span class="line">    margin: const EdgeInsets.all(10.0),</span><br><span class="line">    color: Colors.amber[600],</span><br><span class="line">    width: 48.0,</span><br><span class="line">    height: 48.0,</span><br><span class="line">  ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>这个例子展示了如何同时使用容器的许多特性。这些约束被设置为适合字体大小加上足够的垂直净空，同时水平展开以适合父级。填充用于确保内容和文本之间有空间。这个颜色使盒子变成蓝色。对齐会使子项在框中居中。最后，变换对整个装置应用轻微的旋转以完成效果:</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11100630-8872dd960763226b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-05-25 下午6.39.27.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">  constraints: BoxConstraints.expand(</span><br><span class="line">    height: Theme.of(context).textTheme.display1.fontSize * 1.1 + 200.0,</span><br><span class="line">  ),</span><br><span class="line">  padding: const EdgeInsets.all(8.0),</span><br><span class="line">  color: Colors.blue[600],</span><br><span class="line">  alignment: Alignment.center,</span><br><span class="line">  child: Text(&#39;Hello World&#39;,</span><br><span class="line">    style: Theme.of(context)</span><br><span class="line">        .textTheme</span><br><span class="line">        .display1</span><br><span class="line">        .copyWith(color: Colors.white)),</span><br><span class="line">  transform: Matrix4.rotationZ(0.1),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>也可以看看：</strong></p>
+<p><em>AnimatedContainer，一种在变化时平滑动画属性的变体。<br>边框，其中包含大量使用Container的示例。<br>墨水，在材质上绘制装饰，允许InkResponse和InkWell喷溅在它们上面绘画。<br>布局小部件的目录。</em></p>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
+<p>创建一个小部件, 结合了普通的绘画、定位和大小调整小部件。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Container(&#123;Key key, </span><br><span class="line">    AlignmentGeometry alignment,</span><br><span class="line">    EdgeInsetsGeometry padding, </span><br><span class="line">    Color color, </span><br><span class="line">    Decoration decoration, </span><br><span class="line">    Decoration foregroundDecoration, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    BoxConstraints constraints, EdgeInsetsGeometry margin, </span><br><span class="line">    Matrix4 transform, </span><br><span class="line">    Widget child </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><p>alignment → AlignmentGeometry</p>
+<ul>
+<li><em>对齐内部的子级</em></li>
+</ul>
+</li>
+<li><p>child → Widget</p>
+<ul>
+<li><em>容器内部的子级</em></li>
+</ul>
+</li>
+<li><p>constraints → BoxConstraints </p>
+<ul>
+<li><em>要应用于子级的附加约束</em></li>
+</ul>
+</li>
+<li><p>decoration → Decoration</p>
+<ul>
+<li><em>子级背后的装饰</em></li>
+<li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
+<li><em>需要注意的是 <code>deoration</code>和 <code>color</code> 背景颜色不能共存，二者同时只能有一个</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">decoration: new BoxDecoration(</span><br><span class="line">               border: new Border.all(width: 2.0, color: Colors.red),</span><br><span class="line">               color: Colors.grey,</span><br><span class="line">               borderRadius: new BorderRadius.all(new Radius.circular(20.0)),</span><br><span class="line">               image: new DecorationImage(</span><br><span class="line">                 image: new NetworkImage(&#39;http:&#x2F;&#x2F;b-ssl.duitang.com&#x2F;uploads&#x2F;item&#x2F;201609&#x2F;26&#x2F;20160926203611_HXQxk.jpeg&#39;),</span><br><span class="line">                 centerSlice: new Rect.fromLTRB(270.0, 180.0, 1360.0, 730.0),</span><br><span class="line">               ),</span><br><span class="line">             ),</span><br></pre></td></tr></table></figure></li>
+<li><img src="" alt="nodecoration">)<img src="" alt="nodecoration"></li>
+<li><em>第一张图设置了背景色，未使用decoration；第二张图设置了decoration，未设置背景色</em></li>
+</ul>
+</li>
+<li><p>foregroundDecoration → Decoration</p>
+<ul>
+<li><em>在子级前面的装饰</em></li>
+<li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
+<li><em><code>foregroundDecoration</code>和 <code>color</code> 背景颜色可以共存，但是<code>color</code>有可能被遮挡</em></li>
+<li><em>会遮挡child</em></li>
+<li><img src="" alt="nodecoration"></li>
+</ul>
+</li>
+<li><p>margin → EdgeInsetsGeometry</p>
+<ul>
+<li><em>我的理解就是外边距</em></li>
+</ul>
+</li>
+<li><p>padding → EdgeInsetsGeometry</p>
+<ul>
+<li><em>我的理解就是内边距</em></li>
+</ul>
+</li>
+<li><p>transform → Matrix4</p>
+<ul>
+<li><em>在绘制容器之前要应用的转换矩阵</em></li>
+</ul>
+</li>
+<li><p>hashCode → int</p>
+<ul>
+<li><em>此对象的哈希代码</em></li>
+</ul>
+</li>
+<li><p>key → Key</p>
+<ul>
+<li><em>控制一个小部件如何替换树中的另一个小部件</em></li>
+</ul>
+</li>
+<li><p>runtimeType → Type</p>
+<ul>
+<li><em>对象的运行时类型</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="方法（Methods）"><a href="#方法（Methods）" class="headerlink" title="方法（Methods）"></a>方法（Methods）</h4><ul>
+<li><p>build(BuildContext context) → Widget</p>
+<blockquote>
+<p>描述此窗口小部件表示的用户界面部分</p>
+</blockquote>
+</li>
+<li><p>debugFillProperties(DiagnosticPropertiesBuilder properties) → void</p>
+<blockquote>
+<p>添加与节点关联的其他属性</p>
+</blockquote>
+</li>
+<li><p>createElement() → StatelessElement</p>
+<blockquote>
+<p>创建StatelessElement以管理此窗口小部件在树中的位置</p>
+</blockquote>
+</li>
+<li><p>debugDescribeChildren() → List<DiagnosticsNode></p>
+<blockquote>
+<p>返回描述此节点的子节点的DiagnosticsNode对象列表。</p>
+</blockquote>
+</li>
+<li><p>noSuchMethod(Invocation invocation) → dynamic</p>
+<blockquote>
+<p>访问不存在的方法或属性时调用</p>
+</blockquote>
+</li>
+<li><p>toDiagnosticsNode({String name, DiagnosticsTreeStyle style }) → DiagnosticsNode</p>
+<blockquote>
+<p>返回调试工具和DiagnosticsNode.toStringDeep使用的对象的调试表示形式</p>
+</blockquote>
+</li>
+<li><p>toString({DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回此对象的字符串表示形式</p>
+</blockquote>
+</li>
+<li><p>toStringDeep({String prefixLineOne: ‘’, String prefixOtherLines, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回此节点及其后代的字符串表示形式</p>
+</blockquote>
+</li>
+<li><p>toStringShallow({String joiner: ‘, ‘, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回对象的单行详细描述</p>
+</blockquote>
+</li>
+<li><p>toStringShort() → String</p>
+<blockquote>
+<p>这个小部件的简短文字描述</p>
+</blockquote>
+</li>
+</ul>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv.github.io/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/>https://ifeiyv.github.io/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:13:08+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年3月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Flutter-Container/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Flutter Container</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv.github.io/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/&title=Flutter开发之Container Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv.github.io/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/&title=Flutter开发之Container Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv.github.io/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/&title=Flutter开发之Container Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/08/16/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BImage%20Widget/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Flutter开发之Image Widget</p>
+                <p class='content'>Image Widget
+显示图像的小部件,支持以下图像格式: JPEG、PNG、GIF、动画 GIF、WebP、动画 WebP、BMP 和 WBMP
+
+为图像可以指定的各种方式提供了几个构造函...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/08/14/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BBottomNavigationBar%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F/'>
+                <p class='title'>Flutter开发之BottomNavigationBar底部导航栏<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>BottomNavigationBar
+显示在应用程序的底部，用于在少量视图中进行选择，通常在三到五之间。
+
+底部导航栏通常与Scaffold结合使用，它作为Scaffold.bottomNav...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Flutter开发之Container Widget',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Container-Widget"><span class="toc-text">Container Widget</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#布局行为介绍-Layout-behavior"><span class="toc-text">布局行为介绍(Layout behavior)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造方法（Constructors）"><span class="toc-text">构造方法（Constructors）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性（Properties）"><span class="toc-text">属性（Properties）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#方法（Methods）"><span class="toc-text">方法（Methods）</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/i-feiyv"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="" target="_blank" class="codename">飞羽的博客</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

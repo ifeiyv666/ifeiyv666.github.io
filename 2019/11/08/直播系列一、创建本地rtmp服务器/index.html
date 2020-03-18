@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>直播系列一、创建本地rtmp服务器 - 飞羽的博客</title>
+  
+    <meta name="keywords" content="直播">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            飞羽的博客 <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+        直播系列一、创建本地rtmp服务器
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/iOS/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>iOS</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年11月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h4 id="在网上搜索参考了大量文章，解决了N多Bug-终于实现了直播功能"><a href="#在网上搜索参考了大量文章，解决了N多Bug-终于实现了直播功能" class="headerlink" title="在网上搜索参考了大量文章，解决了N多Bug,终于实现了直播功能"></a>在网上搜索参考了大量文章，解决了N多Bug,终于实现了直播功能</h4><blockquote>
+<p>nginx是非常优秀的开源服务器，用它来做hls或者rtmp流媒体服务器是非常不错的选择</p>
+</blockquote>
+<h4 id="1、安装Homebrow"><a href="#1、安装Homebrow" class="headerlink" title="1、安装Homebrow"></a>1、安装Homebrow</h4><p>（1）执行克隆命令,github的项目(<a href="https://github.com/denji/homebrew-nginx" target="_blank" rel="noopener">https://github.com/denji/homebrew-nginx</a>)</p>
+<pre><code>brew tap denji/nginx</code></pre><blockquote>
+<p>注意<code>brew tap homebrew/nginx</code>报下面的错误,<code>homebrew/nginx</code>已经弃用. 报错：<code>Error: homebrew/nginx was deprecated. This tap is now empty as all its formulae were migrated</code>.</p>
+</blockquote>
+<p>（2）执行安装命令:</p>
+<pre><code>brew install nginx-full --with-rtmp-module  </code></pre><p>（3）至此nginx和rtmp模块就安装好了，下面开始来配置nginx的rtmp模块<br> 接下来看一下nginx安装在什么地方:</p>
+<pre><code>brew info nginx-full  </code></pre><p><em>打印信息</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">- Tips -</span><br><span class="line">Run port 80:</span><br><span class="line"> $ sudo chown root:wheel &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line"> $ sudo chmod u+s &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line">Reload config:</span><br><span class="line"> $ nginx -s reload</span><br><span class="line">Reopen Logfile:</span><br><span class="line"> $ nginx -s reopen</span><br><span class="line">Stop process:</span><br><span class="line"> $ nginx -s stop</span><br><span class="line">Waiting on exit process</span><br><span class="line"> $ nginx -s quit</span><br><span class="line"></span><br><span class="line">To have launchd start denji&#x2F;nginx&#x2F;nginx-full now and restart at login:</span><br><span class="line">  brew services start denji&#x2F;nginx&#x2F;nginx-full</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure>
+
+<p>nginx安装所在位置:</p>
+<pre><code>/usr/local/opt/nginx-full/bin/nginx</code></pre><p>nginx配置文件所在位置:</p>
+<pre><code>/usr/local/etc/nginx/nginx.conf</code></pre><p>（4）启动nginx,执行命令:</p>
+<pre><code>sudo  nginx</code></pre><h4 id="2、测试nginx："><a href="#2、测试nginx：" class="headerlink" title="2、测试nginx："></a>2、测试nginx：</h4><pre><code>在浏览器中打开如下地址：http://localhost:8080入过</code></pre><p>如果出现<code>Welcome to nginx!</code>,说明安装成功.</p>
+<p>如果终端上提示：</p>
+<pre><code>nginx: [emerg] bind() to 0.0.0.0:8080 failed (48: Address already in use)  </code></pre><p>则表示8080端口被占用了, 查看端口PID</p>
+<pre><code>lsof -i tcp:8080  </code></pre><p>kill掉占用8080端口的PID</p>
+<pre><code>kill 9603（这里替换成占用8080端口的PID）  </code></pre><h4 id="3、重新加载nginx的配置文件"><a href="#3、重新加载nginx的配置文件" class="headerlink" title="3、重新加载nginx的配置文件"></a>3、重新加载nginx的配置文件</h4><p>（1）修改nginx.conf这个配置文件，配置rtmp<br> 复制nginx配置文件所在位置:</p>
+<pre><code>vi /usr/local/etc/nginx/nginx.conf  </code></pre><p>（2）执行上面命令会直接编辑,或者直接前往当前文件用记事本打开.<br> 滚动到最后面(最后一个}后面即可，不能在{}里面)，添加一下代码，进行配置，最后记得保存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;  </span><br><span class="line">  server &#123;  </span><br><span class="line">      listen 1935;  </span><br><span class="line">    #直播流配置  </span><br><span class="line">      application rtmplive &#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          #为 rtmp 引擎设置最大连接数。默认为 off  </span><br><span class="line">          max_connections 1024;  </span><br><span class="line">       &#125;  </span><br><span class="line">      application hls&#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          hls on;  </span><br><span class="line">          hls_path &#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;hls;  </span><br><span class="line">          hls_fragment 1s;  </span><br><span class="line">      &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）编辑完成之后,执行一下重新加载配置文件命令:</p>
+<pre><code>sudo nginx -s reload</code></pre><blockquote>
+<p>需要输入开机密码 sudo不加的话会报错： <code>nginx: [alert] could not open error log file: open() &quot;/usr/local/var/log/nginx/error.log&quot; failed (13: Permission denied)</code>该命令执行后会出来一个弹框询问是否允许 nginx 加入到网络中，选择允许即可。</p>
+</blockquote>
+<p>（4）重启nginx：</p>
+<pre><code>sudo /usr/local/opt/nginx-full/bin/nginx -s reload  </code></pre><p>PS：如果你之前不是按照我上面的方法按照的 nginx，在执行 sudo nginx -s reload 时报了如下错，建议你卸载 nginx后按照我上面的步骤重新安装nginx。<br> nginx: [emerg] unknown directive “rtmp” in /usr/local/etc/nginx/nginx.conf:119</p>
+<p><strong>nginx常用方法:</strong></p>
+<blockquote>
+<p>出现权限不足的错误提示时，命令前加上 sudo</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重新加载配置文件:  nginx -s reload</span><br><span class="line">重新加载日志:     nginx -s reopen </span><br><span class="line">停止 nginx:      nginx -s stop  </span><br><span class="line">有序退出 nginx:   nginx -s quit</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、安装ffmepg工具"><a href="#4、安装ffmepg工具" class="headerlink" title="4、安装ffmepg工具"></a>4、安装ffmepg工具</h4><pre><code>brew install ffmpeg</code></pre><h4 id="5、本地推流"><a href="#5、本地推流" class="headerlink" title="5、本地推流"></a>5、本地推流</h4><p>(1)、搭建本地视频直播，比如电脑上面有很多电影，我们可以通过推流的形式实现实时直播：</p>
+<p>A：在电脑上播放推流内容<br> 安装一个支持rtmp协议的视频播放器，Mac下可以用VLC<br> 下载<a href="http://soft.macx.cn/3164.htm" target="_blank" rel="noopener">VLC</a></p>
+<p> 本地下载一个视频文件路径为 /Users/iOS002/Desktop/loginmovie.mp4</p>
+<p> 执行以下命令:</p>
+<pre><code>ffmpeg -re -i /Users/iOS002/Desktop/loginmovie.mp4  -vcodec libx264 -acodec aac -strict -2 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>用vlc 然后打开 VLC 中 的 file – Open Network, 直接输入代码中的 url:</p>
+<pre><code>rtmp://localhost:1935/rtmplive/room</code></pre><p>即可以通过VLC来播放终端中实时推过来的 RTMP流。</p>
+<p>B：通过手机观看电脑的推流</p>
+<p> 通过集成 ijkplayer 把地址换成推流的地址即可观看</p>
+<p> 播放端用的针对RTMP优化过的ijkplayer，ijkplayer是基于FFmpeg的跨平台播放器，这个开源项目已经被多个 App 使用，其中映客、美拍和斗鱼使用了 ijkplayer。</p>
+<p>(2)、桌面录制或者分享</p>
+<pre><code>ffmpeg -f avfoundation -i &quot;1&quot; -vcodec libx264 -preset ultrafast -acodec libfaac -f flv rtmp://localhost:1935/rtmplive/room </code></pre><p>(3)、桌面+麦克风</p>
+<pre><code>ffmpeg -f avfoundation -i &quot;1:0&quot; -vcodec libx264 -preset ultrafast -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>(4)、桌面+麦克风，并且还要摄像头拍摄到自己</p>
+<pre><code>ffmpeg -f avfoundation -framerate 30 -i &quot;1:0&quot; \-f avfoundation -framerate 30 -video_size 640x480 -i &quot;0&quot; \-c:v libx264 -preset ultrafast \-filter_complex &apos;overlay=main_w-overlay_w-10:main_h-overlay_h-10&apos; -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:2016/rtmplive/room  </code></pre><h4 id="6、手机推流"><a href="#6、手机推流" class="headerlink" title="6、手机推流"></a>6、手机推流</h4><p>可以用  LFLiveKit 集成到工程进行推流，LFLiveKit已经帮我们实现了视频采集、后台录制、美颜功能、支持h264、AAC编码，动态改变速率，RTMP传输等，我们开发的时候就很简单了只需把localhost:8080换成自己电脑的ip地址即可:</p>
+<pre><code>rtmp://10.0.0.17:1935/rtmplive/room</code></pre><p>注意通过网络查看电脑的局域网 IP替换掉 localhost 即可。</p>
+<p>A：通过VLC观看手机的推流</p>
+<p> 打开手机直播后，然后在电脑上打开VLC（同上），就能实现手机推流，在电脑上拉流播放了！！(注：手机需要和电脑连接同一网络！)</p>
+<p>B：通过手机观看手机的推流（这也就是市面上的那些直播App的最终实现形式了）</p>
+<p> 通过集成 ijkplayer 把地址换成推流的地址即可观看。</p>
+<p>PS：一个很隐蔽的报错：</p>
+<p>如果你发现你的推流地址和拉流地址在电脑上都是好好的，但是通过手机实现的时候就是报错，那么估计就是因为Mac防火墙的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br></pre></td></tr></table></figure>
+
+<p>关闭 Mac 的防火墙即可解决问题。</p>
+<pre><code>偏好设置-&gt;安全性与隐私-&gt;防火墙</code></pre>
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv.github.io/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/>https://ifeiyv.github.io/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:57:22+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年3月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%9B%B4%E6%92%AD/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>直播</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv.github.io/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/&title=直播系列一、创建本地rtmp服务器 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv.github.io/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/&title=直播系列一、创建本地rtmp服务器 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv.github.io/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/&title=直播系列一、创建本地rtmp服务器 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%BA%8C%E3%80%81LFLiveKit%E6%8E%A8%E6%B5%81/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>直播系列二、LFLiveKit推流</p>
+                <p class='content'>
+LFLiveKit：框架支持RTMP，由Adobe公司开发。github地址https://github.com/LaiFengiOS/LFLiveKit
+
+LFLiveKit库里已经集成GP...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/10/19/shared_preferences%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/'>
+                <p class='title'>shared_preferences数据存储<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>shared_preferences库
+shared_preferences库同时支持Android和ios平台,存键值对信息，进行数据本地持久化存储。
+
+引用方法
+在pubspec.yaml文...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '直播系列一、创建本地rtmp服务器',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#在网上搜索参考了大量文章，解决了N多Bug-终于实现了直播功能"><span class="toc-text">在网上搜索参考了大量文章，解决了N多Bug,终于实现了直播功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1、安装Homebrow"><span class="toc-text">1、安装Homebrow</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2、测试nginx："><span class="toc-text">2、测试nginx：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3、重新加载nginx的配置文件"><span class="toc-text">3、重新加载nginx的配置文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4、安装ffmepg工具"><span class="toc-text">4、安装ffmepg工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5、本地推流"><span class="toc-text">5、本地推流</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6、手机推流"><span class="toc-text">6、手机推流</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/i-feiyv"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="" target="_blank" class="codename">飞羽的博客</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

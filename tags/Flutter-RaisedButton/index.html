@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+      <meta name="robots" content="noindex,follow">
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>标签：Flutter RaisedButton - 飞羽的博客</title>
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            飞羽的博客 <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+
+<div class='l_main'>
+  
+    
+      
+  <section class="post-list ">
+    
+      
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/17/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BRaisedButton%20Widget/">
+      Flutter开发之RaisedButton Widget
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月17日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="RaisedButton"><a href="#RaisedButton" class="headerlink" title="RaisedButton"></a>RaisedButton</h3><blockquote>
+<p>一个凸起的按钮</p>
+</blockquote>
+<p>如果<code>onPressed</code>（即为按钮点击事件）回调为<code>null</code>，则该按钮将被禁用，默认情况下将类似于<code>disabledColor</code>中的平面按钮。如果您尝试更改按钮的颜色并且没有任何效果，请检查您是否正在传递非<code>null</code> <code>onPressed</code>处理程序。</p>
+<p>如果您想为点击提供墨水飞溅效果,但不想使用按钮,请考虑直接使用<a href="https://api.flutter.dev/flutter/material/InkWell-class.html" target="_blank" rel="noopener">inkwell</a>。</p>
+<p>凸起按钮的最小尺寸为88.0×36.0，可以用<code>ButtonTheme</code>覆盖。</p>
+<p><strong>此示例演示如何呈现禁用的RaisedButton，启用的RaisedButton以及最后一个具有渐变背景的RaisedButton:</strong></p>
+<p><img src="https://flutter.github.io/assets-for-api-docs/assets/material/raised_button.png" alt="Img"></p>
+<p>源码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return Center(</span><br><span class="line">    child: Column(</span><br><span class="line">      mainAxisSize: MainAxisSize.min,</span><br><span class="line">      children: &lt;Widget&gt;[</span><br><span class="line">        const RaisedButton(</span><br><span class="line">          onPressed: null,</span><br><span class="line">          child: Text(</span><br><span class="line">            &#39;Disabled Button&#39;,</span><br><span class="line">            style: TextStyle(fontSize: 20)</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">        const SizedBox(height: 30),</span><br><span class="line">        RaisedButton(</span><br><span class="line">          onPressed: () &#123;&#125;,</span><br><span class="line">          child: const Text(</span><br><span class="line">            &#39;Enabled Button&#39;,</span><br><span class="line">            style: TextStyle(fontSize: 20)</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">        const SizedBox(height: 30),</span><br><span class="line">        RaisedButton(</span><br><span class="line">          onPressed: () &#123;&#125;,</span><br><span class="line">          textColor: Colors.white,</span><br><span class="line">          padding: const EdgeInsets.all(0.0),</span><br><span class="line">          child: Container(</span><br><span class="line">            decoration: const BoxDecoration(</span><br><span class="line">              gradient: LinearGradient(</span><br><span class="line">                colors: &lt;Color&gt;[</span><br><span class="line">                  Color(0xFF0D47A1),</span><br><span class="line">                  Color(0xFF1976D2),</span><br><span class="line">                  Color(0xFF42A5F5),</span><br><span class="line">                ],</span><br><span class="line">              ),</span><br><span class="line">            ),</span><br><span class="line">            padding: const EdgeInsets.all(10.0),</span><br><span class="line">            child: const Text(</span><br><span class="line">              &#39;Gradient Button&#39;,</span><br><span class="line">              style: TextStyle(fontSize: 20)</span><br><span class="line">            ),</span><br><span class="line">          ),</span><br><span class="line">        ),</span><br><span class="line">      ],</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="构造函数（Constructors）"><a href="#构造函数（Constructors）" class="headerlink" title="构造函数（Constructors）"></a>构造函数（Constructors）</h4><blockquote>
+<p>创建一个填充按钮</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">RaisedButton(&#123;</span><br><span class="line">   Key key, </span><br><span class="line">   @required VoidCallback onPressed,</span><br><span class="line">   ValueChanged&lt;bool&gt; onHighlightChanged,</span><br><span class="line">   ButtonTextTheme textTheme, </span><br><span class="line">   Color textColor, </span><br><span class="line">   Color disabledTextColor, </span><br><span class="line">   Color color, </span><br><span class="line">   Color disabledColor, </span><br><span class="line">   Color highlightColor, </span><br><span class="line">   Color splashColor, </span><br><span class="line">   Brightness colorBrightness, </span><br><span class="line">   double elevation, </span><br><span class="line">   double highlightElevation, </span><br><span class="line">   double disabledElevation, </span><br><span class="line">   EdgeInsetsGeometry padding, </span><br><span class="line">   ShapeBorder shape, </span><br><span class="line">   Clip clipBehavior: Clip.none, MaterialTapTargetSize materialTapTargetSize, Duration animationDuration, </span><br><span class="line">   Widget child </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>从一对小部件创建一个填充按钮，用作按钮的图标和标签</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">RaisedButton.icon(&#123;</span><br><span class="line">   Key key, </span><br><span class="line">   @required VoidCallback onPressed,</span><br><span class="line">   ValueChanged&lt;bool&gt; onHighlightChanged,</span><br><span class="line">   ButtonTextTheme textTheme, </span><br><span class="line">   Color textColor, </span><br><span class="line">   Color disabledTextColor, </span><br><span class="line">   Color color, </span><br><span class="line">   Color disabledColor, </span><br><span class="line">   Color highlightColor, </span><br><span class="line">   Color splashColor, </span><br><span class="line">   Brightness colorBrightness, </span><br><span class="line">   double elevation, </span><br><span class="line">   double highlightElevation, </span><br><span class="line">   double disabledElevation, </span><br><span class="line">   ShapeBorder shape, </span><br><span class="line">   Clip clipBehavior, </span><br><span class="line">   MaterialTapTargetSize materialTapTargetSize,</span><br><span class="line">   Duration animationDuration, </span><br><span class="line">   @required Widget icon, </span><br><span class="line">   @required Widget label </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><p><code>animationDuration → Duration</code></p>
+<blockquote>
+<p>动画的持续时间</p>
+</blockquote>
+</li>
+<li><p><code>child → Widget</code></p>
+<blockquote>
+<p>按钮的标签部件</p>
+</blockquote>
+</li>
+<li><p><code>clipBehavior → Clip</code></p>
+<blockquote>
+<p>根据此选项，内容将被剪裁（或不剪辑）</p>
+</blockquote>
+</li>
+<li><p><code>color → Color</code></p>
+<blockquote>
+<p>按钮的填充颜色，由其材料显示，同时处于默认（未按下，已启用）状态</p>
+</blockquote>
+</li>
+<li><p><code>colorBrightness → Brightness</code></p>
+<blockquote>
+<p>用于设置按钮的主题亮度</p>
+</blockquote>
+</li>
+<li><p><code>disabledColor → Color</code></p>
+<blockquote>
+<p>禁用按钮时按钮的填充颜色</p>
+</blockquote>
+</li>
+<li><p><code>disabledElevation → double</code></p>
+<blockquote>
+<p>按钮相对于其父级的高度</p>
+</blockquote>
+</li>
+<li><p><code>disabledTextColor → Color</code></p>
+<blockquote>
+<p>禁用按钮时用于此按钮文本的颜色</p>
+</blockquote>
+</li>
+<li><p><code>elevation → double</code></p>
+<blockquote>
+<p>放置此按钮相对于其父按钮的Z坐标</p>
+</blockquote>
+</li>
+<li><p><code>enabled → bool</code></p>
+<blockquote>
+<p>设置启用还是禁用按钮</p>
+</blockquote>
+</li>
+<li><p><code>hashCode → int</code></p>
+<blockquote>
+<p>此对象的哈希码(只读)</p>
+</blockquote>
+</li>
+<li><p><code>height → double</code></p>
+<blockquote>
+<p>按钮的垂直范围(即高度)</p>
+</blockquote>
+</li>
+<li><p><code>highlightColor → Color</code></p>
+<blockquote>
+<p>按钮的InkWell的高亮颜色</p>
+</blockquote>
+</li>
+<li><p><code>highlightElevation → double</code></p>
+<blockquote>
+<p>启用并按下按钮时按钮相对于其父级的高度</p>
+</blockquote>
+</li>
+<li><p><code>key → Key</code></p>
+<blockquote>
+<p>控制一个小部件如何替换树中的另一个小部件</p>
+</blockquote>
+</li>
+<li><p><code>materialTapTargetSize → MaterialTapTargetSize</code></p>
+<blockquote>
+<p>配置点击目标的最小尺寸</p>
+</blockquote>
+</li>
+<li><p><code>minWidth → double</code></p>
+<blockquote>
+<p>按钮占据的最小水平范围(最小宽度)</p>
+</blockquote>
+</li>
+<li><p><code>onHighlightChanged → ValueChanged&lt;bool&gt;</code></p>
+<blockquote>
+<p>由底层InkWell小部件的<code>InkWell.onHighlightChanged</code>回调调用</p>
+</blockquote>
+</li>
+<li><p><code>onPressed → VoidCallback</code></p>
+<blockquote>
+<p>点击或以其他方式激活按钮时调用的回调</p>
+</blockquote>
+</li>
+<li><p><code>padding → EdgeInsetsGeometry</code></p>
+<blockquote>
+<p>buttons子级的内部填充</p>
+</blockquote>
+</li>
+<li><p><code>runtimeType → Type</code></p>
+<blockquote>
+<p>表示对象的运行时类型(只读)</p>
+</blockquote>
+</li>
+<li><p><code>shape → ShapeBorder</code></p>
+<blockquote>
+<p>按钮的阴影效果设置</p>
+</blockquote>
+</li>
+<li><p><code>splashColor → Color</code></p>
+<blockquote>
+<p>按钮墨水的泼溅颜色</p>
+</blockquote>
+</li>
+<li><p><code>textColor → Color</code></p>
+<blockquote>
+<p>按钮的文本颜色</p>
+</blockquote>
+</li>
+<li><p><code>textTheme → ButtonTextTheme</code></p>
+<blockquote>
+<p>定义按钮的基色，以及按钮的最小尺寸，内部填充和形状的默认值</p>
+</blockquote>
+</li>
+</ul>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+
+  
+
+
+    
+  
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">飞羽的博客</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:719507339@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://github.com/i-feiyv"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=63035382"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
+    
+  <header>
+    
+      <a href='/blog/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Android/" href="/categories/Android/"
+            id="categoriesAndroid"
+            ><div class='name'>Android</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Flutter/" href="/categories/Flutter/"
+            id="categoriesFlutter"
+            ><div class='name'>Flutter</div><div class='badge'>(15)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Mac/" href="/categories/Mac/"
+            id="categoriesMac"
+            ><div class='name'>Mac</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Swift/" href="/categories/Swift/"
+            id="categoriesSwift"
+            ><div class='name'>Swift</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/iOS/" href="/categories/iOS/"
+            id="categoriesiOS"
+            ><div class='name'>iOS</div><div class='badge'>(5)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop">
+    
+  <header>
+    
+      <a href='/blog/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 19px; color: #777">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #999">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 19px; color: #777">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 19px; color: #777">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 19px; color: #777">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 19px; color: #777">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/i-feiyv"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="" target="_blank" class="codename">飞羽的博客</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

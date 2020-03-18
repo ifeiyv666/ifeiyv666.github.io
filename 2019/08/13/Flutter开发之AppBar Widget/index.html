@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Flutter开发之AppBar Widget - 飞羽的博客</title>
+  
+    <meta name="keywords" content="Flutter AppBar">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            飞羽的博客 <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/">
+        Flutter开发之AppBar Widget
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a>AppBar</h3><p>应用栏通常用于Scaffold.appBar属性，该属性将应用栏放置在屏幕顶部的固定高度小部件中。对于可滚动的应用栏，请参阅<a href="https://api.flutter.dev/flutter/material/SliverAppBar-class.html" target="_blank" rel="noopener">SliverAppBar</a>，它将一个AppBar嵌入到一个条子中，以便在CustomScrollView中使用。</p>
+<p>AppBar在底部（如果有）上方显示工具栏小部件，前导，标题和操作。底部通常用于TabBar。如果指定了flexibleSpace窗口小部件，则它将堆叠在工具栏和底部窗口小部件后面。下图显示了当编写语言从左到右（例如英语）时，每个插槽在工具栏中的显示位置：<br><img src="https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png" alt="image"></p>
+<p>如果省略了前导小部件，但AppBar位于带有抽屉的脚手架中，则会插入一个按钮以打开抽屉。否则，如果最近的导航器具有任何先前的路径，则会插入BackButton。可以通过将automatedImplyLeading设置为false来关闭此行为。在这种情况下，空的前导小部件将导致中间/标题小部件拉伸开始。</p>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    Widget leading, </span><br><span class="line">    bool automaticallyImplyLeading: true, </span><br><span class="line">    Widget title, </span><br><span class="line">    List&lt;Widget&gt; actions, </span><br><span class="line">    Widget flexibleSpace, </span><br><span class="line">    PreferredSizeWidget bottom, </span><br><span class="line">    double elevation, </span><br><span class="line">    ShapeBorder shape, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    Brightness brightness, </span><br><span class="line">    IconThemeData iconTheme, </span><br><span class="line">    IconThemeData actionsIconTheme, </span><br><span class="line">    TextTheme textTheme, </span><br><span class="line">    bool primary: true, </span><br><span class="line">    bool centerTitle, double titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">    double toolbarOpacity: 1.0, </span><br><span class="line">    double bottomOpacity: 1.0 </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(</span><br><span class="line">  title: Text(&#39;My Fancy Dress&#39;),</span><br><span class="line">  actions: &lt;Widget&gt;[</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_play),</span><br><span class="line">      tooltip: &#39;Air it&#39;,</span><br><span class="line">      onPressed: _airDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add),</span><br><span class="line">      tooltip: &#39;Restitch it&#39;,</span><br><span class="line">      onPressed: _restitchDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add_check),</span><br><span class="line">      tooltip: &#39;Repair it&#39;,</span><br><span class="line">      onPressed: _repairDress,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><p>actions → List<Widget></p>
+<blockquote>
+<p>要在标题小部件后显示的小部件</p>
+</blockquote>
+</li>
+<li><p>actionsIconTheme → IconThemeData</p>
+<blockquote>
+<p>用于应用栏操作中显示的图标的颜色，不透明度和大小。仅当操作的主题不同于应用栏的主要小部件中显示的图标时，才应使用此选项</p>
+</blockquote>
+</li>
+<li><p>automaticallyImplyLeading → bool</p>
+<blockquote>
+<p>Controls whether we should try to imply the leading widget if null. […]</p>
+</blockquote>
+</li>
+<li><p>backgroundColor → Color</p>
+<blockquote>
+<p>用于应用栏材质的颜色。通常这应该与亮度，iconTheme，textTheme一起设置。</p>
+</blockquote>
+</li>
+<li><p>bottom → PreferredSizeWidget</p>
+<blockquote>
+<p>此小组件显示在应用栏的底部</p>
+</blockquote>
+</li>
+<li><p>bottomOpacity → double</p>
+<blockquote>
+<p>应用栏底部的不透明程度(0.0 - 1.0)</p>
+</blockquote>
+</li>
+<li><p>brightness → Brightness</p>
+<blockquote>
+<p>应用栏材质的亮度。通常，这与backgroundColor，iconTheme，textTheme一起设置</p>
+</blockquote>
+</li>
+<li><p>centerTitle → bool</p>
+<blockquote>
+<p>标题是否居中</p>
+</blockquote>
+</li>
+<li><p>elevation → double</p>
+<blockquote>
+<p>放置此应用程序栏相对于其父应用程序栏的Z坐标</p>
+</blockquote>
+</li>
+<li><p>flexibleSpace → Widget</p>
+<blockquote>
+<p>此小组件堆叠在工具栏和选项卡栏后面。它的高度与应用栏的整体高度相同</p>
+</blockquote>
+</li>
+<li><p>iconTheme → IconThemeData</p>
+<blockquote>
+<p>用于应用栏图标的颜色，不透明度和大小。通常，这与backgroundColor，brightness，textTheme一起设置</p>
+</blockquote>
+</li>
+<li><p>leading → Widget</p>
+<blockquote>
+<p>要在标题之前显示的小部件</p>
+</blockquote>
+</li>
+<li><p>preferredSize → Size</p>
+<blockquote>
+<p>高度为kToolbarHeight和底部窗口小部件首选高度之和的大小</p>
+</blockquote>
+</li>
+<li><p>primary → bool</p>
+<blockquote>
+<p>此应用栏是否显示在屏幕顶部</p>
+</blockquote>
+</li>
+<li><p>shape → ShapeBorder</p>
+<blockquote>
+<p>形状和阴影</p>
+</blockquote>
+</li>
+<li><p>textTheme → TextTheme</p>
+<blockquote>
+<p>应用栏中用于文本的排版样式。通常，这与亮度backgroundColor，iconTheme一起设置</p>
+</blockquote>
+</li>
+<li><p>title → Widget</p>
+<blockquote>
+<p>appbar中显示的主要小部件</p>
+</blockquote>
+</li>
+<li><p>titleSpacing → double</p>
+<blockquote>
+<p>横轴上标题内容周围的间距。即使没有前导内容或操作，也会应用此间距。如果希望title占用所有可用空间，请将此值设置为0.0</p>
+</blockquote>
+</li>
+<li><p>toolbarOpacity → double</p>
+<blockquote>
+<p>应用栏的工具栏部分透明度(0.0-1.0)</p>
+</blockquote>
+</li>
+</ul>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv.github.io/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/>https://ifeiyv.github.io/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:10:25+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年3月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Flutter-AppBar/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Flutter AppBar</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv.github.io/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/&title=Flutter开发之AppBar Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv.github.io/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/&title=Flutter开发之AppBar Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv.github.io/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/&title=Flutter开发之AppBar Widget - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/08/14/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BBottomNavigationBar%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Flutter开发之BottomNavigationBar底部导航栏</p>
+                <p class='content'>BottomNavigationBar
+显示在应用程序的底部，用于在少量视图中进行选择，通常在三到五之间。
+
+底部导航栏通常与Scaffold结合使用，它作为Scaffold.bottomNav...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/08/12/Flutter%E5%BC%80%E5%8F%91%E4%B9%8B%E5%9F%BA%E7%A1%80%20Widgets/'>
+                <p class='title'>Flutter开发之基础 Widgets<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>基础 Widgets
+Container
+
+一个拥有绘制、定位、调整大小的 widget。
+
+
+Row
+
+在水平方向上排列子widget的列表。
+
+
+Column
+
+在垂直方向上排列子widge...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Flutter开发之AppBar Widget',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#AppBar"><span class="toc-text">AppBar</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#构造方法（Constructors）"><span class="toc-text">构造方法（Constructors）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性（Properties）"><span class="toc-text">属性（Properties）</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/i-feiyv"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        本站使用
+        <a href="" target="_blank" class="codename">飞羽的博客</a>
+        作为主题
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
