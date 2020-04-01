@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> Swift </category>
+          <category> Mac </category>
           
       </categories>
       
@@ -24,7 +24,9 @@
             
             <tag> MAC </tag>
             
-            <tag> 模拟鼠标点击 </tag>
+            <tag> 代码模拟鼠标点击 </tag>
+            
+            <tag> 代码模拟键盘 </tag>
             
         </tags>
       
@@ -108,6 +110,33 @@
             <tag> Swift </tag>
             
             <tag> DarkMode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>AndroidStudio生成签名信息报错</title>
+      <link href="/2020/02/05/AndroidStudio%E7%94%9F%E6%88%90%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF%E6%8A%A5%E9%94%99/"/>
+      <url>/2020/02/05/AndroidStudio%E7%94%9F%E6%88%90%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF%E6%8A%A5%E9%94%99/</url>
+      
+        <content type="html"><![CDATA[<h4 id="AndroidStudio生成签名信息报错"><a href="#AndroidStudio生成签名信息报错" class="headerlink" title="AndroidStudio生成签名信息报错"></a>AndroidStudio生成签名信息报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Key was created with errors:</span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 </span><br><span class="line">&quot;keytool -importkeystore -srckeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -destkeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -deststoretype pkcs12&quot;</span><br><span class="line">迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure><blockquote><p>解决方案在终端中输入以下命令：</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -alias (alias名称) -keypass (alias密码) -keyalg RSA -keysize 2048 -validity 36500 -keystore (存放路径)\(保存jks文件名称).jks -storepass (keyStore密码)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;然后根据提示信息填写即可（上面命令中的括号要删掉）</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android Studio </tag>
+            
+            <tag> jks </tag>
             
         </tags>
       

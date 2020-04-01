@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：path_provider - 飞羽的博客</title>
+    <title>标签：jks - 飞羽的博客</title>
   
   
 
@@ -325,8 +325,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/10/13/path_provider%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/">
-      path_provider获取系统目录
+    <a href="/2020/02/05/AndroidStudio%E7%94%9F%E6%88%90%E7%AD%BE%E5%90%8D%E4%BF%A1%E6%81%AF%E6%8A%A5%E9%94%99/">
+      AndroidStudio生成签名信息报错
     </a>
   </h2>
 
@@ -351,9 +351,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Flutter/' rel="nofollow">
+    <a href='/categories/Android/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Flutter</p>
+      <p>Android</p>
     </a>
   </div>
 
@@ -364,7 +364,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年10月13日</p>
+    <p>发布于：2020年2月5日</p>
   </a>
 </div>
 
@@ -390,45 +390,14 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="PathProvider-插件"><a href="#PathProvider-插件" class="headerlink" title="PathProvider 插件"></a>PathProvider 插件</h3><blockquote>
-<p>PathProvider 访问设备文件系统上的常用位置。</p>
-</blockquote>
-<h4 id="使用方法："><a href="#使用方法：" class="headerlink" title="使用方法："></a>使用方法：</h4><ol>
-<li><p>在pubspec.yaml文件中添加 PathProvider 插件</p>
-<p><code>path_provider: ^*.*.*</code><a href="https://pub.dartlang.org/packages/path_provider" target="_blank" rel="noopener">查看最新版本</a></p>
-</li>
-<li><p>在文件中导入：</p>
-<p><code>import &#39;package:path_provider/path_provider.dart&#39;;</code></p>
-</li>
-</ol>
-<ol>
-<li><p><code>DocumentsDirectory</code></p>
+      <h4 id="AndroidStudio生成签名信息报错"><a href="#AndroidStudio生成签名信息报错" class="headerlink" title="AndroidStudio生成签名信息报错"></a>AndroidStudio生成签名信息报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Key was created with errors:</span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 </span><br><span class="line">&quot;keytool -importkeystore -srckeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -destkeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -deststoretype pkcs12&quot;</span><br><span class="line">迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p> 文档目录，用于存储只有自己可以访问的文件。只有当应用程序被卸载时，系统才会清除该目录。在<code>iOS</code>上，这对应于<code>NSDocumentDirectory</code>。在<code>Android</code>上，这是<code>AppData</code>目录。 </p>
+<p>解决方案在终端中输入以下命令：</p>
 </blockquote>
-<p> <code>String docDir = (await getApplicationDocumentsDirectory()).path;</code></p>
-</li>
-<li><p><code>TemporaryDirectory</code></p>
-<blockquote>
-<p>系统可随时清除的临时目录（缓存）。在<code>iOS</code>上，这对应于<code>NSTemporaryDirectory()</code> 返回的值。在<code>Android</code>上，这是<code>getCacheDir()</code>返回的目录。</p>
-</blockquote>
-<p> <code>String tempDir = (await getTemporaryDirectory()).path;</code></p>
-</li>
-<li><p><code>SupportDirectory</code></p>
-<blockquote>
-<p>在iOS上，它使用<code>NSApplicationSupportDirectory</code> 来获取目录。在Android上，这是<code>getFilesDir</code>返回的目录。</p>
-</blockquote>
-<p> <code>String supportDir = (await getApplicationSupportDirectory()).path;</code></p>
-</li>
-<li><p><code>ExternalStorageDirectory</code></p>
-<blockquote>
-<p>获取存储卡路径,仅在<code>Android</code>上中有效，<code>iOS</code>系统无此方法，可以通过<code>Platform.isIOS</code>来判断当前系统是否是<code>iOS</code>系统</p>
-</blockquote>
-<p> <code>String extStorageDir = (await getExternalStorageDirectory()).path;</code></p>
-</li>
-</ol>
-<p><a href="https://github.com/flutter/plugins/tree/master/packages/path_provider" target="_blank" rel="noopener">PathProvider-&gt;GitHub</a></p>
-<p><a href="https://pub.dartlang.org/packages/path_provider" target="_blank" rel="noopener">PathProvider-&gt;Pub</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -alias (alias名称) -keypass (alias密码) -keyalg RSA -keysize 2048 -validity 36500 -keystore (存放路径)\(保存jks文件名称).jks -storepass (keyStore密码)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;然后根据提示信息填写即可（上面命令中的括号要删掉）</span><br></pre></td></tr></table></figure>
+
+
 
       
         

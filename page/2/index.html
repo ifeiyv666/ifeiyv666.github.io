@@ -318,6 +318,153 @@
       
         
   <h2 class="title">
+    <a href="/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E4%B8%80%E3%80%81%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0rtmp%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+      直播系列一、创建本地rtmp服务器
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/iOS/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>iOS</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年11月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="在网上搜索参考了大量文章，解决了N多Bug-终于实现了直播功能"><a href="#在网上搜索参考了大量文章，解决了N多Bug-终于实现了直播功能" class="headerlink" title="在网上搜索参考了大量文章，解决了N多Bug,终于实现了直播功能"></a>在网上搜索参考了大量文章，解决了N多Bug,终于实现了直播功能</h4><blockquote>
+<p>nginx是非常优秀的开源服务器，用它来做hls或者rtmp流媒体服务器是非常不错的选择</p>
+</blockquote>
+<h4 id="1、安装Homebrow"><a href="#1、安装Homebrow" class="headerlink" title="1、安装Homebrow"></a>1、安装Homebrow</h4><p>（1）执行克隆命令,github的项目(<a href="https://github.com/denji/homebrew-nginx" target="_blank" rel="noopener">https://github.com/denji/homebrew-nginx</a>)</p>
+<pre><code>brew tap denji/nginx</code></pre><blockquote>
+<p>注意<code>brew tap homebrew/nginx</code>报下面的错误,<code>homebrew/nginx</code>已经弃用. 报错：<code>Error: homebrew/nginx was deprecated. This tap is now empty as all its formulae were migrated</code>.</p>
+</blockquote>
+<p>（2）执行安装命令:</p>
+<pre><code>brew install nginx-full --with-rtmp-module  </code></pre><p>（3）至此nginx和rtmp模块就安装好了，下面开始来配置nginx的rtmp模块<br> 接下来看一下nginx安装在什么地方:</p>
+<pre><code>brew info nginx-full  </code></pre><p><em>打印信息</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">- Tips -</span><br><span class="line">Run port 80:</span><br><span class="line"> $ sudo chown root:wheel &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line"> $ sudo chmod u+s &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line">Reload config:</span><br><span class="line"> $ nginx -s reload</span><br><span class="line">Reopen Logfile:</span><br><span class="line"> $ nginx -s reopen</span><br><span class="line">Stop process:</span><br><span class="line"> $ nginx -s stop</span><br><span class="line">Waiting on exit process</span><br><span class="line"> $ nginx -s quit</span><br><span class="line"></span><br><span class="line">To have launchd start denji&#x2F;nginx&#x2F;nginx-full now and restart at login:</span><br><span class="line">  brew services start denji&#x2F;nginx&#x2F;nginx-full</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure>
+
+<p>nginx安装所在位置:</p>
+<pre><code>/usr/local/opt/nginx-full/bin/nginx</code></pre><p>nginx配置文件所在位置:</p>
+<pre><code>/usr/local/etc/nginx/nginx.conf</code></pre><p>（4）启动nginx,执行命令:</p>
+<pre><code>sudo  nginx</code></pre><h4 id="2、测试nginx："><a href="#2、测试nginx：" class="headerlink" title="2、测试nginx："></a>2、测试nginx：</h4><pre><code>在浏览器中打开如下地址：http://localhost:8080入过</code></pre><p>如果出现<code>Welcome to nginx!</code>,说明安装成功.</p>
+<p>如果终端上提示：</p>
+<pre><code>nginx: [emerg] bind() to 0.0.0.0:8080 failed (48: Address already in use)  </code></pre><p>则表示8080端口被占用了, 查看端口PID</p>
+<pre><code>lsof -i tcp:8080  </code></pre><p>kill掉占用8080端口的PID</p>
+<pre><code>kill 9603（这里替换成占用8080端口的PID）  </code></pre><h4 id="3、重新加载nginx的配置文件"><a href="#3、重新加载nginx的配置文件" class="headerlink" title="3、重新加载nginx的配置文件"></a>3、重新加载nginx的配置文件</h4><p>（1）修改nginx.conf这个配置文件，配置rtmp<br> 复制nginx配置文件所在位置:</p>
+<pre><code>vi /usr/local/etc/nginx/nginx.conf  </code></pre><p>（2）执行上面命令会直接编辑,或者直接前往当前文件用记事本打开.<br> 滚动到最后面(最后一个}后面即可，不能在{}里面)，添加一下代码，进行配置，最后记得保存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;  </span><br><span class="line">  server &#123;  </span><br><span class="line">      listen 1935;  </span><br><span class="line">    #直播流配置  </span><br><span class="line">      application rtmplive &#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          #为 rtmp 引擎设置最大连接数。默认为 off  </span><br><span class="line">          max_connections 1024;  </span><br><span class="line">       &#125;  </span><br><span class="line">      application hls&#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          hls on;  </span><br><span class="line">          hls_path &#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;hls;  </span><br><span class="line">          hls_fragment 1s;  </span><br><span class="line">      &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）编辑完成之后,执行一下重新加载配置文件命令:</p>
+<pre><code>sudo nginx -s reload</code></pre><blockquote>
+<p>需要输入开机密码 sudo不加的话会报错： <code>nginx: [alert] could not open error log file: open() &quot;/usr/local/var/log/nginx/error.log&quot; failed (13: Permission denied)</code>该命令执行后会出来一个弹框询问是否允许 nginx 加入到网络中，选择允许即可。</p>
+</blockquote>
+<p>（4）重启nginx：</p>
+<pre><code>sudo /usr/local/opt/nginx-full/bin/nginx -s reload  </code></pre><p>PS：如果你之前不是按照我上面的方法按照的 nginx，在执行 sudo nginx -s reload 时报了如下错，建议你卸载 nginx后按照我上面的步骤重新安装nginx。<br> nginx: [emerg] unknown directive “rtmp” in /usr/local/etc/nginx/nginx.conf:119</p>
+<p><strong>nginx常用方法:</strong></p>
+<blockquote>
+<p>出现权限不足的错误提示时，命令前加上 sudo</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重新加载配置文件:  nginx -s reload</span><br><span class="line">重新加载日志:     nginx -s reopen </span><br><span class="line">停止 nginx:      nginx -s stop  </span><br><span class="line">有序退出 nginx:   nginx -s quit</span><br></pre></td></tr></table></figure>
+
+<h4 id="4、安装ffmepg工具"><a href="#4、安装ffmepg工具" class="headerlink" title="4、安装ffmepg工具"></a>4、安装ffmepg工具</h4><pre><code>brew install ffmpeg</code></pre><h4 id="5、本地推流"><a href="#5、本地推流" class="headerlink" title="5、本地推流"></a>5、本地推流</h4><p>(1)、搭建本地视频直播，比如电脑上面有很多电影，我们可以通过推流的形式实现实时直播：</p>
+<p>A：在电脑上播放推流内容<br> 安装一个支持rtmp协议的视频播放器，Mac下可以用VLC<br> 下载<a href="http://soft.macx.cn/3164.htm" target="_blank" rel="noopener">VLC</a></p>
+<p> 本地下载一个视频文件路径为 /Users/iOS002/Desktop/loginmovie.mp4</p>
+<p> 执行以下命令:</p>
+<pre><code>ffmpeg -re -i /Users/iOS002/Desktop/loginmovie.mp4  -vcodec libx264 -acodec aac -strict -2 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>用vlc 然后打开 VLC 中 的 file – Open Network, 直接输入代码中的 url:</p>
+<pre><code>rtmp://localhost:1935/rtmplive/room</code></pre><p>即可以通过VLC来播放终端中实时推过来的 RTMP流。</p>
+<p>B：通过手机观看电脑的推流</p>
+<p> 通过集成 ijkplayer 把地址换成推流的地址即可观看</p>
+<p> 播放端用的针对RTMP优化过的ijkplayer，ijkplayer是基于FFmpeg的跨平台播放器，这个开源项目已经被多个 App 使用，其中映客、美拍和斗鱼使用了 ijkplayer。</p>
+<p>(2)、桌面录制或者分享</p>
+<pre><code>ffmpeg -f avfoundation -i &quot;1&quot; -vcodec libx264 -preset ultrafast -acodec libfaac -f flv rtmp://localhost:1935/rtmplive/room </code></pre><p>(3)、桌面+麦克风</p>
+<pre><code>ffmpeg -f avfoundation -i &quot;1:0&quot; -vcodec libx264 -preset ultrafast -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>(4)、桌面+麦克风，并且还要摄像头拍摄到自己</p>
+<pre><code>ffmpeg -f avfoundation -framerate 30 -i &quot;1:0&quot; \-f avfoundation -framerate 30 -video_size 640x480 -i &quot;0&quot; \-c:v libx264 -preset ultrafast \-filter_complex &apos;overlay=main_w-overlay_w-10:main_h-overlay_h-10&apos; -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:2016/rtmplive/room  </code></pre><h4 id="6、手机推流"><a href="#6、手机推流" class="headerlink" title="6、手机推流"></a>6、手机推流</h4><p>可以用  LFLiveKit 集成到工程进行推流，LFLiveKit已经帮我们实现了视频采集、后台录制、美颜功能、支持h264、AAC编码，动态改变速率，RTMP传输等，我们开发的时候就很简单了只需把localhost:8080换成自己电脑的ip地址即可:</p>
+<pre><code>rtmp://10.0.0.17:1935/rtmplive/room</code></pre><p>注意通过网络查看电脑的局域网 IP替换掉 localhost 即可。</p>
+<p>A：通过VLC观看手机的推流</p>
+<p> 打开手机直播后，然后在电脑上打开VLC（同上），就能实现手机推流，在电脑上拉流播放了！！(注：手机需要和电脑连接同一网络！)</p>
+<p>B：通过手机观看手机的推流（这也就是市面上的那些直播App的最终实现形式了）</p>
+<p> 通过集成 ijkplayer 把地址换成推流的地址即可观看。</p>
+<p>PS：一个很隐蔽的报错：</p>
+<p>如果你发现你的推流地址和拉流地址在电脑上都是好好的，但是通过手机实现的时候就是报错，那么估计就是因为Mac防火墙的问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br></pre></td></tr></table></figure>
+
+<p>关闭 Mac 的防火墙即可解决问题。</p>
+<pre><code>偏好设置-&gt;安全性与隐私-&gt;防火墙</code></pre>
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/10/19/shared_preferences%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/">
       shared_preferences数据存储
     </a>
@@ -2059,199 +2206,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/">
-      Flutter开发之AppBar Widget
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Flutter/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Flutter</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年8月13日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a>AppBar</h3><p>应用栏通常用于Scaffold.appBar属性，该属性将应用栏放置在屏幕顶部的固定高度小部件中。对于可滚动的应用栏，请参阅<a href="https://api.flutter.dev/flutter/material/SliverAppBar-class.html" target="_blank" rel="noopener">SliverAppBar</a>，它将一个AppBar嵌入到一个条子中，以便在CustomScrollView中使用。</p>
-<p>AppBar在底部（如果有）上方显示工具栏小部件，前导，标题和操作。底部通常用于TabBar。如果指定了flexibleSpace窗口小部件，则它将堆叠在工具栏和底部窗口小部件后面。下图显示了当编写语言从左到右（例如英语）时，每个插槽在工具栏中的显示位置：<br><img src="https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png" alt="image"></p>
-<p>如果省略了前导小部件，但AppBar位于带有抽屉的脚手架中，则会插入一个按钮以打开抽屉。否则，如果最近的导航器具有任何先前的路径，则会插入BackButton。可以通过将automatedImplyLeading设置为false来关闭此行为。在这种情况下，空的前导小部件将导致中间/标题小部件拉伸开始。</p>
-<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    Widget leading, </span><br><span class="line">    bool automaticallyImplyLeading: true, </span><br><span class="line">    Widget title, </span><br><span class="line">    List&lt;Widget&gt; actions, </span><br><span class="line">    Widget flexibleSpace, </span><br><span class="line">    PreferredSizeWidget bottom, </span><br><span class="line">    double elevation, </span><br><span class="line">    ShapeBorder shape, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    Brightness brightness, </span><br><span class="line">    IconThemeData iconTheme, </span><br><span class="line">    IconThemeData actionsIconTheme, </span><br><span class="line">    TextTheme textTheme, </span><br><span class="line">    bool primary: true, </span><br><span class="line">    bool centerTitle, double titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">    double toolbarOpacity: 1.0, </span><br><span class="line">    double bottomOpacity: 1.0 </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(</span><br><span class="line">  title: Text(&#39;My Fancy Dress&#39;),</span><br><span class="line">  actions: &lt;Widget&gt;[</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_play),</span><br><span class="line">      tooltip: &#39;Air it&#39;,</span><br><span class="line">      onPressed: _airDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add),</span><br><span class="line">      tooltip: &#39;Restitch it&#39;,</span><br><span class="line">      onPressed: _restitchDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add_check),</span><br><span class="line">      tooltip: &#39;Repair it&#39;,</span><br><span class="line">      onPressed: _repairDress,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
-<li><p>actions → List<Widget></p>
-<blockquote>
-<p>要在标题小部件后显示的小部件</p>
-</blockquote>
-</li>
-<li><p>actionsIconTheme → IconThemeData</p>
-<blockquote>
-<p>用于应用栏操作中显示的图标的颜色，不透明度和大小。仅当操作的主题不同于应用栏的主要小部件中显示的图标时，才应使用此选项</p>
-</blockquote>
-</li>
-<li><p>automaticallyImplyLeading → bool</p>
-<blockquote>
-<p>Controls whether we should try to imply the leading widget if null. […]</p>
-</blockquote>
-</li>
-<li><p>backgroundColor → Color</p>
-<blockquote>
-<p>用于应用栏材质的颜色。通常这应该与亮度，iconTheme，textTheme一起设置。</p>
-</blockquote>
-</li>
-<li><p>bottom → PreferredSizeWidget</p>
-<blockquote>
-<p>此小组件显示在应用栏的底部</p>
-</blockquote>
-</li>
-<li><p>bottomOpacity → double</p>
-<blockquote>
-<p>应用栏底部的不透明程度(0.0 - 1.0)</p>
-</blockquote>
-</li>
-<li><p>brightness → Brightness</p>
-<blockquote>
-<p>应用栏材质的亮度。通常，这与backgroundColor，iconTheme，textTheme一起设置</p>
-</blockquote>
-</li>
-<li><p>centerTitle → bool</p>
-<blockquote>
-<p>标题是否居中</p>
-</blockquote>
-</li>
-<li><p>elevation → double</p>
-<blockquote>
-<p>放置此应用程序栏相对于其父应用程序栏的Z坐标</p>
-</blockquote>
-</li>
-<li><p>flexibleSpace → Widget</p>
-<blockquote>
-<p>此小组件堆叠在工具栏和选项卡栏后面。它的高度与应用栏的整体高度相同</p>
-</blockquote>
-</li>
-<li><p>iconTheme → IconThemeData</p>
-<blockquote>
-<p>用于应用栏图标的颜色，不透明度和大小。通常，这与backgroundColor，brightness，textTheme一起设置</p>
-</blockquote>
-</li>
-<li><p>leading → Widget</p>
-<blockquote>
-<p>要在标题之前显示的小部件</p>
-</blockquote>
-</li>
-<li><p>preferredSize → Size</p>
-<blockquote>
-<p>高度为kToolbarHeight和底部窗口小部件首选高度之和的大小</p>
-</blockquote>
-</li>
-<li><p>primary → bool</p>
-<blockquote>
-<p>此应用栏是否显示在屏幕顶部</p>
-</blockquote>
-</li>
-<li><p>shape → ShapeBorder</p>
-<blockquote>
-<p>形状和阴影</p>
-</blockquote>
-</li>
-<li><p>textTheme → TextTheme</p>
-<blockquote>
-<p>应用栏中用于文本的排版样式。通常，这与亮度backgroundColor，iconTheme一起设置</p>
-</blockquote>
-</li>
-<li><p>title → Widget</p>
-<blockquote>
-<p>appbar中显示的主要小部件</p>
-</blockquote>
-</li>
-<li><p>titleSpacing → double</p>
-<blockquote>
-<p>横轴上标题内容周围的间距。即使没有前导内容或操作，也会应用此间距。如果希望title占用所有可用空间，请将此值设置为0.0</p>
-</blockquote>
-</li>
-<li><p>toolbarOpacity → double</p>
-<blockquote>
-<p>应用栏的工具栏部分透明度(0.0-1.0)</p>
-</blockquote>
-</li>
-</ul>
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -2354,7 +2308,7 @@
           <li><a class="flat-box"
             title="/categories/Android/" href="/categories/Android/"
             id="categoriesAndroid"
-            ><div class='name'>Android</div><div class='badge'>(4)</div></a></li>
+            ><div class='name'>Android</div><div class='badge'>(5)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Flutter/" href="/categories/Flutter/"
@@ -2364,12 +2318,12 @@
           <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
             id="categoriesMac"
-            ><div class='name'>Mac</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Mac</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Swift/" href="/categories/Swift/"
             id="categoriesSwift"
-            ><div class='name'>Swift</div><div class='badge'>(9)</div></a></li>
+            ><div class='name'>Swift</div><div class='badge'>(8)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/iOS/" href="/categories/iOS/"
@@ -2398,7 +2352,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 17.33px; color: #828282">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #999">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">模拟鼠标点击</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 17.33px; color: #828282">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 14px; color: #999">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a>
     </div>
   </section>
 
