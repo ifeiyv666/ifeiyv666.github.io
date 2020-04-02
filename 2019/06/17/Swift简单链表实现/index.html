@@ -16,9 +16,9 @@
 
   <!-- 页面元数据 -->
   
-    <title>Android Studio运行Flutter项目run不起来 - 飞羽的博客</title>
+    <title>Swift 简单链表实现 - 飞羽的博客</title>
   
-    <meta name="keywords" content="Flutter,Android">
+    <meta name="keywords" content="链表,swift">
   
   
 
@@ -313,8 +313,8 @@
         
   
     <h1 class="title">
-      <a href="/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/">
-        Android Studio运行Flutter项目run不起来
+      <a href="/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
+        Swift 简单链表实现
       </a>
     </h1>
   
@@ -340,9 +340,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Android/' rel="nofollow">
+    <a href='/categories/Swift/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Android</p>
+      <p>Swift</p>
     </a>
   </div>
 
@@ -353,7 +353,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月19日</p>
+    <p>发布于：2019年6月17日</p>
   </a>
 </div>
 
@@ -375,40 +375,12 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><ol>
-<li>修改<code>Flutter SDK</code>中的<code>flutter.gradle</code>文件,通过 <code>flutter&gt;packages&gt;flutter_tools&gt;gradle&gt;flutter.gradle</code>(注意这是Flutter SDK安装位置不是Android Studio的)路径找到<code>flutter.gradle</code>，打开<code>flutter.gradle</code>文件，修改配置：</li>
-</ol>
-<p>注释掉<code>google()</code>和<code>jcenter()</code>,加入阿里的配置项</p>
-<pre><code>maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}</code></pre><p> 修改后：</p>
-<pre><code>buildscript {
-    repositories {
-        //注释掉 google()和jcenter()
-        // google()
-        // jcenter()
-        maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-        maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-        maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}
-    }
-    dependencies {
-        classpath &apos;com.android.tools.build:gradle:3.2.1&apos;
-    }
-}</code></pre><ol start="2">
-<li><p>手动下载<code>gradle</code>进行配置</p>
-<p>找到创建的flutter项目：</p>
-<p>通过路径<code>flutterdemo001/android/gradle/wrapper/gradle-wrapper.properties</code>找到对应文件打开后：</p>
-</li>
-</ol>
-<pre><code>#Fri Jun 23 08:50:38 CEST 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip</code></pre><p>  找到<code>distributionUrl</code>对应的地址<code>https://services.gradle.org/distributions/gradle-4.10.2-all.zip</code>就是gradle的下载地址,注意文件中https后面有个<code>\</code>,复制到浏览器记得要删掉</p>
-<p>   点击下载 <a href="https://services.gradle.org/distributions/gradle-4.10.2-all.zip" target="_blank" rel="noopener">gradle-4.10.2-all.zip</a></p>
-<p>   点击下载<a href="http://services.gradle.org/distributions/" target="_blank" rel="noopener">其他版本gradle</a></p>
-<p>   下载完成后，进行解压。<br>   然后打开目录：<code>Macintosh HD 》 用户 》当前登录用户名称》.gradle》wrapper》dists</code>⁩,<br>   可能有些电脑未打开隐藏文件可见，是看不到<code>.gradle</code>文件夹的,它是一个隐藏文件夹。<br>   使用快捷键<code>shift+command+.</code>来切换隐藏文件可见还是隐藏。找到dists文件夹后，把解压后的<code>gradle</code>拷贝一份放到dists文件夹下即可。</p>
+          <h4 id="Swift-简单链表实现"><a href="#Swift-简单链表实现" class="headerlink" title="Swift 简单链表实现"></a>Swift 简单链表实现</h4><blockquote>
+<p>链表中的元素在内存中不是顺序存储的，查找慢，插入、删除只需要对元素指针重新赋值，效率高；数组元素在内存上连续存放，可以通过下标查找元素；插入、删除需要移动大量元素，比较适用于元素很少变化的情况</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;链表节点</span><br><span class="line">public class Node&#123;</span><br><span class="line">    </span><br><span class="line">    var value: T &#x2F;&#x2F;节点存储数据</span><br><span class="line">    weak var next: Node? &#x2F;&#x2F;节点链接到的下一个节点</span><br><span class="line">    </span><br><span class="line">    weak var previous: Node?&#x2F;&#x2F;节点链接到的上一个节点</span><br><span class="line">     </span><br><span class="line">    init(value: T) &#123;</span><br><span class="line">      self.value &#x3D; value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;自定义链表</span><br><span class="line">public class NodeList:CustomStringConvertible&#123;</span><br><span class="line">    &#x2F;&#x2F;链表起点节点</span><br><span class="line">    private var head:Node?</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;链表终点节点</span><br><span class="line">    private var tail:Node?</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;链表内数据是否为空</span><br><span class="line">    public var isEmpty:Bool&#123;</span><br><span class="line">        return head &#x3D;&#x3D; nil</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;返回第一个节点</span><br><span class="line">    public var first:Node?&#123;</span><br><span class="line">        return head</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;返回最后一个节点</span><br><span class="line">    public var last:Node?&#123;</span><br><span class="line">        return tail</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;添加一个链接节点数据</span><br><span class="line">    public func append(value:T)&#123;</span><br><span class="line">        let newNode &#x3D; Node(value: value)</span><br><span class="line">        if let tailNode &#x3D; tail&#123;</span><br><span class="line">            newNode.previous &#x3D; tailNode</span><br><span class="line">            tailNode.next &#x3D; newNode</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            head &#x3D; newNode</span><br><span class="line">        &#125;</span><br><span class="line">        tail &#x3D; newNode</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;删除节点</span><br><span class="line">    public func remove(node:Node) -&gt; T&#123;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;保存要删除节点的上一个和下一个节点</span><br><span class="line">        let prev &#x3D; node.previous</span><br><span class="line">        let next &#x3D; node.next</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;如果要删处节点的上一节点不为空</span><br><span class="line">        if let prev &#x3D; prev &#123;</span><br><span class="line">            &#x2F;&#x2F;上一个节点链接到的下一个节点，修改为要删除的下一个节点</span><br><span class="line">            prev.next &#x3D; next</span><br><span class="line">        &#125;</span><br><span class="line">            &#x2F;&#x2F;如果要删处节点的上一节点为空，说明要删除的是链表起点节点</span><br><span class="line">        else &#123;</span><br><span class="line">            &#x2F;&#x2F;把下一个节点改为起点节点</span><br><span class="line">            head &#x3D; next</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;要删出的上一个节点，链接到上一个节点</span><br><span class="line">        next?.previous &#x3D; prev</span><br><span class="line">        if next &#x3D;&#x3D; nil &#123;</span><br><span class="line">            &#x2F;&#x2F;next为nil说明要删除的是最后一个，把倒数以前倒数第二个，置为最后一个</span><br><span class="line">            tail &#x3D; prev</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        node.previous &#x3D; nil</span><br><span class="line">        node.next &#x3D; nil</span><br><span class="line">        return node.value</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;删除所有节点数据</span><br><span class="line">    public func removeAll() &#123;</span><br><span class="line">      head &#x3D; nil</span><br><span class="line">      tail &#x3D; nil</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;取对应索引的节点</span><br><span class="line">    public func nodeAt(index: Int) -&gt; Node? &#123;</span><br><span class="line">      if index &gt;&#x3D; 0 &#123;</span><br><span class="line">        var node &#x3D; head</span><br><span class="line">        var i &#x3D; index</span><br><span class="line">        while node !&#x3D; nil &#123;</span><br><span class="line">          if i &#x3D;&#x3D; 0 &#123; return node &#125;</span><br><span class="line">          i -&#x3D; 1</span><br><span class="line">          node &#x3D; node!.next</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return nil</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;输出节点数据</span><br><span class="line">    public var description: String&#123;</span><br><span class="line">        var text &#x3D; &quot;&quot;</span><br><span class="line">        var node &#x3D; head</span><br><span class="line">        while node !&#x3D; nil &#123;</span><br><span class="line">            text +&#x3D; &quot;\(node!.value)&quot;</span><br><span class="line">            </span><br><span class="line">            node &#x3D; node!.next</span><br><span class="line">            if node !&#x3D; nil &#123;</span><br><span class="line">                text +&#x3D; &quot;,&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &quot;[&quot; + text + &quot;]&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 
           
             <br>
@@ -428,7 +400,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
           
         
           
-            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/>https://ifeiyv666.github.io/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/</a></p>
+            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/>https://ifeiyv666.github.io/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/</a></p>
           
         
       </blockquote>
@@ -477,10 +449,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T14:55:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-02T15:13:26+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月2日</p>
   </a>
 </div>
 
@@ -489,7 +461,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Flutter/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Flutter</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Android/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Android</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%93%BE%E8%A1%A8/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>链表</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/swift/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>swift</p></a></div>
 
 
         
@@ -507,7 +479,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/&title=Android Studio运行Flutter项目run不起来 - 飞羽的博客&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/&title=Swift 简单链表实现 - 飞羽的博客&summary="
           
           >
           
@@ -519,7 +491,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/&title=Android Studio运行Flutter项目run不起来 - 飞羽的博客&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/&title=Swift 简单链表实现 - 飞羽的博客&summary="
           
           >
           
@@ -531,7 +503,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/&title=Android Studio运行Flutter项目run不起来 - 飞羽的博客&summary="
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/&title=Swift 简单链表实现 - 飞羽的博客&summary="
           
           >
           
@@ -555,17 +527,16 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
         
           <div class="prev-next">
             
-              <a class='prev' href='/2019/06/25/androidx/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>androidx</p>
-                <p class='content'>1. ViewModelProviders在build.gradle 的 dependencies 中加入
-1implementation &#39;androidx.lifecycle:lif...</p>
+              <a class='prev' href='/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Android Studio运行Flutter项目run不起来</p>
+                <p class='content'>解决方案：
+修改Flutter SDK中的flutter.gradle文件,通过 flutter&gt;packages&gt;flutter_tools&gt;gradle&gt;flutte...</p>
               </a>
             
             
-              <a class='next' href='/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/'>
-                <p class='title'>Swift 简单链表实现<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>Swift 简单链表实现
-链表中的元素在内存中不是顺序存储的，查找慢，插入、删除只需要对元素指针重新赋值，效率高；数组元素在内存上连续存放，可以通过下标查找元素；插入、删除需要移动大量元素，比较...</p>
+              <a class='next' href='/2019/06/17/touch%E5%8F%96%E6%B6%88textfield%E7%9A%84%E7%AC%AC%E4%B8%80%E5%93%8D%E5%BA%94/'>
+                <p class='title'>touch取消textfield的第一响应<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>12345678910111213141516override func touchesEnded(_ touches: Set&lt;UITouch&gt;, with event: UIEv...</p>
               </a>
             
           </div>
@@ -593,7 +564,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
 
   <script>
     window.subData = {
-      title: 'Android Studio运行Flutter项目run不起来',
+      title: 'Swift 简单链表实现',
       tools: true
     }
   </script>
@@ -619,7 +590,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
 
 
     <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案："><span class="toc-text">解决方案：</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Swift-简单链表实现"><span class="toc-text">Swift 简单链表实现</span></a></li></ol>
     </div>
   </section>
 
