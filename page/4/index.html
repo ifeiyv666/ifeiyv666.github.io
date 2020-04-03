@@ -318,6 +318,129 @@
       
         
   <h2 class="title">
+    <a href="/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/">
+      Android Studio运行Flutter项目run不起来
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Android/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Android</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年6月19日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><ol>
+<li>修改<code>Flutter SDK</code>中的<code>flutter.gradle</code>文件,通过 <code>flutter&gt;packages&gt;flutter_tools&gt;gradle&gt;flutter.gradle</code>(注意这是Flutter SDK安装位置不是Android Studio的)路径找到<code>flutter.gradle</code>，打开<code>flutter.gradle</code>文件，修改配置：</li>
+</ol>
+<p>注释掉<code>google()</code>和<code>jcenter()</code>,加入阿里的配置项</p>
+<pre><code>maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
+maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
+maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}</code></pre><p> 修改后：</p>
+<pre><code>buildscript {
+    repositories {
+        //注释掉 google()和jcenter()
+        // google()
+        // jcenter()
+        maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
+        maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
+        maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}
+    }
+    dependencies {
+        classpath &apos;com.android.tools.build:gradle:3.2.1&apos;
+    }
+}</code></pre><ol start="2">
+<li><p>手动下载<code>gradle</code>进行配置</p>
+<p>找到创建的flutter项目：</p>
+<p>通过路径<code>flutterdemo001/android/gradle/wrapper/gradle-wrapper.properties</code>找到对应文件打开后：</p>
+</li>
+</ol>
+<pre><code>#Fri Jun 23 08:50:38 CEST 2017
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip</code></pre><p>  找到<code>distributionUrl</code>对应的地址<code>https://services.gradle.org/distributions/gradle-4.10.2-all.zip</code>就是gradle的下载地址,注意文件中https后面有个<code>\</code>,复制到浏览器记得要删掉</p>
+<p>   点击下载 <a href="https://services.gradle.org/distributions/gradle-4.10.2-all.zip" target="_blank" rel="noopener">gradle-4.10.2-all.zip</a></p>
+<p>   点击下载<a href="http://services.gradle.org/distributions/" target="_blank" rel="noopener">其他版本gradle</a></p>
+<p>   下载完成后，进行解压。<br>   然后打开目录：<code>Macintosh HD 》 用户 》当前登录用户名称》.gradle》wrapper》dists</code>⁩,<br>   可能有些电脑未打开隐藏文件可见，是看不到<code>.gradle</code>文件夹的,它是一个隐藏文件夹。<br>   使用快捷键<code>shift+command+.</code>来切换隐藏文件可见还是隐藏。找到dists文件夹后，把解压后的<code>gradle</code>拷贝一份放到dists文件夹下即可。</p>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
       Swift 简单链表实现
     </a>

@@ -385,9 +385,122 @@
         
           
         
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/04/03/MAC%E5%BD%95%E5%88%B6%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E8%84%9A%E6%9C%AC/">
+      MAC录制鼠标事件脚本
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年4月3日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <p>-–</p>
+<p>title: MAC录制鼠标事件脚本</p>
+<p>categories:</p>
+<p> - Mac</p>
+<p>tags:</p>
+<p> - 脚本录制</p>
+<p> - 鼠标事件</p>
+<p>abbrlink: 10112</p>
+<p>date: 2020-03-31 09:10:21</p>
+<p>-–</p>
+<h4 id="录制鼠标事件脚本"><a href="#录制鼠标事件脚本" class="headerlink" title="录制鼠标事件脚本"></a>录制鼠标事件脚本</h4><p><img src="images/test007.gif" alt="test007"></p>
+<p>用到自己封装好的工具  <a href="https://ifeiyv.cn/tags/代码模拟键盘/" target="_blank" rel="noopener">MAC代码模拟鼠标和键盘事件</a></p>
+<blockquote>
+<p>  <strong>var</strong> timeStamp:CLongLong = -1  //保存上次时间戳</p>
+<p>   <strong>var</strong> isStart:Bool = <strong>false</strong>  //保存是否开始录制脚本</p>
+<p>  <strong>var</strong> events:[CGEvent] = <a href="">CGEvent</a> //保存所有鼠标事件</p>
+<p>  <strong>var</strong> times:[Int] = <a href="">Int</a> //保存鼠标事件事件间隔（完美时间还原脚本）</p>
+</blockquote>
+<h5 id="1-录制脚本"><a href="#1-录制脚本" class="headerlink" title="1.录制脚本"></a>1.录制脚本</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">       </span><br><span class="line">        monitor =  <span class="type">NSEvent</span>.addGlobalMonitorForEvents(matching:[.mouseMoved,.leftMouseDown,.leftMouseUp,.leftMouseDragged,.rightMouseDown,.rightMouseUp,.rightMouseDragged,.scrollWheel]) &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>](event) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>?.label.cell?.title = <span class="string">"x=\(String(format: "</span>%.0f<span class="string">", event.locationInWindow.x))\ny=\(String(format: "</span>%.0f<span class="string">", ScreenHeight - event.locationInWindow.y))"</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">self</span>!.isStart)&#123;<span class="comment">//是否开始录制脚本</span></span><br><span class="line">                <span class="keyword">self</span>!.events.append(event.cgEvent!)</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">self</span>!.events.<span class="built_in">count</span> &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">self</span>!.times.append(<span class="type">Int</span>(<span class="type">Date</span>().milliStamp - <span class="keyword">self</span>!.timeStamp))</span><br><span class="line">                    <span class="keyword">self</span>!.timeStamp = <span class="type">Date</span>().milliStamp</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">self</span>!.times.append(<span class="number">10</span>)</span><br><span class="line">                    <span class="keyword">self</span>!.timeStamp = <span class="type">Date</span>().milliStamp</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-播放脚本"><a href="#2-播放脚本" class="headerlink" title="2.播放脚本"></a>2.播放脚本</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span>  <span class="title">playEvent</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">var</span> index = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> event <span class="keyword">in</span> events &#123;</span><br><span class="line">          <span class="keyword">if</span>(index &gt; times.<span class="built_in">count</span> - <span class="number">1</span>)&#123;</span><br><span class="line">             <span class="type">Thread</span>.sleep(forTimeInterval: <span class="type">TimeInterval</span>(<span class="number">0.01</span>))</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="type">Thread</span>.sleep(forTimeInterval: <span class="type">TimeInterval</span>( <span class="type">Double</span>(times[index]) / <span class="number">1000.0</span>))</span><br><span class="line">          &#125;</span><br><span class="line">      index += <span class="number">1</span>;</span><br><span class="line">      event.post(tap: .cghidEventTap)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -1248,106 +1361,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> &#x2F;&#x2F;MARK: -传进去字符串,生成二维码图片</span><br><span class="line">class func setupQRCodeImage(_ text: String) -&gt; UIImage &#123;</span><br><span class="line">     &#x2F;&#x2F;创建滤镜</span><br><span class="line">     let filter &#x3D; CIFilter(name: &quot;CIQRCodeGenerator&quot;)</span><br><span class="line">     filter?.setDefaults()</span><br><span class="line">     &#x2F;&#x2F;将url加入二维码</span><br><span class="line">     filter?.setValue(text.data(using: String.Encoding.utf8), forKey: &quot;inputMessage&quot;)</span><br><span class="line">     &#x2F;&#x2F;取出生成的二维码（不清晰）</span><br><span class="line">     if let outputImage &#x3D; filter?.outputImage &#123;</span><br><span class="line">         &#x2F;&#x2F;生成清晰度更好的二维码</span><br><span class="line">         let qrCodeImage &#x3D; Util.setupHighDefinitionUIImage(outputImage, size: 140)</span><br><span class="line">         return qrCodeImage</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     return UIImage()</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> &#x2F;&#x2F;MARK: - 生成高清的UIImage</span><br><span class="line">class func setupHighDefinitionUIImage(_ image: CIImage, size: CGFloat) -&gt; UIImage &#123;</span><br><span class="line">     let integral: CGRect &#x3D; image.extent.integral</span><br><span class="line">     let proportion: CGFloat &#x3D; min(size&#x2F;integral.width, size&#x2F;integral.height)</span><br><span class="line">     </span><br><span class="line">     let width &#x3D; integral.width * proportion</span><br><span class="line">     let height &#x3D; integral.height * proportion</span><br><span class="line">     let colorSpace: CGColorSpace &#x3D; CGColorSpaceCreateDeviceGray()</span><br><span class="line">     let bitmapRef &#x3D; CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: 0)!</span><br><span class="line">     </span><br><span class="line">     let context &#x3D; CIContext(options: nil)</span><br><span class="line">     let bitmapImage: CGImage &#x3D; context.createCGImage(image, from: integral)!</span><br><span class="line">     </span><br><span class="line">     bitmapRef.interpolationQuality &#x3D; CGInterpolationQuality.none</span><br><span class="line">     bitmapRef.scaleBy(x: proportion, y: proportion);</span><br><span class="line">     bitmapRef.draw(bitmapImage, in: integral);</span><br><span class="line">     let image: CGImage &#x3D; bitmapRef.makeImage()!</span><br><span class="line">     return UIImage(cgImage: image)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    class func getImageFromView(view:UIView) -&gt;UIImage&#123;</span><br><span class="line">&#x2F;&#x2F;        UIGraphicsBeginImageContext(view.bounds.size)</span><br><span class="line">        UIGraphicsBeginImageContextWithOptions(view.bounds.size,false,UIScreen.main.scale)</span><br><span class="line">        view.layer.render(in: UIGraphicsGetCurrentContext()!)</span><br><span class="line">        </span><br><span class="line">        let image &#x3D; UIGraphicsGetImageFromCurrentImageContext()</span><br><span class="line">        </span><br><span class="line">        UIGraphicsEndImageContext()</span><br><span class="line">        </span><br><span class="line">        return image!</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/11/08/%E7%9B%B4%E6%92%AD%E7%B3%BB%E5%88%97%E5%9B%9B%E3%80%81%E6%8A%A5%E9%94%99Bug%E4%BF%AE%E5%A4%8D%E8%AE%B0%E5%BD%95/">
-      直播系列四、报错Bug修复记录
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/iOS/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>iOS</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年11月8日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <ol>
-<li>./build-ffmpeg.sh</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang is unable to create an executable file.</span><br><span class="line">C compiler test failed.</span><br><span class="line"></span><br><span class="line">If you think configure made a mistake, make sure you are using the latest</span><br><span class="line">version from Git. If the latest version fails, report the problem to the</span><br><span class="line">ffmpeg-user@ffmpeg.org mailing list or IRC #ffmpeg on irc.freenode.net.</span><br><span class="line">Include the log file &quot;config.log&quot; produced by configure as this will help</span><br><span class="line">solve the problem.</span><br></pre></td></tr></table></figure>
-<p>解决方法：</p>
-<pre><code>sudo xcode-select --switch /Applications/Xcode.app</code></pre><ol start="2">
-<li>armv7</li>
-</ol>
-<p><a href="https://www.jianshu.com/p/2669370bee23" target="_blank" rel="noopener">https://www.jianshu.com/p/2669370bee23</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;libavutil&#x2F;arm&#x2F;asm.S:50:9: error: unknown directive</span><br><span class="line">       .arch armv7-a</span><br><span class="line">       ^</span><br></pre></td></tr></table></figure>
-<p>删除<code>armv7compile-ffmpeg.sh</code>文件中 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FF_ALL_ARCHS_IOS8_SDK&#x3D;&quot;armv7 arm64 i386 x86_64&quot;</span><br><span class="line"></span><br><span class="line">改为 FF_ALL_ARCHS_IOS8_SDK&#x3D;&quot;arm64 i386 x86_64&quot;</span><br></pre></td></tr></table></figure>
       
         
       

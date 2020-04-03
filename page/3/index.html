@@ -318,6 +318,296 @@
       
         
   <h2 class="title">
+    <a href="/2019/08/16/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BImage%20Widget/">
+      Flutter开发之Image Widget
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月16日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="Image-Widget"><a href="#Image-Widget" class="headerlink" title="Image Widget"></a>Image Widget</h3><blockquote>
+<p>显示图像的小部件,支持以下图像格式: JPEG、PNG、GIF、动画 GIF、WebP、动画 WebP、BMP 和 WBMP</p>
+</blockquote>
+<p><strong>为图像可以指定的各种方式提供了几个构造函数:</strong></p>
+<ul>
+<li>new Image, 通过 ImageProvider获取图像</li>
+<li>new Image.asset, 使用key值从资源包获取图像</li>
+<li>new Image.network, 通过URL网络请求获取图像</li>
+<li>new Image.file, 从文件中获取图像.</li>
+<li>new Image.memory, 从 Uint8List中 获取图像.</li>
+</ul>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
+<p>Image 创建一个显示图像的小部件</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Image(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    @required ImageProvider image, </span><br><span class="line">    String semanticLabel, </span><br><span class="line">    bool excludeFromSemantics: false, </span><br><span class="line">    double width, double height, </span><br><span class="line">    Color color, </span><br><span class="line">    BlendMode colorBlendMode, </span><br><span class="line">    BoxFit fit, </span><br><span class="line">    AlignmentGeometry alignment: Alignment.center, ImageRepeat repeat: ImageRepeat.noRepeat, </span><br><span class="line">    Rect centerSlice, </span><br><span class="line">    bool matchTextDirection: false, </span><br><span class="line">    bool gaplessPlayback: false, </span><br><span class="line">    FilterQuality filterQuality: FilterQuality.low </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建一个小部件,显示从资源包里获得的 ImageStream,图像的键是由名称参数给出的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Image.asset(String name, &#123; </span><br><span class="line">    Key key, </span><br><span class="line">    AssetBundle bundle, </span><br><span class="line">    String semanticLabel, </span><br><span class="line">    bool excludeFromSemantics: false, </span><br><span class="line">    double scale, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    Color color, </span><br><span class="line">    BlendMode colorBlendMode, </span><br><span class="line">    BoxFit fit, </span><br><span class="line">    AlignmentGeometry alignment: Alignment.center, ImageRepeat repeat: ImageRepeat.noRepeat, </span><br><span class="line">    Rect centerSlice, </span><br><span class="line">    bool matchTextDirection: false, </span><br><span class="line">    bool gaplessPlayback: false, </span><br><span class="line">    String package, </span><br><span class="line">    FilterQuality filterQuality: FilterQuality.low </span><br><span class="line">        </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个小部件, 显示从文件中获得的 ImageStream</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Image.file(File file, &#123; </span><br><span class="line">    Key key, </span><br><span class="line">    double scale: 1.0, </span><br><span class="line">    String semanticLabel, </span><br><span class="line">    bool excludeFromSemantics: false, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    Color color, </span><br><span class="line">    BlendMode colorBlendMode, </span><br><span class="line">    BoxFit fit, </span><br><span class="line">    AlignmentGeometry alignment: Alignment.center, ImageRepeat repeat: ImageRepeat.noRepeat, </span><br><span class="line">    Rect centerSlice, </span><br><span class="line">    bool matchTextDirection: false, </span><br><span class="line">    bool gaplessPlayback: false, </span><br><span class="line">    FilterQuality filterQuality: FilterQuality.low </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建一个小部件,显示从Uint8List中获得的ImageStream</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Image.memory(Uint8List bytes, &#123; </span><br><span class="line">    Key key, </span><br><span class="line">    double scale: 1.0, </span><br><span class="line">    String semanticLabel, </span><br><span class="line">    bool excludeFromSemantics: false, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    Color color, </span><br><span class="line">    BlendMode colorBlendMode, </span><br><span class="line">    BoxFit fit, </span><br><span class="line">    AlignmentGeometry alignment: Alignment.center, ImageRepeat repeat: ImageRepeat.noRepeat, </span><br><span class="line">    Rect centerSlice, </span><br><span class="line">    bool matchTextDirection: false, </span><br><span class="line">    bool gaplessPlayback: false, </span><br><span class="line">    FilterQuality filterQuality: FilterQuality.low</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>创建一个小部件, 显示从网络获得的ImageStream</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Image.network(String src, &#123; </span><br><span class="line">    Key key, </span><br><span class="line">    double scale: 1.0, </span><br><span class="line">    String semanticLabel, </span><br><span class="line">    bool excludeFromSemantics: false, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    Color color, </span><br><span class="line">    BlendMode colorBlendMode, </span><br><span class="line">    BoxFit fit, </span><br><span class="line">    AlignmentGeometry alignment: Alignment.center, ImageRepeat repeat: ImageRepeat.noRepeat, </span><br><span class="line">    Rect centerSlice, </span><br><span class="line">    bool matchTextDirection: false, </span><br><span class="line">    bool gaplessPlayback: false, </span><br><span class="line">    FilterQuality filterQuality: FilterQuality.low,</span><br><span class="line">    Map&lt;String, String&gt; headers </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><p>alignment → AlignmentGeometry</p>
+<ul>
+<li><em>设置图像的对齐方式</em></li>
+</ul>
+</li>
+<li><p>centerSlice → Rect</p>
+<ul>
+<li><em>九片图像的中心切片</em></li>
+<li><em>中心切片内的图像区域将水平和垂直拉伸，以使图像适合其目标</em></li>
+<li><em>中心切片上方和下方的图像区域将仅水平拉伸，中心切片左侧和右侧的图像区域将仅垂直拉伸</em> </li>
+</ul>
+</li>
+<li><p>color → Color</p>
+<ul>
+<li><em>如果非 null, 则使用颜色混合模式将此颜色与每个图像像素混合</em></li>
+</ul>
+</li>
+<li><p>colorBlendMode → BlendMode</p>
+<ul>
+<li><em>用于将颜色与此图像相结合</em></li>
+</ul>
+</li>
+<li><p>excludeFromSemantics → bool</p>
+<ul>
+<li><em>是否从语义中排除此图像</em></li>
+</ul>
+</li>
+<li><p>filterQuality → FilterQuality</p>
+<ul>
+<li><em>用于设置图像的FilterQuality</em></li>
+</ul>
+</li>
+<li><p>fit → BoxFit</p>
+<ul>
+<li><em>图片填充的方式</em><ul>
+<li><code>contain</code> 在目标框中尽可能大的显示完整图像<br>  <img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_contain.png" alt="box_fit"></li>
+<li><code>cover</code>   在目标框中尽可能小的覆盖整个目标框<br>  <img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_cover.png" alt="box_fit">      </li>
+<li><code>fill</code>  通过拉伸纵横比来填充整个目标框<br>  <br><img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_fill.png" alt="box_fit"> </li>
+<li><code>fitHeight</code> 在目标框中高度填充满，不论宽度是否溢出<br>  <img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_fitHeight.png" alt="box_fit"> </li>
+<li><code>fitWidth</code>  在目标框中宽度填充满，不论高度是否溢出<br>  <img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_fitWidth.png" alt="box_fit"> </li>
+<li><code>none</code> 对齐目标框内的源（默认情况下，居中）并丢弃位于框外的源的任何部分。源图像未调整大小。<br>   <img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_none.png" alt="box_fit"> </li>
+<li><code>scaleDown</code> 对齐目标框中的源 (默认情况下, 居中), 并在必要时缩小源的比例, 以确保源适合框中。<br><br><img src="https://flutter.github.io/assets-for-api-docs/assets/painting/box_fit_scaleDown.png" alt="box_fit"> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>gaplessPlayback → bool</p>
+<ul>
+<li><em>当图像更换时是继续显示旧图像 (true), 还是短暂不显示任何内容 (false)</em></li>
+</ul>
+</li>
+<li><p>height → double</p>
+<ul>
+<li><em>如果非空, 则要求图像具有此高度</em></li>
+</ul>
+</li>
+<li><p>image → ImageProvider</p>
+<ul>
+<li><em>要显示的图像</em></li>
+</ul>
+</li>
+<li><p>matchTextDirection → bool</p>
+<ul>
+<li><em>是否将图像绘制到文本方向的方向</em></li>
+</ul>
+</li>
+<li><p>repeat → ImageRepeat</p>
+<ul>
+<li><em>如何绘制图像不包括的布局边界的任何部分</em><ul>
+<li><code>noRepeat</code> 让盒子的未覆盖部分保持透明,不重复</li>
+<li><code>repeat</code>   在 x 和 y 方向上重复图像, 直到框被填满</li>
+<li><code>repeatX</code> 按 x 方向重复图像, 直到水平方向填充满</li>
+<li><code>repeatY</code> 按 Y 方向重复图像, 直到垂直方向填充满</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>semanticLabel → String</p>
+<ul>
+<li><em>对图像的语义描述</em></li>
+</ul>
+</li>
+<li><p>width → double</p>
+<ul>
+<li><em>如果非空, 则要求图像具有此宽度</em></li>
+</ul>
+</li>
+<li><p>hashCode → int</p>
+<ul>
+<li><em>此对象的哈希代码</em></li>
+</ul>
+</li>
+<li><p>key → Key</p>
+<ul>
+<li><em>控制一个小部件如何替换树中的另一个小部件</em></li>
+</ul>
+</li>
+<li><p>runtimeType → Type</p>
+<ul>
+<li><em>对象的运行时类型</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="方法（Methods）"><a href="#方法（Methods）" class="headerlink" title="方法（Methods）"></a>方法（Methods）</h4><blockquote>
+<p>在树中的给定位置为这个小部件创建可变状态。</p>
+</blockquote>
+<ul>
+<li>createState() → _ImageState</li>
+</ul>
+<blockquote>
+<p>添加与节点管理相关联的其他属性</p>
+</blockquote>
+<ul>
+<li>debugFillProperties(DiagnosticPropertiesBuilder properties) → void</li>
+</ul>
+<blockquote>
+<p>创建StatelessElement以管理此窗口小部件在树中的位置</p>
+</blockquote>
+<ul>
+<li>createElement() → StatelessElement</li>
+</ul>
+<blockquote>
+<p>返回描述此节点的子节点的DiagnosticsNode对象列表。</p>
+</blockquote>
+<ul>
+<li>debugDescribeChildren() → List<DiagnosticsNode></li>
+</ul>
+<blockquote>
+<p>访问不存在的方法或属性时调用</p>
+</blockquote>
+<ul>
+<li>noSuchMethod(Invocation invocation) → dynamic</li>
+</ul>
+<blockquote>
+<p>返回调试工具和DiagnosticsNode.toStringDeep使用的对象的调试表示形式</p>
+</blockquote>
+<ul>
+<li>toDiagnosticsNode({String name, DiagnosticsTreeStyle style }) → DiagnosticsNode</li>
+</ul>
+<blockquote>
+<p>返回此对象的字符串表示形式</p>
+</blockquote>
+<ul>
+<li>toString({DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</li>
+</ul>
+<blockquote>
+<p>返回此节点及其后代的字符串表示形式</p>
+</blockquote>
+<ul>
+<li>toStringDeep({String prefixLineOne: ‘’, String prefixOtherLines, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</li>
+</ul>
+<blockquote>
+<p>返回对象的单行详细描述</p>
+</blockquote>
+<ul>
+<li>toStringShallow({String joiner: ‘, ‘, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</li>
+</ul>
+<blockquote>
+<p>这个小部件的简短文字描述</p>
+</blockquote>
+<ul>
+<li>toStringShort() → String</li>
+</ul>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/">
       Flutter开发之Container Widget
     </a>
@@ -1574,129 +1864,6 @@
 
 <p><code>Sync Now</code>一下，把下面代码套在布局最外层，即可使用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;data&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;data&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">    &#x2F;&#x2F;这里写自己的布局</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;layout&gt;</span><br></pre></td></tr></table></figure>
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/19/Android%20Studio%E8%BF%90%E8%A1%8CFlutter%E9%A1%B9%E7%9B%AErun%E4%B8%8D%E8%B5%B7%E6%9D%A5/">
-      Android Studio运行Flutter项目run不起来
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Android/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Android</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月19日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><ol>
-<li>修改<code>Flutter SDK</code>中的<code>flutter.gradle</code>文件,通过 <code>flutter&gt;packages&gt;flutter_tools&gt;gradle&gt;flutter.gradle</code>(注意这是Flutter SDK安装位置不是Android Studio的)路径找到<code>flutter.gradle</code>，打开<code>flutter.gradle</code>文件，修改配置：</li>
-</ol>
-<p>注释掉<code>google()</code>和<code>jcenter()</code>,加入阿里的配置项</p>
-<pre><code>maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}</code></pre><p> 修改后：</p>
-<pre><code>buildscript {
-    repositories {
-        //注释掉 google()和jcenter()
-        // google()
-        // jcenter()
-        maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-        maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-        maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}
-    }
-    dependencies {
-        classpath &apos;com.android.tools.build:gradle:3.2.1&apos;
-    }
-}</code></pre><ol start="2">
-<li><p>手动下载<code>gradle</code>进行配置</p>
-<p>找到创建的flutter项目：</p>
-<p>通过路径<code>flutterdemo001/android/gradle/wrapper/gradle-wrapper.properties</code>找到对应文件打开后：</p>
-</li>
-</ol>
-<pre><code>#Fri Jun 23 08:50:38 CEST 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip</code></pre><p>  找到<code>distributionUrl</code>对应的地址<code>https://services.gradle.org/distributions/gradle-4.10.2-all.zip</code>就是gradle的下载地址,注意文件中https后面有个<code>\</code>,复制到浏览器记得要删掉</p>
-<p>   点击下载 <a href="https://services.gradle.org/distributions/gradle-4.10.2-all.zip" target="_blank" rel="noopener">gradle-4.10.2-all.zip</a></p>
-<p>   点击下载<a href="http://services.gradle.org/distributions/" target="_blank" rel="noopener">其他版本gradle</a></p>
-<p>   下载完成后，进行解压。<br>   然后打开目录：<code>Macintosh HD 》 用户 》当前登录用户名称》.gradle》wrapper》dists</code>⁩,<br>   可能有些电脑未打开隐藏文件可见，是看不到<code>.gradle</code>文件夹的,它是一个隐藏文件夹。<br>   使用快捷键<code>shift+command+.</code>来切换隐藏文件可见还是隐藏。找到dists文件夹后，把解压后的<code>gradle</code>拷贝一份放到dists文件夹下即可。</p>
 
       
         
