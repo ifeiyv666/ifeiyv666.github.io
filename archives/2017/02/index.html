@@ -308,9 +308,569 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/25/UIAlertView/">
+      UIAlertView(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月25日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="UIAlertView"><a href="#UIAlertView" class="headerlink" title="UIAlertView"></a>UIAlertView</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()&lt;<span class="title">UIAlertViewDelegate</span>&gt;</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> number;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//点击屏幕就会触发此方法</span></span><br><span class="line">-(<span class="keyword">void</span>)touchesBegan:(<span class="built_in">NSSet</span> *)touches withEvent:(<span class="built_in">UIEvent</span> *)event&#123;</span><br><span class="line">    number = arc4random()%<span class="number">2</span>;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"number = %d"</span>,number);</span><br><span class="line">    <span class="keyword">if</span> (number == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">UIAlertView</span> *alert = [[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"提示"</span> message:<span class="string">@"赶快还钱"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"还钱"</span> otherButtonTitles:<span class="string">@"不还"</span>,<span class="string">@"就不还"</span>, <span class="literal">nil</span>];</span><br><span class="line">        [alert show];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (number == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">UIAlertView</span> *alert = [[<span class="built_in">UIAlertView</span> alloc]initWithTitle:<span class="string">@"提示"</span> message:<span class="string">@"还钱"</span> delegate:<span class="keyword">self</span> cancelButtonTitle:<span class="string">@"还钱"</span> otherButtonTitles:<span class="string">@"不还"</span>,<span class="string">@"就不还"</span>, <span class="literal">nil</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        alert.alertViewStyle = <span class="built_in">UIAlertViewStyleLoginAndPasswordInput</span>;</span><br><span class="line">        </span><br><span class="line">        [alert show];</span><br><span class="line">        </span><br><span class="line"><span class="comment">//        UIAlertViewStyleDefault = 0,</span></span><br><span class="line"><span class="comment">//        UIAlertViewStyleSecureTextInput,</span></span><br><span class="line"><span class="comment">//        UIAlertViewStylePlainTextInput,</span></span><br><span class="line"><span class="comment">//        UIAlertViewStyleLoginAndPasswordInput</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark -</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark delegate</span></span><br><span class="line">-(<span class="keyword">void</span>)alertView:(<span class="built_in">UIAlertView</span> *)alertView clickedButtonAtIndex:(<span class="built_in">NSInteger</span>)buttonIndex&#123;</span><br><span class="line">    <span class="keyword">if</span> (number == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (buttonIndex) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (buttonIndex) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[[alertView textFieldAtIndex:<span class="number">0</span>]text]);</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[[alertView textFieldAtIndex:<span class="number">1</span>]text]);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                <span class="built_in">NSLog</span>(<span class="string">@"%ld"</span>,buttonIndex);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">                </span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/24/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F/">
+      图片加载方式(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月24日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="路径解析"><a href="#路径解析" class="headerlink" title="路径解析"></a>路径解析</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@""</span>];</span><br><span class="line">       <span class="comment">//  使用`imageNamed:`初始化的时候，会先检查缓存中是否存在要加载的照片，如不存在，图片首先会被缓存起来，然后才返回要加载的图片对象；如果存在，直接返回要加载的照片对象。</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle]pathForResource:<span class="string">@"1.png"</span> ofType:<span class="literal">nil</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,path);</span><br><span class="line">    <span class="built_in">UIImage</span> *image2 = [<span class="built_in">UIImage</span> imageWithContentsOfFile:path];</span><br><span class="line">    <span class="comment">//  使用`imageWithContentsOfFile:`创建图片的时候，是直接从磁盘上加载。当收到内存警告时，图片对象会被释放，下一次绘图的时候，需要重新加载。</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSData</span> *data;</span><br><span class="line">    <span class="built_in">UIImage</span> *image3 = [<span class="built_in">UIImage</span> imageWithData:data];</span><br><span class="line">    <span class="comment">//  data 是照片数据，一般是请求返回的，然后通过`imageWithData:`创建图片。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/23/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/">
+      沙盒路径(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月23日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="沙盒路径"><a href="#沙盒路径" class="headerlink" title="沙盒路径"></a>沙盒路径</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    数据是写在Library-&gt;Preferences下</span></span><br><span class="line">    <span class="built_in">NSUserDefaults</span> *defaults1 = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,defaults1);</span><br><span class="line">    <span class="built_in">NSUserDefaults</span> *defaults2 = [<span class="built_in">NSUserDefaults</span> standardUserDefaults];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,defaults2);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSUserDefaults</span> *defaults3 = [[<span class="built_in">NSUserDefaults</span> alloc]init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%p"</span>,defaults3);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSArray</span> *tempArray = @[<span class="string">@"1"</span>,<span class="string">@"2"</span>];</span><br><span class="line">    [defaults1 setObject:tempArray forKey:<span class="string">@"array"</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//  1、获取程序的Home目录</span></span><br><span class="line"><span class="comment">//    NSString *homeDirectory = NSHomeDirectory();</span></span><br><span class="line"><span class="comment">//    NSLog(@"path:%@", homeDirectory);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    2、获取document目录</span></span><br><span class="line"><span class="comment">//    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *documentPath = [documentPaths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"path:%@", documentPath);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    3、获取Cache目录    </span></span><br><span class="line"><span class="comment">//    NSArray *CachePaths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *CachePath = [CachePaths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@", CachePath);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    4、获取Library目录</span></span><br><span class="line"><span class="comment">//    NSArray *LibraryPaths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *LibraryPath = [LibraryPaths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@", LibraryPath);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    5、获取Tmp目录</span></span><br><span class="line"><span class="comment">//    NSString *tmpDir = NSTemporaryDirectory();</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@", tmpDir);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    6、写入文件</span></span><br><span class="line"><span class="comment">//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *docDir = [paths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@",docDir);</span></span><br><span class="line"><span class="comment">//    if (!docDir) &#123;</span></span><br><span class="line"><span class="comment">//        NSLog(@"Documents 目录未找到");</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//    NSArray *contentArray = [[NSArray alloc] initWithObjects:@"内容",@"content",nil];</span></span><br><span class="line"><span class="comment">//    NSString *filePath = [docDir stringByAppendingPathComponent:@"testFile.txt"];</span></span><br><span class="line"><span class="comment">//    [contentArray writeToFile:filePath atomically:YES];</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    7、读取文件</span></span><br><span class="line">    <span class="built_in">NSArray</span> *paths = <span class="built_in">NSSearchPathForDirectoriesInDomains</span>(<span class="built_in">NSDocumentDirectory</span>, <span class="built_in">NSUserDomainMask</span>, <span class="literal">YES</span>);</span><br><span class="line">    <span class="built_in">NSString</span> *docDir = [paths objectAtIndex:<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">NSString</span> *filePath = [docDir stringByAppendingPathComponent:<span class="string">@"testFile.txt"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,filePath);</span><br><span class="line">    <span class="built_in">NSArray</span> *array = [[<span class="built_in">NSArray</span> alloc]initWithContentsOfFile:filePath];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>, array);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    8、判断一个文件是否存在,传入全路径(fileExistsAtPath)</span></span><br><span class="line"><span class="comment">//    // 创建文件管理器</span></span><br><span class="line"><span class="comment">//    NSFileManager * fileManager = [NSFileManager defaultManager];</span></span><br><span class="line"><span class="comment">//    </span></span><br><span class="line"><span class="comment">//    NSString * documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];</span></span><br><span class="line"><span class="comment">//    NSString * filePath = [documents stringByAppendingPathComponent:@"test"];</span></span><br><span class="line"><span class="comment">//    </span></span><br><span class="line"><span class="comment">//    // 判断一个文件是否存在,传入全路径</span></span><br><span class="line"><span class="comment">//    if ([fileManager fileExistsAtPath:filePath]) &#123;</span></span><br><span class="line"><span class="comment">//        NSLog(@"it is exit");</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    9、在Documents里创建目录</span></span><br><span class="line"><span class="comment">//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *documentsDirectory = [paths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"documentsDirectory%@",documentsDirectory);</span></span><br><span class="line"><span class="comment">//    NSFileManager *fileManager = [NSFileManager defaultManager];</span></span><br><span class="line"><span class="comment">//    NSString *testDirectory = [documentsDirectory stringByAppendingPathComponent:@"test"];</span></span><br><span class="line"><span class="comment">//    // 创建目录</span></span><br><span class="line"><span class="comment">//    [fileManager createDirectoryAtPath:testDirectory withIntermediateDirectories:YES attributes:nil error:nil];</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    10、在目录下创建文件</span></span><br><span class="line"><span class="comment">//    NSString *testPath = [testDirectory stringByAppendingPathComponent:@"test00.txt"];</span></span><br><span class="line"><span class="comment">//    NSString *testPath2 = [testDirectory stringByAppendingPathComponent:@"test22.txt"];</span></span><br><span class="line"><span class="comment">//    NSString *testPath3 = [testDirectory stringByAppendingPathComponent:@"test33.txt"];</span></span><br><span class="line"><span class="comment">//    NSString *string = @"写入内容，write String";</span></span><br><span class="line"><span class="comment">//    [fileManager createFileAtPath:testPath contents:[string  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];</span></span><br><span class="line"><span class="comment">//    [fileManager createFileAtPath:testPath2 contents:[string  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];</span></span><br><span class="line"><span class="comment">//    [fileManager createFileAtPath:testPath3 contents:[string  dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    11、获取目录列里所有文件名</span></span><br><span class="line"><span class="comment">//    两种方法获取：subpathsOfDirectoryAtPath 和subpathsAtPath</span></span><br><span class="line"><span class="comment">//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *documentsDirectory = [paths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    NSLog(@"documentsDirectory%@",documentsDirectory);</span></span><br><span class="line"><span class="comment">//    NSFileManager *fileManage = [NSFileManager defaultManager];</span></span><br><span class="line"><span class="comment">//    NSString *myDirectory = [documentsDirectory stringByAppendingPathComponent:@"test"];</span></span><br><span class="line"><span class="comment">//    NSArray *file = [fileManage subpathsOfDirectoryAtPath: myDirectory error:nil];</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@",file);</span></span><br><span class="line"><span class="comment">//    NSArray *files = [fileManage subpathsAtPath: myDirectory ];</span></span><br><span class="line"><span class="comment">//    NSLog(@"%@",files);</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    12、fileManager使用操作当前目录    </span></span><br><span class="line"><span class="comment">//    //创建文件管理器</span></span><br><span class="line"><span class="comment">//    NSFileManager *fileManager = [NSFileManager defaultManager];</span></span><br><span class="line"><span class="comment">//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</span></span><br><span class="line"><span class="comment">//    NSString *documentsDirectory = [paths objectAtIndex:0];</span></span><br><span class="line"><span class="comment">//    //更改到待操作的目录下</span></span><br><span class="line"><span class="comment">//    [fileManager changeCurrentDirectoryPath:[documentsDirectory stringByExpandingTildeInPath]];</span></span><br><span class="line"><span class="comment">//    //创建文件fileName文件名称，contents文件的内容，如果开始没有内容可以设置为nil，attributes文件的属性，初始为nil</span></span><br><span class="line"><span class="comment">//    NSString * fileName = @"testFileNSFileManager.txt";</span></span><br><span class="line"><span class="comment">//    NSArray *array = [[NSArray alloc] initWithObjects:@"hello world",@"hello world1", @"hello world2",nil];</span></span><br><span class="line"><span class="comment">//    [fileManager createFileAtPath:fileName contents:array attributes:nil];  </span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    13、删除文件    </span></span><br><span class="line"><span class="comment">//    [fileManager removeItemAtPath:fileName error:nil];</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/23/UIAlertController/">
+      UIAlertController(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月23日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="UIAlertController"><a href="#UIAlertController" class="headerlink" title="UIAlertController"></a>UIAlertController</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">2</span>; i ++) &#123;</span><br><span class="line">        <span class="built_in">UIButton</span> *button =[<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">        button.frame = <span class="built_in">CGRectMake</span>(<span class="number">120</span> + i * <span class="number">120</span>, <span class="number">120</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">        button.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span>) &#123;</span><br><span class="line">            [button setTitle:<span class="string">@"alertView"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            [button setTitle:<span class="string">@"actionSheet"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        button.tag = <span class="number">10</span> + i ;</span><br><span class="line">        [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onClick:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">        </span><br><span class="line">        [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick:(<span class="built_in">UIButton</span>*)button&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">10</span>) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"alertView"</span>);</span><br><span class="line">        [<span class="keyword">self</span> alertView];</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"actionSheet"</span>);</span><br><span class="line">        [<span class="keyword">self</span> actionSheet];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)actionSheet&#123;</span><br><span class="line"><span class="comment">//    初始化UIAlertCOntroller</span></span><br><span class="line"><span class="comment">//    Title:标题</span></span><br><span class="line"><span class="comment">//    message:信息</span></span><br><span class="line"><span class="comment">//    Style:样式</span></span><br><span class="line">    <span class="built_in">UIAlertController</span> *alertController = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"提示"</span> message:<span class="string">@"message"</span> preferredStyle:<span class="built_in">UIAlertControllerStyleActionSheet</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    初始化UIAlertAction</span></span><br><span class="line">    <span class="built_in">UIAlertAction</span> *cancelBtn = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> *  action) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"取消"</span>);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIAlertAction</span> *firstBtn = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"first"</span> style:<span class="built_in">UIAlertActionStyleDefault</span> handler:^(<span class="built_in">UIAlertAction</span> * action) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"取消"</span>);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [alertController addAction:cancelBtn];</span><br><span class="line">    [alertController addAction:firstBtn];</span><br><span class="line">    [<span class="keyword">self</span> presentViewController:alertController animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)alertView&#123;</span><br><span class="line"><span class="comment">//    初始化UIAlertController</span></span><br><span class="line"><span class="comment">//    Title:标题</span></span><br><span class="line"><span class="comment">//    message:信息</span></span><br><span class="line"><span class="comment">//    Style:样式</span></span><br><span class="line">    <span class="built_in">UIAlertController</span> *alertController = [<span class="built_in">UIAlertController</span> alertControllerWithTitle:<span class="string">@"提示"</span> message:<span class="string">@"message"</span> preferredStyle:<span class="built_in">UIAlertControllerStyleAlert</span>];</span><br><span class="line"><span class="comment">//    UIAlertControllerStyleActionSheet</span></span><br><span class="line"><span class="comment">//    UIAlertControllerStyleAlert</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    初始化按钮</span></span><br><span class="line"><span class="comment">//    Title：标题</span></span><br><span class="line"><span class="comment">//    style：样式</span></span><br><span class="line"><span class="comment">//    UIAlertController 上面只能有一个取消样式的按钮，否则会崩溃</span></span><br><span class="line">    <span class="built_in">UIAlertAction</span> *cancelBtn = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"取消"</span> style:<span class="built_in">UIAlertActionStyleCancel</span> handler:^(<span class="built_in">UIAlertAction</span> *  action) &#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"取消"</span>);</span><br><span class="line">    &#125;];</span><br><span class="line"><span class="comment">//    UIAlertActionStyleDefault = 0,普通按钮</span></span><br><span class="line"><span class="comment">//    UIAlertActionStyleCancel,取消按钮</span></span><br><span class="line"><span class="comment">//    UIAlertActionStyleDestructive重置、销毁</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    添加文本输入框</span></span><br><span class="line">    [alertController addTextFieldWithConfigurationHandler:^(<span class="built_in">UITextField</span> *  textField) &#123;</span><br><span class="line">        textField.placeholder = <span class="string">@"请输入"</span>;</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    [alertController addTextFieldWithConfigurationHandler:^(<span class="built_in">UITextField</span> * textField) &#123;</span><br><span class="line">        textField.placeholder = <span class="string">@"第二个文本输入框"</span>;</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIAlertAction</span> *resetBtn = [<span class="built_in">UIAlertAction</span> actionWithTitle:<span class="string">@"reset"</span> style:<span class="built_in">UIAlertActionStyleDestructive</span> handler:^(<span class="built_in">UIAlertAction</span> *  action) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">UITextField</span> *textField1 = alertController.textFields[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,textField1.text);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">UITextField</span> *textField2 = alertController.textFields[<span class="number">1</span>];</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,textField2.text);</span><br><span class="line">    &#125;];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    添加动作</span></span><br><span class="line">    [alertController addAction:cancelBtn];</span><br><span class="line">    [alertController addAction:resetBtn];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    模态</span></span><br><span class="line">    [<span class="keyword">self</span> presentViewController:alertController animated:<span class="literal">YES</span> completion:<span class="literal">nil</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/22/UIActivityIndicatorView/">
+      UIActivityIndicatorView(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月22日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="UIActivityIndicatorView"><a href="#UIActivityIndicatorView" class="headerlink" title="UIActivityIndicatorView"></a>UIActivityIndicatorView</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"myButton.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">myButton</span></span></span><br><span class="line"></span><br><span class="line">+(<span class="built_in">UIButton</span> *)buttonWithFrame:(<span class="built_in">CGRect</span>)frame BGColor:(<span class="built_in">UIColor</span> *)color Title:(<span class="built_in">NSString</span> *)title NormalImage:(<span class="built_in">UIImage</span> *)normalImage Tag:(<span class="keyword">int</span>)tag Method:(SEL)method Object:(<span class="keyword">id</span>)object&#123;</span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = frame;</span><br><span class="line">    button.backgroundColor = color;</span><br><span class="line">    [button setTitle:title forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    button.tag = tag;</span><br><span class="line">    [button setBackgroundImage:normalImage forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    [button addTarget:object action:method forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    <span class="keyword">return</span> button;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"myButton.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">UIActivityIndicatorView</span> *act;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> createBtn];</span><br><span class="line">    [<span class="keyword">self</span> createActivityIndicatorView];</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick:(<span class="built_in">UIButton</span>*)button&#123;</span><br><span class="line">    <span class="keyword">if</span> (act.isAnimating == <span class="literal">YES</span>) &#123;</span><br><span class="line">        [act stopAnimating];</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(act.isAnimating == <span class="literal">NO</span>)&#123;</span><br><span class="line">        [act startAnimating];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)createActivityIndicatorView&#123;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    UIActivityIndicatorViewStyleWhiteLarge,大白</span></span><br><span class="line"><span class="comment">//    UIActivityIndicatorViewStyleWhite,白色</span></span><br><span class="line"><span class="comment">//    UIActivityIndicatorViewStyleGray 灰色</span></span><br><span class="line"><span class="comment">//    初始化并设置样式</span></span><br><span class="line">    act = [[<span class="built_in">UIActivityIndicatorView</span> alloc]initWithActivityIndicatorStyle:<span class="built_in">UIActivityIndicatorViewStyleGray</span>];</span><br><span class="line">    act.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">300</span>, <span class="number">50</span>, <span class="number">50</span>);</span><br><span class="line"><span class="comment">//    设置中心点为屏幕中心点</span></span><br><span class="line">    act.center = <span class="keyword">self</span>.view.center;</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:act];</span><br><span class="line">    </span><br><span class="line">    act.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置变大4倍</span></span><br><span class="line">    act.transform = <span class="built_in">CGAffineTransformMakeScale</span>(<span class="number">4</span>, <span class="number">4</span>);</span><br><span class="line">    </span><br><span class="line">    act.tag = <span class="number">10</span>;</span><br><span class="line"><span class="comment">//    停止时是否隐藏，默认是YES</span></span><br><span class="line">    act.hidesWhenStopped = <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)createBtn&#123;</span><br><span class="line">    <span class="built_in">UIButton</span> *startBtn = [myButton buttonWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">50</span>) BGColor:[<span class="built_in">UIColor</span> lightGrayColor] Title:<span class="string">@"开始"</span> NormalImage:<span class="literal">nil</span> Tag:<span class="number">10</span> Method:<span class="keyword">@selector</span>(onClick:) Object:<span class="keyword">self</span>];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:startBtn];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *endBtn = [myButton buttonWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">180</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">50</span>) BGColor:[<span class="built_in">UIColor</span> lightGrayColor] Title:<span class="string">@"停止"</span> NormalImage:<span class="literal">nil</span> Tag:<span class="number">11</span> Method:<span class="keyword">@selector</span>(onClick:) Object:<span class="keyword">self</span>];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:endBtn];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> yellowColor]];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/18/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/">
+      路径解析(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月18日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="路径解析"><a href="#路径解析" class="headerlink" title="路径解析"></a>路径解析</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"FyQuestion.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FyQuestion</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是绝对路径: 以 /开头的就是绝对路径</span></span><br><span class="line"><span class="comment">//   --&gt;./ios/day1/</span></span><br><span class="line"><span class="comment">//  --&gt;/oc/day</span></span><br><span class="line">- (<span class="built_in">BOOL</span>)isAbsolutePath:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line">    <span class="comment">//直接利用判断开头的这样的方法 harPrefix</span></span><br><span class="line">    <span class="keyword">return</span> [path hasPrefix:<span class="string">@"/"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得路径path最后的部分 /home/xuanmac ---&gt; xuanmac, /home/xuanmac/1.txt---&gt;1.txt</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)lastPathComponent:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line">    <span class="comment">//第一步，判断是否末尾存在/</span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">NSString</span> * subStr = <span class="literal">nil</span>;</span><br><span class="line">    <span class="keyword">if</span> ([path hasSuffix:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">        <span class="comment">//截取字符方法，subStringToIndex</span></span><br><span class="line">        subStr = [path substringToIndex:[path length] - <span class="number">1</span>];</span><br><span class="line">        flag = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//利用查找字符串方法，option 是倒序查找</span></span><br><span class="line">    <span class="comment">//查找方法，返回的是一个范围</span></span><br><span class="line">    <span class="built_in">NSRange</span> range = &#123;<span class="number">0</span>,<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">if</span> (flag) &#123;</span><br><span class="line">        <span class="comment">//NSBackwardsSearch 倒序查找的指令</span></span><br><span class="line">        range = [subStr rangeOfString:<span class="string">@"/"</span> options:<span class="built_in">NSBackwardsSearch</span>];</span><br><span class="line">        <span class="comment">//substringFromIndex 从指定位置到字符串结尾，包括指定位置</span></span><br><span class="line">        <span class="keyword">return</span> [subStr substringFromIndex:range.location + <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        range = [path rangeOfString:<span class="string">@"/"</span> options:<span class="built_in">NSBackwardsSearch</span>];</span><br><span class="line">        <span class="keyword">return</span> [path substringFromIndex:range.location + <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除路径path最后的部分 /home/xuanmac/ ---&gt; /home, /home/xuanmac/1.txt---&gt;/home/xuanmac</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)stringByDeletingLastPathComponent:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> * subStr =  <span class="literal">nil</span>;</span><br><span class="line">    <span class="comment">//判断path末尾是不是以/结尾</span></span><br><span class="line">    <span class="keyword">if</span> ([path hasSuffix:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">        subStr = [path substringToIndex:path.length - <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        subStr = path;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//倒序查找</span></span><br><span class="line">    <span class="built_in">NSRange</span> range = [subStr rangeOfString:<span class="string">@"/"</span> options:<span class="built_in">NSBackwardsSearch</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> * str = [subStr substringToIndex:range.location];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:str];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 在路径上追加路径/home/xuanmac/ 和 demo/abc--&gt;/home/xuanmac/demo/abc</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)stringByAppendingPathComponent:(<span class="built_in">NSString</span> *)path withPath:(<span class="built_in">NSString</span> *)subPath &#123;</span><br><span class="line">    <span class="built_in">NSMutableString</span> * mStr = [<span class="built_in">NSMutableString</span> stringWithString:path];</span><br><span class="line">    <span class="comment">//判断是否是以/结尾</span></span><br><span class="line">    <span class="keyword">if</span> ([mStr hasSuffix:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">        <span class="keyword">if</span> ([subPath hasPrefix:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">            [mStr appendString:[subPath substringFromIndex:<span class="number">1</span>]];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [mStr appendString:subPath];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ([subPath hasPrefix:<span class="string">@"/"</span>]) &#123;</span><br><span class="line">            [mStr appendFormat:<span class="string">@"/%@"</span>,[subPath substringFromIndex:<span class="number">1</span>]];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            [mStr appendFormat:<span class="string">@"/%@"</span>,subPath];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:mStr];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得文件的扩展名/home/xuanmac/1.txt --&gt; txt</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)pathExtension:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">    <span class="comment">//pathExtension 获取路径拓展名</span></span><br><span class="line">    <span class="built_in">NSString</span> * str = path.pathExtension;</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:str];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="built_in">NSRange</span> range = [path rangeOfString:<span class="string">@"."</span> options:<span class="built_in">NSBackwardsSearch</span>];</span><br><span class="line">    <span class="built_in">NSString</span> * str = [path substringFromIndex:range.location + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:str];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除文件扩展名/home/xuanmac/1.txt --&gt; /home/xuanmac/1</span></span><br><span class="line">- (<span class="built_in">NSString</span> *)stringByDeletingPathExtension:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line">    <span class="built_in">NSRange</span> range = [path rangeOfString:<span class="string">@"."</span> options:<span class="built_in">NSBackwardsSearch</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span> * str = [path substringToIndex:range.location];</span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:str];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 去除里面多余的 /路径  Duplicate重复 Slash表示斜线</span></span><br><span class="line"><span class="comment">// path = @"///home//xuanmac/ios/oc/day1/"; 返回@"/home/xuanmac/ios/oc/day1"</span></span><br><span class="line">- (<span class="built_in">NSString</span> *) removeDuplicateSlash:(<span class="built_in">NSString</span> *)path &#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> 1</span></span><br><span class="line">    <span class="comment">//看到//我们就要处理掉一个，知道在path没有// NSNotFound</span></span><br><span class="line">    <span class="comment">//path 转换成可变字符串</span></span><br><span class="line">    <span class="built_in">NSMutableString</span> * mStr = [<span class="built_in">NSMutableString</span> stringWithString:path];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">NSRange</span> range = [mStr rangeOfString:<span class="string">@"//"</span>];</span><br><span class="line">        <span class="comment">//判断是否还存在，如果不存在@"//",跳出循环</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">NSNotFound</span> == range.location) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//每次都删除//当中的一个</span></span><br><span class="line">        [mStr deleteCharactersInRange:<span class="built_in">NSMakeRange</span>(range.location, <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//处理完//之后，我们要处理路径末尾的/</span></span><br><span class="line">    <span class="keyword">if</span>([mStr hasSuffix:<span class="string">@"/"</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        [mStr deleteCharactersInRange:<span class="built_in">NSMakeRange</span>(mStr.length - <span class="number">1</span>, <span class="number">1</span>)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [<span class="built_in">NSString</span> stringWithString:mStr];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span> </span></span><br><span class="line">    <span class="built_in">NSArray</span> * array = [path componentsSeparatedByString:<span class="string">@"/"</span>];</span><br><span class="line">    <span class="built_in">NSMutableArray</span> * mArray = [<span class="built_in">NSMutableArray</span> arrayWithArray:array];</span><br><span class="line">    [mArray removeObject:<span class="string">@""</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [mArray componentsJoinedByString:<span class="string">@"/"</span>];<span class="comment">//?????</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//-获取路径中的所有目录名----&gt;/home/xuanmac/ios/oc ---&gt;home  xuanmac  ios   oc</span></span><br><span class="line">- (<span class="built_in">NSArray</span> *)pathComponents:(<span class="built_in">NSString</span>*)path &#123;</span><br><span class="line">    <span class="keyword">return</span> [path componentsSeparatedByString:<span class="string">@"/"</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (<span class="keyword">void</span>)test &#123;</span><br><span class="line">    FyQuestion * test = [[FyQuestion alloc] init];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第一题"</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%hhd"</span>,[test isAbsolutePath:<span class="string">@"./ios/day1/"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%hhd"</span>,[test isAbsolutePath:<span class="string">@"/ios/day1/"</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第二题"</span>);</span><br><span class="line">    <span class="built_in">NSString</span> * str1 = [test lastPathComponent:<span class="string">@"/ios/day1/"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str1);</span><br><span class="line">    <span class="built_in">NSString</span> * str2 = [test lastPathComponent:<span class="string">@"/ios/day1/1.txt"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str2);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第三题"</span>);</span><br><span class="line">    <span class="built_in">NSString</span> * str3 = [test stringByDeletingLastPathComponent:<span class="string">@"/ios/day1/"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str3);</span><br><span class="line">    <span class="built_in">NSString</span> * str4 = [test stringByDeletingLastPathComponent:<span class="string">@"/ios/day1/1.txt"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str4);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第四题"</span>);</span><br><span class="line">    <span class="built_in">NSString</span> * str5 = [test stringByAppendingPathComponent:<span class="string">@"/ios/day1/"</span> withPath:<span class="string">@"1.txt"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str5);</span><br><span class="line">    <span class="built_in">NSString</span> * str6 = [test stringByAppendingPathComponent:<span class="string">@"/ios/day1"</span> withPath:<span class="string">@"/test/1.txt"</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,str6);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第五题"</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[test pathExtension:<span class="string">@"/test/1.txt"</span>]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第六题"</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[test stringByDeletingPathExtension:<span class="string">@"/test/1.txt"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第七题"</span>);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,[test removeDuplicateSlash:<span class="string">@"/////////fdjkasj//fdhk///fdjsalfkjs///"</span>]);</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第八题"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"第备用题"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
       
         
           <div class='post-wrapper'>
@@ -494,6 +1054,97 @@
           </div>
         
       
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2017/02/10/%E9%94%AE%E7%9B%98%E7%8A%B6%E6%80%81%E7%9B%91%E5%90%AC/">
+      键盘状态监听(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年2月10日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="键盘状态监听"><a href="#键盘状态监听" class="headerlink" title="键盘状态监听"></a>键盘状态监听</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"RootViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RootViewController</span> ()&lt;<span class="title">UITextFieldDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RootViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIView</span> *myView = [[<span class="built_in">UIView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">200</span>, <span class="number">200</span>)];</span><br><span class="line">    myView.backgroundColor = [<span class="built_in">UIColor</span> blackColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:myView];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> redColor]];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> createTextField];</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)createTextField&#123;</span><br><span class="line"><span class="comment">//    初始化UITextField并设置frame</span></span><br><span class="line">    <span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">400</span>, <span class="number">100</span>, <span class="number">50</span>)];</span><br><span class="line"><span class="comment">//    设置背景色</span></span><br><span class="line">    textField.backgroundColor = [<span class="built_in">UIColor</span> yellowColor];</span><br><span class="line">    </span><br><span class="line">    textField.delegate = <span class="keyword">self</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    添加到视图</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:textField];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//    键盘状态改变的时候，会发出以下通知</span></span><br><span class="line">    <span class="comment">//    UIKeyboardWillShowNotification; 键盘即将显示</span></span><br><span class="line">    <span class="comment">//    UIKeyboardDidShowNotification; 键盘显示完毕</span></span><br><span class="line">    <span class="comment">//    UIKeyboardWillHideNotification; 键盘即将消失</span></span><br><span class="line">    <span class="comment">//    UIKeyboardDidHideNotification;键盘消失完毕</span></span><br><span class="line">    <span class="comment">//    UIKeyboardWillChangeFrameNotification 键盘即将改变frame</span></span><br><span class="line">    <span class="comment">//    UIKeyboardDidChangeFrameNotification 键盘已经改变frame</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    获取通知中心</span></span><br><span class="line">    <span class="built_in">NSNotificationCenter</span>*center =  [<span class="built_in">NSNotificationCenter</span> defaultCenter];</span><br><span class="line">   </span><br><span class="line"><span class="comment">//  监听键盘弹出通知</span></span><br><span class="line">    [center addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(KeyboardWillShow:) name:<span class="built_in">UIKeyboardWillShowNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line"><span class="comment">//    监听键盘收起通知</span></span><br><span class="line">    [center addObserver:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(KeyboardWillHide:) name:<span class="built_in">UIKeyboardWillHideNotification</span> object:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    成为第一响应者</span></span><br><span class="line"><span class="comment">//    [textField becomeFirstResponder];</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//键盘将要消失时</span></span><br><span class="line">-(<span class="keyword">void</span>)KeyboardWillHide:(<span class="built_in">NSNotification</span>*)noti&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,noti.userInfo);</span><br><span class="line"><span class="comment">//    UIKeyboardAnimationDurationUserInfoKey = "0.25";</span></span><br><span class="line"><span class="comment">//    UIKeyboardBoundsUserInfoKey = "NSRect: &#123;&#123;0, 0&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line"><span class="comment">//    UIKeyboardFrameBeginUserInfoKey = "NSRect: &#123;&#123;0, 409&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line"><span class="comment">//    UIKeyboardFrameEndUserInfoKey = "NSRect: &#123;&#123;0,667&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.view.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//键盘将要出现</span></span><br><span class="line">-(<span class="keyword">void</span>)KeyboardWillShow:(<span class="built_in">NSNotification</span>*)noti&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,noti.userInfo);</span><br><span class="line"><span class="comment">//    UIKeyboardAnimationDurationUserInfoKey = "0.25";</span></span><br><span class="line"><span class="comment">//    UIKeyboardBoundsUserInfoKey = "NSRect: &#123;&#123;0, 0&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line"><span class="comment">//    UIKeyboardFrameBeginUserInfoKey = "NSRect: &#123;&#123;0, 667&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line"><span class="comment">//    UIKeyboardFrameEndUserInfoKey = "NSRect: &#123;&#123;0, 409&#125;, &#123;375, 258&#125;&#125;";</span></span><br><span class="line"><span class="comment">//    UIKeyboardIsLocalUserInfoKey = 1;</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">CGRect</span> rect =  [noti.userInfo[<span class="built_in">UIKeyboardFrameEndUserInfoKey</span>]<span class="built_in">CGRectValue</span>];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"rect = %@"</span>,<span class="built_in">NSStringFromCGRect</span>(rect));</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.view.frame  = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, -rect.size.height, <span class="keyword">self</span>.view.frame.size.width, <span class="keyword">self</span>.view.frame.size.height);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark - textField delegate</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line"><span class="comment">//    取消第一响应者</span></span><br><span class="line">    [textField resignFirstResponder];</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
     
   </section>
   
@@ -591,7 +1242,7 @@
           <li><a class="flat-box"
             title="/categories/Objective-C/" href="/categories/Objective-C/"
             id="categoriesObjective-C"
-            ><div class='name'>Objective-C</div><div class='badge'>(4)</div></a></li>
+            ><div class='name'>Objective-C</div><div class='badge'>(31)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Python/" href="/categories/Python/"
@@ -607,6 +1258,11 @@
             title="/categories/iOS/" href="/categories/iOS/"
             id="categoriesiOS"
             ><div class='name'>iOS</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/vim/" href="/categories/vim/"
+            id="categoriesvim"
+            ><div class='name'>vim</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -630,7 +1286,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 

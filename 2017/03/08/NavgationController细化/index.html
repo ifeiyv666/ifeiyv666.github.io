@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>NavgationController细化(Objc) - 飞羽的博客</title>
+  
+    <meta name="keywords" content="NavgationController">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            <RED>飞</RED><YELLOW>羽</YELLOW><GREEN>博</GREEN><BLUE>客</BLUE> <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/">
+        NavgationController细化(Objc)
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年3月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h4 id="NavgationController细化"><a href="#NavgationController细化" class="headerlink" title="NavgationController细化"></a>NavgationController细化</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"AppDelegate.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"RootViewController.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">AppDelegate</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">AppDelegate</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化window</span></span><br><span class="line">    <span class="keyword">self</span>.window = [[<span class="built_in">UIWindow</span> alloc]initWithFrame:[<span class="built_in">UIScreen</span> mainScreen].bounds];</span><br><span class="line">    <span class="comment">//设置背景颜色</span></span><br><span class="line">    <span class="keyword">self</span>.window.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</span><br><span class="line">    <span class="comment">//视图控制器</span></span><br><span class="line">    RootViewController *rootVC = [[RootViewController alloc]init];</span><br><span class="line"><span class="comment">//    初始化导航控制器，并设置基栈</span></span><br><span class="line">    <span class="built_in">UINavigationController</span> *nav = [[<span class="built_in">UINavigationController</span> alloc]initWithRootViewController:rootVC];</span><br><span class="line">    nav.view.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//系统控制器设置为自创的</span></span><br><span class="line">    <span class="keyword">self</span>.window.rootViewController = nav;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//让self.window 显示</span></span><br><span class="line">    [<span class="keyword">self</span>.window makeKeyAndVisible];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"RootViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"SecondViewController.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RootViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RootViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> yellowColor]];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">    [button setTitle:<span class="string">@"下一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    button.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> settingNavgationBar];</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)settingNavgationBar&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UINavigationBar</span> *bar = <span class="keyword">self</span>.navigationController.navigationBar;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置navigationBar 的类型</span></span><br><span class="line">    <span class="keyword">self</span>.navigationController.navigationBar.barStyle = <span class="built_in">UIBarStyleBlack</span>;</span><br><span class="line"><span class="comment">//    UIBarStyleDefault</span></span><br><span class="line"><span class="comment">//    UIBarStyleBlack</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    透明度(毛玻璃)</span></span><br><span class="line">    bar.translucent = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//    设置yes，子视图的坐标原点是（0,0）</span></span><br><span class="line"><span class="comment">//    设置no,子视图的坐标原点是(0,64)</span></span><br><span class="line">    <span class="built_in">UILabel</span> *label = [[<span class="built_in">UILabel</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">100</span>)];</span><br><span class="line">    label.backgroundColor = [<span class="built_in">UIColor</span> greenColor];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:label];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置导航条颜色</span></span><br><span class="line">    [bar setBarTintColor:[<span class="built_in">UIColor</span> redColor]];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置标题</span></span><br><span class="line"><span class="comment">//    self.title = @"root";</span></span><br><span class="line">    <span class="keyword">self</span>.navigationItem.title = <span class="string">@"root"</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    导航条按钮字体颜色</span></span><br><span class="line">    [bar setTintColor:[<span class="built_in">UIColor</span> cyanColor]];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置导航条字体颜色</span></span><br><span class="line">    [bar setTitleTextAttributes:@&#123;</span><br><span class="line">                                 <span class="built_in">NSFontAttributeName</span>:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">20</span>],</span><br><span class="line">                                 <span class="built_in">NSForegroundColorAttributeName</span>:[<span class="built_in">UIColor</span> purpleColor]</span><br><span class="line">                                 &#125;];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置隐藏导航条</span></span><br><span class="line"><span class="comment">//    self.navigationController.navigationBarHidden = YES;</span></span><br><span class="line">    </span><br><span class="line">    [bar setBackgroundImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"header_bg44"</span>] forBarMetrics:<span class="built_in">UIBarMetricsDefault</span>];</span><br><span class="line"><span class="comment">//    UIBarMetricsDefault 横竖屏都显示</span></span><br><span class="line"><span class="comment">//    UIBarMetricsCompact 竖屏显示</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:secondVc     action:@selector(abc)];</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"qq.png"</span>];</span><br><span class="line"><span class="comment">//    对图片进处理</span></span><br><span class="line">   image =  [image imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysOriginal</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    UIImageRenderingModeAutomatic,返回一个色块</span></span><br><span class="line"><span class="comment">//    UIImageRenderingModeAlwaysOriginal,返回图片本身       UIImageRenderingModeAlwaysTemplate,返回一个色块</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    UIBarButtonItemStylePlain,</span></span><br><span class="line"><span class="comment">//    UIBarButtonItemStyleDone,</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    leftBarButtonItem 左按钮</span></span><br><span class="line">    <span class="keyword">self</span>.navigationItem.leftBarButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithImage:image style:<span class="built_in">UIBarButtonItemStylePlain</span> target:<span class="keyword">self</span>     action:<span class="keyword">@selector</span>(leftClick)];</span><br><span class="line"><span class="comment">//    rightBarButtonItem 右按钮</span></span><br><span class="line">    <span class="keyword">self</span>.navigationItem.rightBarButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithTitle:<span class="string">@"right"</span> style:<span class="built_in">UIBarButtonItemStyleDone</span> target:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(rightClick)];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item1 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithTitle:<span class="string">@"item1"</span> style:<span class="built_in">UIBarButtonItemStylePlain</span> target:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(rightClick)];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item2 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithTitle:<span class="string">@"item2"</span> style:<span class="built_in">UIBarButtonItemStylePlain</span> target:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(rightClick)];</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">40</span>, <span class="number">40</span>);</span><br><span class="line">    [button setBackgroundColor:[<span class="built_in">UIColor</span> redColor]];</span><br><span class="line">    </span><br><span class="line">    [button setImage:image forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    添加一个自定义的UIButton</span></span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> * item3 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithCustomView:button];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//    设置rightBarButtonItems时，会把rightBarButtonItem 覆盖</span></span><br><span class="line">    <span class="keyword">self</span>.navigationItem.rightBarButtonItems = @[item1,item2,item3];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UILabel</span> *label1 = [[<span class="built_in">UILabel</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">44</span>)];</span><br><span class="line">    label1.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">    label1.text = <span class="string">@"label"</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">100</span>, <span class="number">40</span>)];</span><br><span class="line">    imageView.image = image;</span><br><span class="line"><span class="comment">//    设置titleView</span></span><br><span class="line">    <span class="keyword">self</span>.navigationItem.titleView = imageView;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)leftClick&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"---"</span>);</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)rightClick&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s"</span>,__func__);</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick&#123;</span><br><span class="line">    </span><br><span class="line">    SecondViewController *secondVc = [[SecondViewController alloc]init];</span><br><span class="line"><span class="comment">//    进入下一级（入栈）</span></span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:secondVc animated:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"SecondViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ThirdViewController.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">SecondViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">SecondViewController</span></span></span><br><span class="line">-(<span class="keyword">void</span>)viewWillAppear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillAppear:animated];</span><br><span class="line"><span class="comment">//    视图将要出现的时候，隐藏navgationBar</span></span><br><span class="line">        <span class="keyword">self</span>.navigationController.navigationBarHidden = <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)viewWillDisappear:(<span class="built_in">BOOL</span>)animated&#123;</span><br><span class="line">    [<span class="keyword">super</span> viewWillDisappear:animated];</span><br><span class="line"><span class="comment">//    视图将要消失的时候，显示navgationBar</span></span><br><span class="line">    <span class="keyword">self</span>.navigationController.navigationBarHidden = <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> greenColor]];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">    [button setTitle:<span class="string">@"下一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    button.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIButton</span> *button1 = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">    button1.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">200</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">    [button1 setTitle:<span class="string">@"上一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">    button1.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">    [button1 addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(backClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:button1];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)abc&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"----"</span>);</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)backClick&#123;</span><br><span class="line"><span class="comment">//    返回上一级</span></span><br><span class="line">    [<span class="keyword">self</span>.navigationController popViewControllerAnimated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick&#123;</span><br><span class="line">    ThirdViewController *thirdVc = [[ThirdViewController alloc]init];</span><br><span class="line"><span class="comment">//    进入下一级（入栈）</span></span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:thirdVc animated:<span class="literal">YES</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">- (<span class="keyword">void</span>)didReceiveMemoryWarning &#123;</span><br><span class="line">    [<span class="keyword">super</span> didReceiveMemoryWarning];</span><br><span class="line">    <span class="comment">// Dispose of any resources that can be recreated.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ThirdViewController.h"</span></span></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ForthViewController.h"</span></span></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ThirdViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ThirdViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> blueColor]];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">3</span>; i ++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">        button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span> + i * <span class="number">60</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">        button.tag = i + <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> ) &#123;</span><br><span class="line">           [button setTitle:<span class="string">@"下一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">            [button setTitle:<span class="string">@"上一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">2</span>)&#123;</span><br><span class="line">            [button setTitle:<span class="string">@"返回root"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        button.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">        [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onClick:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">        [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    self.navigationController.viewControllers</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,<span class="keyword">self</span>.navigationController.viewControllers);</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> toolBarSetting];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)toolBarSetting&#123;</span><br><span class="line">    <span class="keyword">self</span>.navigationController.toolbarHidden = <span class="literal">NO</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithBarButtonSystemItem:<span class="built_in">UIBarButtonSystemItemSave</span> target:<span class="literal">nil</span> action:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item1 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithBarButtonSystemItem:<span class="built_in">UIBarButtonSystemItemAdd</span> target:<span class="literal">nil</span> action:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item2 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithBarButtonSystemItem:<span class="built_in">UIBarButtonSystemItemEdit</span> target:<span class="literal">nil</span> action:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">UIBarButtonItem</span> *item3 = [[<span class="built_in">UIBarButtonItem</span> alloc]initWithBarButtonSystemItem:<span class="built_in">UIBarButtonSystemItemFlexibleSpace</span> target:<span class="literal">nil</span> action:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">self</span>.toolbarItems = @[item,item3,item1,item2];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick:(<span class="built_in">UIButton</span>*)button&#123;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">10</span>) &#123;</span><br><span class="line">        ForthViewController *forthVc = [[ForthViewController alloc]init];</span><br><span class="line"><span class="comment">//       把forthVc 入栈</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController pushViewController:forthVc animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">11</span>) &#123;</span><br><span class="line"><span class="comment">//        返回上一级</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController popViewControllerAnimated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">12</span>) &#123;</span><br><span class="line"><span class="comment">//        返回root(基栈)</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ForthViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ForthViewController</span> ()</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ForthViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    <span class="comment">// Do any additional setup after loading the view.</span></span><br><span class="line"><span class="comment">//    设置背景色</span></span><br><span class="line">    [<span class="keyword">self</span>.view setBackgroundColor:[<span class="built_in">UIColor</span> orangeColor]];</span><br><span class="line"><span class="comment">//    初始化button</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; <span class="number">3</span>; i ++) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</span><br><span class="line">        button.frame = <span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">100</span> + i * <span class="number">60</span>, <span class="number">100</span>, <span class="number">50</span>);</span><br><span class="line">        button.tag = i + <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">0</span> ) &#123;</span><br><span class="line">            [button setTitle:<span class="string">@"返回第二级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">1</span>)&#123;</span><br><span class="line">            [button setTitle:<span class="string">@"上一级"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i == <span class="number">2</span>)&#123;</span><br><span class="line">            [button setTitle:<span class="string">@"返回root"</span> forState:<span class="built_in">UIControlStateNormal</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        button.backgroundColor = [<span class="built_in">UIColor</span> lightGrayColor];</span><br><span class="line">        [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(onClick:) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</span><br><span class="line">        [<span class="keyword">self</span>.view addSubview:button];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)onClick:(<span class="built_in">UIButton</span>*)button&#123;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">10</span>) &#123;</span><br><span class="line"><span class="comment">//       根据数组下标 获取要返回到的UIViewController</span></span><br><span class="line">        <span class="built_in">UIViewController</span> *VC =   <span class="keyword">self</span>.navigationController.viewControllers[<span class="number">1</span>];</span><br><span class="line"><span class="comment">//        返回到指定的UIViewController</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController popToViewController:VC animated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">11</span>) &#123;</span><br><span class="line"><span class="comment">//        返回上一级</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController popViewControllerAnimated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (button.tag == <span class="number">12</span>) &#123;</span><br><span class="line"><span class="comment">//        返回到root(基栈)</span></span><br><span class="line">        [<span class="keyword">self</span>.navigationController popToRootViewControllerAnimated:<span class="literal">YES</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有,转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/>https://ifeiyv666.github.io/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='/img/wx2.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='/img/wx1.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T18:10:50+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年4月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NavgationController/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>NavgationController</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/&title=NavgationController细化(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/&title=NavgationController细化(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/&title=NavgationController细化(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2017/03/09/UIScrollView/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>UIScrollView(Objc)</p>
+                <p class='content'>UIScrollView1234567891011121314151617181920212223242526272829303132333435363738394041424344454647...</p>
+              </a>
+            
+            
+              <a class='next' href='/2017/03/06/UIProgressView/'>
+                <p class='title'>UIProgressView(Objc)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>UIProgressView12345678910111213141516171819202122232425262728293031323334353637383940414243444546...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'NavgationController细化(Objc)',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#NavgationController细化"><span class="toc-text">NavgationController细化</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/zz1521"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        本站
+        <a href="" target="_blank" class="codename"><red>飞</red><yellow>羽</yellow><green>博</green><blue>客</blue></a>
+        属于个人博客
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

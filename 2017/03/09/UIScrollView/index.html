@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>UIScrollView(Objc) - 飞羽的博客</title>
+  
+    <meta name="keywords" content="UIScrollView">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            <RED>飞</RED><YELLOW>羽</YELLOW><GREEN>博</GREEN><BLUE>客</BLUE> <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2017/03/09/UIScrollView/">
+        UIScrollView(Objc)
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年3月9日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h4 id="UIScrollView"><a href="#UIScrollView" class="headerlink" title="UIScrollView"></a>UIScrollView</h4><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()&lt;<span class="title">UIScrollViewDelegate</span>&gt;//遵守协议</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line"><span class="comment">//    滚动视图</span></span><br><span class="line">    <span class="built_in">UIScrollView</span> *_scrollView;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">weak</span>, <span class="keyword">nonatomic</span>) <span class="keyword">IBOutlet</span> <span class="built_in">UIButton</span> *myButton;</span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">IBAction</span>)onClick:(<span class="built_in">UIButton</span> *)sender &#123;</span><br><span class="line">    [_scrollView setContentOffset:<span class="built_in">CGPointMake</span>(<span class="number">0</span>, <span class="number">0</span>) animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> createScrollView];</span><br><span class="line">    [<span class="keyword">self</span> addSubView];</span><br><span class="line">    [<span class="keyword">self</span> customScrollView];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view bringSubviewToFront:<span class="keyword">self</span>.myButton];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">//    [self.myButton  addTarget:self action:@selector(onClick) forControlEvents:UIControlEventTouchUpInside];</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    //-(void)onClick&#123;</span></span><br><span class="line"><span class="comment">    //    NSLog(@"onClick");</span></span><br><span class="line"><span class="comment">    //&#125;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建ScrollView</span></span><br><span class="line">-(<span class="keyword">void</span>)createScrollView&#123;</span><br><span class="line"><span class="comment">//    初始化UIScrollView</span></span><br><span class="line">    _scrollView = [[<span class="built_in">UIScrollView</span> alloc]initWithFrame:<span class="keyword">self</span>.view.bounds];</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(100, 100, 200, 200)];</span></span><br><span class="line"><span class="comment">//    设置背景色</span></span><br><span class="line">    _scrollView.backgroundColor = [<span class="built_in">UIColor</span> orangeColor];</span><br><span class="line"><span class="comment">//    设置代理</span></span><br><span class="line">    _scrollView.delegate = <span class="keyword">self</span>;</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:_scrollView];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)addSubView&#123;</span><br><span class="line"><span class="comment">//    获取文件路径</span></span><br><span class="line">    <span class="built_in">NSString</span> *path = [[<span class="built_in">NSBundle</span> mainBundle]pathForResource:<span class="string">@"海贼02"</span> ofType:<span class="string">@"jpg"</span>];</span><br><span class="line"><span class="comment">//    转换成NSData</span></span><br><span class="line">    <span class="built_in">NSData</span> *data = [<span class="built_in">NSData</span> dataWithContentsOfFile:path];</span><br><span class="line"><span class="comment">//    初始化图片</span></span><br><span class="line">    <span class="built_in">UIImage</span> *image = [<span class="built_in">UIImage</span> imageWithData:data];</span><br><span class="line"><span class="comment">//    图片初始化后，会直接获得图片的width 和 height</span></span><br><span class="line"><span class="comment">//    NSLog(@"width = %lf---height = %lf",image.size.width,image.size.height);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//     初始化UIImageView</span></span><br><span class="line">    <span class="built_in">UIImageView</span> *imageView = [[<span class="built_in">UIImageView</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, image.size.width, image.size.height)];</span><br><span class="line">    imageView.image = image;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置滚动范围</span></span><br><span class="line"><span class="comment">//    必须给出滚动范围，这样滚动视图才能知道滚动的范围</span></span><br><span class="line">    _scrollView.contentSize = <span class="built_in">CGSizeMake</span>(image.size.width, image.size.height);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    [_scrollView addSubview:imageView];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定制ScrollView</span></span><br><span class="line">-(<span class="keyword">void</span>)customScrollView&#123;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置偏移量</span></span><br><span class="line"><span class="comment">//    [_scrollView setContentOffset:CGPointMake(200, 200)];</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//    设置距离边框的距离</span></span><br><span class="line"><span class="comment">//    [_scrollView setContentInset:UIEdgeInsetsMake(100, 100, 100, 100)];</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark 滚动相关</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置是否可以超出边界</span></span><br><span class="line"><span class="comment">//    默认是YES，超出边界后，有回弹效果</span></span><br><span class="line"><span class="comment">//    设置NO，没有回弹效果</span></span><br><span class="line">    _scrollView.bounces = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    在这里，想测试下面两个属性时，使用《海贼03.jpg》</span></span><br><span class="line"><span class="comment">//    当contentSize的宽度小于scrollView的宽度时，仍允许左右拖动，默认是NO</span></span><br><span class="line">    _scrollView.alwaysBounceHorizontal = <span class="literal">YES</span>;</span><br><span class="line"><span class="comment">//    当contentSize的高度小于scrollView的高度时，仍允许上下手动，默认是NO</span></span><br><span class="line">    _scrollView.alwaysBounceVertical = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置是否按页滚动，即每次滚动一个scrollView的宽度或高度，默认是NO</span></span><br><span class="line"><span class="comment">//    _scrollView.pagingEnabled = YES;</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置是否允许滚动，默认是YES</span></span><br><span class="line">    _scrollView.scrollEnabled = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置是否显示滚动指示，默认是YES</span></span><br><span class="line">    _scrollView.showsHorizontalScrollIndicator = <span class="literal">YES</span>;</span><br><span class="line">    _scrollView.showsVerticalScrollIndicator = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置滚动指示的样式</span></span><br><span class="line">    _scrollView.indicatorStyle = <span class="built_in">UIScrollViewIndicatorStyleWhite</span>;</span><br><span class="line"><span class="comment">//    UIScrollViewIndicatorStyleDefault,</span></span><br><span class="line"><span class="comment">//    UIScrollViewIndicatorStyleBlack,</span></span><br><span class="line"><span class="comment">//    UIScrollViewIndicatorStyleWhite</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    设置滚动条距离scrollView边框的距离</span></span><br><span class="line">    _scrollView.scrollIndicatorInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">30</span>, <span class="number">60</span>);</span><br><span class="line">    </span><br><span class="line">    _scrollView.scrollsToTop = <span class="literal">YES</span>;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark scrollView delegate</span></span><br><span class="line"><span class="comment">//将要拖拽</span></span><br><span class="line"><span class="comment">//当开始滚动视图时，会执行该方法</span></span><br><span class="line"><span class="comment">//一次有效的滑动执行一次（开始滑动到手指松开），</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillBeginDragging:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要拖拽"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//scrollView滚动时，就会调用该方法</span></span><br><span class="line"><span class="comment">//任何offset值的改变都会调用该方法。在滚动过程中，会调用多次</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidScroll:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line"> <span class="comment">//   CGPoint point = scrollView.contentOffset;</span></span><br><span class="line"><span class="comment">//    NSLog(@"偏移量%lf",point.x);</span></span><br><span class="line">&#125;</span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillEndDragging:(<span class="built_in">UIScrollView</span> *)scrollView withVelocity:(<span class="built_in">CGPoint</span>)velocity targetContentOffset:(<span class="keyword">inout</span> <span class="built_in">CGPoint</span> *)targetContentOffset&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要结束拖拽"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当手指离开屏幕的一瞬间，调用该方法，一次有效的滑动，只执行一次</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidEndDragging:(<span class="built_in">UIScrollView</span> *)scrollView willDecelerate:(<span class="built_in">BOOL</span>)decelerate&#123;</span><br><span class="line"><span class="comment">//    NSLog(@"%lf",scrollView.contentOffset.x);</span></span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"拖拽结束"</span>);</span><br><span class="line"><span class="comment">//    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将要减速</span></span><br><span class="line"><span class="comment">//该方法在scrollViewDidEndDragging 结束后执行</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillBeginDecelerating:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要减速"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidEndDecelerating:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"减速结束"</span>);</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark 缩放 delegate</span></span><br><span class="line"><span class="comment">//当将要开始缩放时，执行该方法。一次有效的缩放，执行一次</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewWillBeginZooming:(<span class="built_in">UIScrollView</span> *)scrollView withView:(<span class="built_in">UIView</span> *)view&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要开始缩放"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//正在缩放</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidZoom:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"正在缩放"</span>);</span><br><span class="line">    <span class="built_in">CGFloat</span> value =  scrollView.zoomScale;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%f"</span>,value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结束缩放</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidEndZooming:(<span class="built_in">UIScrollView</span> *)scrollView withView:(<span class="built_in">UIView</span> *)view atScale:(<span class="built_in">CGFloat</span>)scale&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"结束缩放"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回要缩放的UIView对象</span></span><br><span class="line">-(<span class="built_in">UIView</span>*)viewForZoomingInScrollView:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line"><span class="comment">//  不允许返回scrollView</span></span><br><span class="line"><span class="comment">//  只能返回scrollView的子视图</span></span><br><span class="line">    <span class="keyword">return</span> scrollView.subviews[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//当用户点击状态栏后，滚动视图是否能够滚动到顶部</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)scrollViewShouldScrollToTop:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line"><span class="comment">//    当设置scrollToTop 为YES时，这里设置YES才会生效</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当滚动视图滚动到最顶端的时候，会执行该方法</span></span><br><span class="line">-(<span class="keyword">void</span>)scrollViewDidScrollToTop:(<span class="built_in">UIScrollView</span> *)scrollView&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%s"</span>,__func__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有,转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2017/03/09/UIScrollView/>https://ifeiyv666.github.io/2017/03/09/UIScrollView/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='/img/wx2.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='/img/wx1.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T18:28:01+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年4月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/UIScrollView/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>UIScrollView</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2017/03/09/UIScrollView/&title=UIScrollView(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2017/03/09/UIScrollView/&title=UIScrollView(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2017/03/09/UIScrollView/&title=UIScrollView(Objc) - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2017/03/14/Touch/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Touch(Objc)</p>
+                <p class='content'>Touch12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505...</p>
+              </a>
+            
+            
+              <a class='next' href='/2017/03/08/NavgationController%E7%BB%86%E5%8C%96/'>
+                <p class='title'>NavgationController细化(Objc)<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>NavgationController细化1234567891011121314151617181920212223242526272829303132333435363738394041424...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'UIScrollView(Objc)',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#UIScrollView"><span class="toc-text">UIScrollView</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/zz1521"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        本站
+        <a href="" target="_blank" class="codename"><red>飞</red><yellow>羽</yellow><green>博</green><blue>客</blue></a>
+        属于个人博客
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
