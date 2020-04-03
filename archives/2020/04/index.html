@@ -327,7 +327,7 @@
       
         
   <h2 class="title">
-    <a href="/2020/04/03/MAC%E5%BD%95%E5%88%B6%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6%E8%84%9A%E6%9C%AC/">
+    <a href="/2020/04/03/macjscrpt/">
       MAC录制鼠标事件脚本
     </a>
   </h2>
@@ -351,6 +351,14 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Mac/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Mac</p>
+    </a>
+  </div>
+
 
           
         
@@ -384,36 +392,19 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>-–</p>
-<p>title: MAC录制鼠标事件脚本</p>
-<p>categories:</p>
-<p> - Mac</p>
-<p>tags:</p>
-<p> - 脚本录制</p>
-<p> - 鼠标事件</p>
-<p>abbrlink: 10112</p>
-<p>date: 2020-03-31 09:10:21</p>
-<p>-–</p>
-<h4 id="录制鼠标事件脚本"><a href="#录制鼠标事件脚本" class="headerlink" title="录制鼠标事件脚本"></a>录制鼠标事件脚本</h4><p><img src="images/test007.gif" alt="test007"></p>
+      <h4 id="录制鼠标事件脚本"><a href="#录制鼠标事件脚本" class="headerlink" title="录制鼠标事件脚本"></a>录制鼠标事件脚本</h4><p><img src="/2020/04/03/macjscrpt/test007.gif" alt="test007"></p>
 <p>用到自己封装好的工具  <a href="https://ifeiyv.cn/tags/代码模拟键盘/" target="_blank" rel="noopener">MAC代码模拟鼠标和键盘事件</a></p>
 <blockquote>
 <p>  <strong>var</strong> timeStamp:CLongLong = -1  //保存上次时间戳</p>
 <p>   <strong>var</strong> isStart:Bool = <strong>false</strong>  //保存是否开始录制脚本</p>
-<p>  <strong>var</strong> events:[CGEvent] = <a href="">CGEvent</a> //保存所有鼠标事件</p>
-<p>  <strong>var</strong> times:[Int] = <a href="">Int</a> //保存鼠标事件事件间隔（完美时间还原脚本）</p>
+<p>  <strong>var</strong> events:[CGEvent] = <a href>CGEvent</a> //保存所有鼠标事件</p>
+<p>  <strong>var</strong> times:[Int] = <a href>Int</a> //保存鼠标事件事件间隔（完美时间还原脚本）</p>
 </blockquote>
 <h5 id="1-录制脚本"><a href="#1-录制脚本" class="headerlink" title="1.录制脚本"></a>1.录制脚本</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</span><br><span class="line">        <span class="keyword">super</span>.viewDidLoad()</span><br><span class="line">       </span><br><span class="line">        monitor =  <span class="type">NSEvent</span>.addGlobalMonitorForEvents(matching:[.mouseMoved,.leftMouseDown,.leftMouseUp,.leftMouseDragged,.rightMouseDown,.rightMouseUp,.rightMouseDragged,.scrollWheel]) &#123; [<span class="keyword">weak</span> <span class="keyword">self</span>](event) <span class="keyword">in</span></span><br><span class="line">            <span class="keyword">self</span>?.label.cell?.title = <span class="string">"x=\(String(format: "</span>%.0f<span class="string">", event.locationInWindow.x))\ny=\(String(format: "</span>%.0f<span class="string">", ScreenHeight - event.locationInWindow.y))"</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">self</span>!.isStart)&#123;<span class="comment">//是否开始录制脚本</span></span><br><span class="line">                <span class="keyword">self</span>!.events.append(event.cgEvent!)</span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">self</span>!.events.<span class="built_in">count</span> &gt; <span class="number">1</span>)&#123;</span><br><span class="line">                    <span class="keyword">self</span>!.times.append(<span class="type">Int</span>(<span class="type">Date</span>().milliStamp - <span class="keyword">self</span>!.timeStamp))</span><br><span class="line">                    <span class="keyword">self</span>!.timeStamp = <span class="type">Date</span>().milliStamp</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">self</span>!.times.append(<span class="number">10</span>)</span><br><span class="line">                    <span class="keyword">self</span>!.timeStamp = <span class="type">Date</span>().milliStamp</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h5 id="2-播放脚本"><a href="#2-播放脚本" class="headerlink" title="2.播放脚本"></a>2.播放脚本</h5><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span>  <span class="title">playEvent</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">var</span> index = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span> event <span class="keyword">in</span> events &#123;</span><br><span class="line">          <span class="keyword">if</span>(index &gt; times.<span class="built_in">count</span> - <span class="number">1</span>)&#123;</span><br><span class="line">             <span class="type">Thread</span>.sleep(forTimeInterval: <span class="type">TimeInterval</span>(<span class="number">0.01</span>))</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="type">Thread</span>.sleep(forTimeInterval: <span class="type">TimeInterval</span>( <span class="type">Double</span>(times[index]) / <span class="number">1000.0</span>))</span><br><span class="line">          &#125;</span><br><span class="line">      index += <span class="number">1</span>;</span><br><span class="line">      event.post(tap: .cghidEventTap)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
 
       
         
@@ -726,7 +717,7 @@
           <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
             id="categoriesMac"
-            ><div class='name'>Mac</div><div class='badge'>(2)</div></a></li>
+            ><div class='name'>Mac</div><div class='badge'>(3)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Swift/" href="/categories/Swift/"
@@ -760,7 +751,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 
