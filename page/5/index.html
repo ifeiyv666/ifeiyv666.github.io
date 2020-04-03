@@ -5,7 +5,9 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
+      
+        <meta name="robots" content="noindex,follow">
+      
     
   
   <!-- 渲染优化 -->
@@ -18,7 +20,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：RxSwift - 飞羽的博客</title>
+    <title>飞羽的博客</title>
   
   
 
@@ -297,18 +299,9 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
   <section class="post-list ">
-    
-      
-        
-          
-        
-      
     
     
       
@@ -325,8 +318,8 @@
       
         
   <h2 class="title">
-    <a href="/2020/03/16/%E7%BB%93%E5%90%88RxSwift%E3%80%81Moya%E3%80%81%E5%92%8CHandyJSON%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%A8%A1%E6%9D%BF/">
-      结合RxSwift、Moya、和HandyJSON封装网络请求模板
+    <a href="/2019/06/06/SWIFT%E5%85%B3%E9%94%AE%E5%AD%97/">
+      SWIFT关键字
     </a>
   </h2>
 
@@ -364,7 +357,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2020年3月16日</p>
+    <p>发布于：2019年6月6日</p>
   </a>
 </div>
 
@@ -390,22 +383,17 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="FyNetWork"><a href="#FyNetWork" class="headerlink" title="FyNetWork"></a>FyNetWork</h1><blockquote>
-<p>结合RxSwift、Moya、和HandyJSON封装网络请求模板</p>
+      <h4 id="discardableResult"><a href="#discardableResult" class="headerlink" title="@discardableResult"></a>@discardableResult</h4><blockquote>
+<p>修饰的方法有返回值，调用时可以不接收返回值，并且不会出现警告⚠️</p>
 </blockquote>
-<p>【该模板已经上传Github】-&gt; <a href="https://github.com/i-feiyv/FyNetWork" target="_blank" rel="noopener">前往Github</a> 获取代码</p>
-<h2 id="文件功能"><a href="#文件功能" class="headerlink" title="文件功能"></a>文件功能</h2><h3 id="Podfile"><a href="#Podfile" class="headerlink" title="Podfile"></a>Podfile</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以根据不同版本，调整库的版本（不同版本可能需要库的版本不同）</span></span><br><span class="line">pod '<span class="type">Moya</span>/<span class="type">RxSwift'</span>, '~&gt; <span class="number">12.0</span>.<span class="number">1</span>'</span><br><span class="line">pod '<span class="type">HandyJSON'</span>, '~&gt; <span class="number">5.0</span>.<span class="number">1</span>'</span><br></pre></td></tr></table></figure>
+<h4 id="IBInspectable"><a href="#IBInspectable" class="headerlink" title="IBInspectable"></a>IBInspectable</h4><blockquote>
+<p>属性声明的时候加上 IBInspectable 修饰，Xcode 会自动添加到 Storyboard 中 Attributes inspector 栏目中</p>
+</blockquote>
+<h4 id="typealias"><a href="#typealias" class="headerlink" title="typealias"></a>typealias</h4><blockquote>
+<p>定义了一个类型别名</p>
+</blockquote>
 
-
-<h3 id="FyUrls-swift"><a href="#FyUrls-swift" class="headerlink" title="FyUrls.swift"></a>FyUrls.swift</h3><p>主要放一些请求Url</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FyUrls</span> </span>&#123;</span><br><span class="line">    <span class="comment">/// 服务器环境 true: 正服 false: 测服</span></span><br><span class="line">    </span><br><span class="line">    #<span class="keyword">if</span> <span class="type">DEBUG</span></span><br><span class="line">    <span class="comment">//测试环境</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> service: <span class="type">Bool</span> = <span class="literal">false</span></span><br><span class="line">    #<span class="keyword">else</span></span><br><span class="line">    <span class="comment">//正式环境</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> service: <span class="type">Bool</span> = <span class="literal">true</span></span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> domain: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="comment">// "正服地址" : "测服地址" (这里是网上搜到的开放接口，没有测试地址，两个都写正式地址)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">FyUrls</span>.service ? <span class="string">"https://v1.alapi.cn/"</span> : <span class="string">"https://v1.alapi.cn/"</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//这里写拼接到域名上的Url</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> searchMusic: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"api/music/search"</span></span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//.......</span></span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
-        
-          <div class="button readmore ">
-            <a href="/2020/03/16/%E7%BB%93%E5%90%88RxSwift%E3%80%81Moya%E3%80%81%E5%92%8CHandyJSON%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%A8%A1%E6%9D%BF/">
-              阅读全部 <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
         
       
     </div>
@@ -419,6 +407,21 @@
   </section>
   
     
+      <br>
+      <div class="prev-next">
+        
+          <a class="prev" rel="prev" href="/page/4/">
+            <section class="post prev white-box shadow" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页&nbsp;
+            </section>
+          </a>
+        
+        <p class="current">
+          5 / 5
+        </p>
+        
+      </div>
+    
     <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
     
@@ -426,8 +429,6 @@
   
 
 
-    
-  
 </div>
 <aside class='l_side'>
   

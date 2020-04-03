@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>标签：RxSwift - 飞羽的博客</title>
+    <title>标签：Flutter 字符串 - 飞羽的博客</title>
   
   
 
@@ -325,8 +325,8 @@
       
         
   <h2 class="title">
-    <a href="/2020/03/16/%E7%BB%93%E5%90%88RxSwift%E3%80%81Moya%E3%80%81%E5%92%8CHandyJSON%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%A8%A1%E6%9D%BF/">
-      结合RxSwift、Moya、和HandyJSON封装网络请求模板
+    <a href="/2019/11/25/flutter%20%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%9A%E4%BD%99n%E8%A1%8C%E6%8A%98%E5%8F%A0,%E7%82%B9%E5%87%BB%E5%B1%95%E5%BC%80/">
+      Flutter 字符串多余n行折叠，点击展开
     </a>
   </h2>
 
@@ -351,9 +351,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Swift/' rel="nofollow">
+    <a href='/categories/Flutter/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Swift</p>
+      <p>Flutter</p>
     </a>
   </div>
 
@@ -364,7 +364,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2020年3月16日</p>
+    <p>发布于：2019年11月25日</p>
   </a>
 </div>
 
@@ -390,22 +390,22 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h1 id="FyNetWork"><a href="#FyNetWork" class="headerlink" title="FyNetWork"></a>FyNetWork</h1><blockquote>
-<p>结合RxSwift、Moya、和HandyJSON封装网络请求模板</p>
-</blockquote>
-<p>【该模板已经上传Github】-&gt; <a href="https://github.com/i-feiyv/FyNetWork" target="_blank" rel="noopener">前往Github</a> 获取代码</p>
-<h2 id="文件功能"><a href="#文件功能" class="headerlink" title="文件功能"></a>文件功能</h2><h3 id="Podfile"><a href="#Podfile" class="headerlink" title="Podfile"></a>Podfile</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以根据不同版本，调整库的版本（不同版本可能需要库的版本不同）</span></span><br><span class="line">pod '<span class="type">Moya</span>/<span class="type">RxSwift'</span>, '~&gt; <span class="number">12.0</span>.<span class="number">1</span>'</span><br><span class="line">pod '<span class="type">HandyJSON'</span>, '~&gt; <span class="number">5.0</span>.<span class="number">1</span>'</span><br></pre></td></tr></table></figure>
+      <h4 id="flutter-字符串多余n行折叠，点击展开"><a href="#flutter-字符串多余n行折叠，点击展开" class="headerlink" title="flutter 字符串多余n行折叠，点击展开"></a>flutter 字符串多余n行折叠，点击展开</h4><ul>
+<li>获取TextPainter</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">TextPainter fetchTextPainter(<span class="built_in">String</span> text, TextStyle style, <span class="built_in">int</span> maxLine,</span><br><span class="line">     <span class="built_in">double</span> minWidth, <span class="built_in">double</span> maxWidth) &#123;</span><br><span class="line">   <span class="keyword">return</span> TextPainter(</span><br><span class="line">       maxLines: maxLine,</span><br><span class="line">       text: TextSpan(text: text, style: style),</span><br><span class="line">       textDirection: TextDirection.ltr)</span><br><span class="line">     ..layout(maxWidth: maxWidth, minWidth: minWidth);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li>判断是否超过n行，需要截断文本</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bool</span> isExpansion(<span class="built_in">String</span> text, TextStyle style, <span class="built_in">int</span> maxLine, <span class="built_in">double</span> minWidth,</span><br><span class="line">      <span class="built_in">double</span> maxWidth) &#123;</span><br><span class="line">    TextPainter _textPainter =</span><br><span class="line">        fetchTextPainter(text, style, maxLine, minWidth, maxWidth);</span><br><span class="line">    <span class="keyword">if</span> (_textPainter.didExceedMaxLines) &#123;</span><br><span class="line">      <span class="comment">//这里判断 文本是否截断</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="FyUrls-swift"><a href="#FyUrls-swift" class="headerlink" title="FyUrls.swift"></a>FyUrls.swift</h3><p>主要放一些请求Url</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FyUrls</span> </span>&#123;</span><br><span class="line">    <span class="comment">/// 服务器环境 true: 正服 false: 测服</span></span><br><span class="line">    </span><br><span class="line">    #<span class="keyword">if</span> <span class="type">DEBUG</span></span><br><span class="line">    <span class="comment">//测试环境</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> service: <span class="type">Bool</span> = <span class="literal">false</span></span><br><span class="line">    #<span class="keyword">else</span></span><br><span class="line">    <span class="comment">//正式环境</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> service: <span class="type">Bool</span> = <span class="literal">true</span></span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> domain: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="comment">// "正服地址" : "测服地址" (这里是网上搜到的开放接口，没有测试地址，两个都写正式地址)</span></span><br><span class="line">        <span class="keyword">return</span> <span class="type">FyUrls</span>.service ? <span class="string">"https://v1.alapi.cn/"</span> : <span class="string">"https://v1.alapi.cn/"</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//这里写拼接到域名上的Url</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">var</span> searchMusic: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"api/music/search"</span></span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//.......</span></span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>超过n行，需要展开。展开箭头放在文本右下角，移除两个字符（根据需求）用来放展开箭头</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> expansionString(<span class="built_in">String</span> text, TextStyle style, <span class="built_in">int</span> maxLine,</span><br><span class="line">    <span class="built_in">double</span> minWidth, <span class="built_in">double</span> maxWidth) &#123;</span><br><span class="line">  TextPainter _textPainter =</span><br><span class="line">      fetchTextPainter(text, style, maxLine, minWidth, maxWidth);</span><br><span class="line">  <span class="keyword">var</span> end = _textPainter</span><br><span class="line">      .getPositionForOffset(</span><br><span class="line">          Offset(_textPainter.size.width, _textPainter.size.height))</span><br><span class="line">      .offset;</span><br><span class="line">  <span class="keyword">return</span> text.substring(<span class="number">0</span>, end - <span class="number">2</span>) + <span class="string">"..."</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
-        
-          <div class="button readmore ">
-            <a href="/2020/03/16/%E7%BB%93%E5%90%88RxSwift%E3%80%81Moya%E3%80%81%E5%92%8CHandyJSON%E5%B0%81%E8%A3%85%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82%E6%A8%A1%E6%9D%BF/">
-              阅读全部 <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
         
       
     </div>
