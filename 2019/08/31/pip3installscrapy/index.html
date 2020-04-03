@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>pip3 install scrapy - 飞羽的博客</title>
+  
+    <meta name="keywords" content="python3,scrapy,python">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            <RED>飞</RED><YELLOW>羽</YELLOW><GREEN>博</GREEN><BLUE>客</BLUE> <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/08/31/pip3installscrapy/">
+        pip3 install scrapy
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月31日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h2 id="l-192---python3-m-pip-install-–upgrade-pip"><a href="#l-192---python3-m-pip-install-–upgrade-pip" class="headerlink" title="l@192  ~  python3 -m pip install –upgrade pip"></a>l@192  ~  python3 -m pip install –upgrade pip</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Retrying (Retry(total&#x3D;4, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pip&#x2F;</span><br><span class="line">WARNING: Retrying (Retry(total&#x3D;3, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pip&#x2F;</span><br><span class="line">WARNING: Retrying (Retry(total&#x3D;2, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pip&#x2F;</span><br><span class="line">WARNING: Retrying (Retry(total&#x3D;1, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pip&#x2F;</span><br><span class="line">WARNING: Retrying (Retry(total&#x3D;0, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pip&#x2F;</span><br><span class="line">Requirement already up-to-date: pip in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (19.1.1)</span><br></pre></td></tr></table></figure>
+
+<h2 id="l-192---pip3-install-scrapy"><a href="#l-192---pip3-install-scrapy" class="headerlink" title="l@192  ~  pip3 install scrapy"></a>l@192  ~  pip3 install scrapy</h2> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">Collecting scrapy</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl (234kB)</span><br><span class="line">     |████████▍                       | 61kB 11kB&#x2F;s eta 0:00:15ERROR: Exception:</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 360, in _error_catcher</span><br><span class="line">    yield</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 442, in read</span><br><span class="line">    data &#x3D; self._fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;cachecontrol&#x2F;filewrapper.py&quot;, line 62, in read</span><br><span class="line">    data &#x3D; self.__fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 457, in read</span><br><span class="line">    n &#x3D; self.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 501, in readinto</span><br><span class="line">    n &#x3D; self.fp.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;socket.py&quot;, line 589, in readinto</span><br><span class="line">    return self._sock.recv_into(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 1071, in recv_into</span><br><span class="line">    return self.read(nbytes, buffer)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 929, in read</span><br><span class="line">    return self._sslobj.read(len, buffer)</span><br><span class="line">socket.timeout: The read operation timed out</span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;cli&#x2F;base_command.py&quot;, line 178, in main</span><br><span class="line">    status &#x3D; self.run(options, args)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;commands&#x2F;install.py&quot;, line 352, in run</span><br><span class="line">    resolver.resolve(requirement_set)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 131, in resolve</span><br><span class="line">    self._resolve_one(requirement_set, req)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 294, in _resolve_one</span><br><span class="line">    abstract_dist &#x3D; self._get_abstract_dist_for(req_to_install)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 242, in _get_abstract_dist_for</span><br><span class="line">    self.require_hashes</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;operations&#x2F;prepare.py&quot;, line 347, in prepare_linked_requirement</span><br><span class="line">    progress_bar&#x3D;self.progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 886, in unpack_url</span><br><span class="line">    progress_bar&#x3D;progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 746, in unpack_http_url</span><br><span class="line">    progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 954, in _download_http_url</span><br><span class="line">    _download_url(resp, link, content_file, hashes, progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 683, in _download_url</span><br><span class="line">    hashes.check_against_chunks(downloaded_chunks)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;hashes.py&quot;, line 62, in check_against_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 651, in written_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;ui.py&quot;, line 156, in iter</span><br><span class="line">    for x in it:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 640, in resp_read</span><br><span class="line">    decode_content&#x3D;False):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 494, in stream</span><br><span class="line">    data &#x3D; self.read(amt&#x3D;amt, decode_content&#x3D;decode_content)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 459, in read</span><br><span class="line">    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;contextlib.py&quot;, line 130, in __exit__</span><br><span class="line">    self.gen.throw(type, value, traceback)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 365, in _error_catcher</span><br><span class="line">    raise ReadTimeoutError(self._pool, None, &#39;Read timed out.&#39;)</span><br><span class="line">pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host&#x3D;&#39;files.pythonhosted.org&#39;, port&#x3D;443): Read timed out.</span><br></pre></td></tr></table></figure>
+
+<h2 id="✘-l-192---pip3-install-scrapy"><a href="#✘-l-192---pip3-install-scrapy" class="headerlink" title="** ✘ l@192  ~  pip3 install scrapy"></a>** ✘ l@192  ~  pip3 install scrapy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">Collecting scrapy</span><br><span class="line">  WARNING: Retrying (Retry(total&#x3D;4, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;scrapy&#x2F;</span><br><span class="line">  WARNING: Retrying (Retry(total&#x3D;3, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;scrapy&#x2F;</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl (234kB)</span><br><span class="line">ERROR: Exception:</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 360, in _error_catcher</span><br><span class="line">    yield</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 442, in read</span><br><span class="line">    data &#x3D; self._fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;cachecontrol&#x2F;filewrapper.py&quot;, line 62, in read</span><br><span class="line">    data &#x3D; self.__fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 457, in read</span><br><span class="line">    n &#x3D; self.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 501, in readinto</span><br><span class="line">    n &#x3D; self.fp.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;socket.py&quot;, line 589, in readinto</span><br><span class="line">    return self._sock.recv_into(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 1071, in recv_into</span><br><span class="line">    return self.read(nbytes, buffer)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 929, in read</span><br><span class="line">    return self._sslobj.read(len, buffer)</span><br><span class="line">socket.timeout: The read operation timed out</span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;cli&#x2F;base_command.py&quot;, line 178, in main</span><br><span class="line">    status &#x3D; self.run(options, args)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;commands&#x2F;install.py&quot;, line 352, in run</span><br><span class="line">    resolver.resolve(requirement_set)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 131, in resolve</span><br><span class="line">    self._resolve_one(requirement_set, req)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 294, in _resolve_one</span><br><span class="line">    abstract_dist &#x3D; self._get_abstract_dist_for(req_to_install)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 242, in _get_abstract_dist_for</span><br><span class="line">    self.require_hashes</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;operations&#x2F;prepare.py&quot;, line 347, in prepare_linked_requirement</span><br><span class="line">    progress_bar&#x3D;self.progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 886, in unpack_url</span><br><span class="line">    progress_bar&#x3D;progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 746, in unpack_http_url</span><br><span class="line">    progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 954, in _download_http_url</span><br><span class="line">    _download_url(resp, link, content_file, hashes, progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 683, in _download_url</span><br><span class="line">    hashes.check_against_chunks(downloaded_chunks)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;hashes.py&quot;, line 62, in check_against_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 651, in written_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;ui.py&quot;, line 156, in iter</span><br><span class="line">    for x in it:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 640, in resp_read</span><br><span class="line">    decode_content&#x3D;False):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 494, in stream</span><br><span class="line">    data &#x3D; self.read(amt&#x3D;amt, decode_content&#x3D;decode_content)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 459, in read</span><br><span class="line">    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;contextlib.py&quot;, line 130, in __exit__</span><br><span class="line">    self.gen.throw(type, value, traceback)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 365, in _error_catcher</span><br><span class="line">    raise ReadTimeoutError(self._pool, None, &#39;Read timed out.&#39;)</span><br><span class="line">pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host&#x3D;&#39;files.pythonhosted.org&#39;, port&#x3D;443): Read timed out.</span><br><span class="line"> ✘ l@192  ~  sudo pip3 install lxml</span><br><span class="line">Password:</span><br><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;http&#39; or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#39; or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">Collecting lxml</span><br><span class="line">  ERROR: Could not find a version that satisfies the requirement lxml (from versions: none)</span><br><span class="line">ERROR: No matching distribution found for lxml</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="✘-l-192---pip3-install-Scrapy"><a href="#✘-l-192---pip3-install-Scrapy" class="headerlink" title="✘ l@192  ~  pip3 install Scrapy"></a>✘ l@192  ~  pip3 install Scrapy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Collecting Scrapy</span><br><span class="line">  WARNING: Retrying (Retry(total&#x3D;4, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;files.pythonhosted.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl (234kB)</span><br><span class="line">     |████████████████████████████████| 235kB 83kB&#x2F;s</span><br><span class="line">Collecting pyOpenSSL (from Scrapy)</span><br><span class="line">  ERROR: Could not find a version that satisfies the requirement pyOpenSSL (from Scrapy) (from versions: none)</span><br><span class="line">ERROR: No matching distribution found for pyOpenSSL (from Scrapy)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="✘-l-192---pip3-install-Scrapy-1"><a href="#✘-l-192---pip3-install-Scrapy-1" class="headerlink" title="✘ l@192  ~  pip3 install Scrapy"></a>✘ l@192  ~  pip3 install Scrapy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">Collecting Scrapy</span><br><span class="line">  Using cached https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl</span><br><span class="line">Collecting parsel&gt;&#x3D;1.5 (from Scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;86&#x2F;c8&#x2F;fc5a2f9376066905dfcca334da2a25842aedfda142c0424722e7c497798b&#x2F;parsel-1.5.2-py2.py3-none-any.whl</span><br><span class="line">Collecting w3lib&gt;&#x3D;1.17.0 (from Scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;6a&#x2F;45&#x2F;1ba17c50a0bb16bd950c9c2b92ec60d40c8ebda9f3371ae4230c437120b6&#x2F;w3lib-1.21.0-py2.py3-none-any.whl</span><br><span class="line">Collecting pyOpenSSL (from Scrapy)</span><br><span class="line">  WARNING: Retrying (Retry(total&#x3D;4, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pyopenssl&#x2F;</span><br><span class="line">  WARNING: Retrying (Retry(total&#x3D;3, connect&#x3D;None, read&#x3D;None, redirect&#x3D;None, status&#x3D;None)) after connection broken by &#39;ReadTimeoutError(&quot;HTTPSConnectionPool(host&#x3D;&#39;pypi.org&#39;, port&#x3D;443): Read timed out. (read timeout&#x3D;15)&quot;)&#39;: &#x2F;simple&#x2F;pyopenssl&#x2F;</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;01&#x2F;c8&#x2F;ceb170d81bd3941cbeb9940fc6cc2ef2ca4288d0ca8929ea4db5905d904d&#x2F;pyOpenSSL-19.0.0-py2.py3-none-any.whl (53kB)</span><br><span class="line">     |████████████████████████▋       | 40kB 1.8kB&#x2F;s eta 0:00:08ERROR: Exception:</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 360, in _error_catcher</span><br><span class="line">    yield</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 442, in read</span><br><span class="line">    data &#x3D; self._fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;cachecontrol&#x2F;filewrapper.py&quot;, line 62, in read</span><br><span class="line">    data &#x3D; self.__fp.read(amt)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 457, in read</span><br><span class="line">    n &#x3D; self.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;http&#x2F;client.py&quot;, line 501, in readinto</span><br><span class="line">    n &#x3D; self.fp.readinto(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;socket.py&quot;, line 589, in readinto</span><br><span class="line">    return self._sock.recv_into(b)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 1071, in recv_into</span><br><span class="line">    return self.read(nbytes, buffer)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;ssl.py&quot;, line 929, in read</span><br><span class="line">    return self._sslobj.read(len, buffer)</span><br><span class="line">socket.timeout: The read operation timed out</span><br><span class="line"></span><br><span class="line">During handling of the above exception, another exception occurred:</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;cli&#x2F;base_command.py&quot;, line 178, in main</span><br><span class="line">    status &#x3D; self.run(options, args)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;commands&#x2F;install.py&quot;, line 352, in run</span><br><span class="line">    resolver.resolve(requirement_set)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 131, in resolve</span><br><span class="line">    self._resolve_one(requirement_set, req)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 294, in _resolve_one</span><br><span class="line">    abstract_dist &#x3D; self._get_abstract_dist_for(req_to_install)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;resolve.py&quot;, line 242, in _get_abstract_dist_for</span><br><span class="line">    self.require_hashes</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;operations&#x2F;prepare.py&quot;, line 347, in prepare_linked_requirement</span><br><span class="line">    progress_bar&#x3D;self.progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 886, in unpack_url</span><br><span class="line">    progress_bar&#x3D;progress_bar</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 746, in unpack_http_url</span><br><span class="line">    progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 954, in _download_http_url</span><br><span class="line">    _download_url(resp, link, content_file, hashes, progress_bar)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 683, in _download_url</span><br><span class="line">    hashes.check_against_chunks(downloaded_chunks)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;hashes.py&quot;, line 62, in check_against_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 651, in written_chunks</span><br><span class="line">    for chunk in chunks:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;utils&#x2F;ui.py&quot;, line 156, in iter</span><br><span class="line">    for x in it:</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_internal&#x2F;download.py&quot;, line 640, in resp_read</span><br><span class="line">    decode_content&#x3D;False):</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 494, in stream</span><br><span class="line">    data &#x3D; self.read(amt&#x3D;amt, decode_content&#x3D;decode_content)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 459, in read</span><br><span class="line">    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;python&#x2F;3.7.4&#x2F;Frameworks&#x2F;Python.framework&#x2F;Versions&#x2F;3.7&#x2F;lib&#x2F;python3.7&#x2F;contextlib.py&quot;, line 130, in __exit__</span><br><span class="line">    self.gen.throw(type, value, traceback)</span><br><span class="line">  File &quot;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pip&#x2F;_vendor&#x2F;urllib3&#x2F;response.py&quot;, line 365, in _error_catcher</span><br><span class="line">    raise ReadTimeoutError(self._pool, None, &#39;Read timed out.&#39;)</span><br><span class="line">pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host&#x3D;&#39;files.pythonhosted.org&#39;, port&#x3D;443): Read timed out.</span><br></pre></td></tr></table></figure>
+
+<h2 id="✘-l-192---sudo-pip3-install-–upgrade-pyopenssl"><a href="#✘-l-192---sudo-pip3-install-–upgrade-pyopenssl" class="headerlink" title="✘ l@192  ~  sudo pip3 install –upgrade pyopenssl"></a>✘ l@192  ~  sudo pip3 install –upgrade pyopenssl</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Password:</span><br><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;http&#39; or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#39; or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">Collecting pyopenssl</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;01&#x2F;c8&#x2F;ceb170d81bd3941cbeb9940fc6cc2ef2ca4288d0ca8929ea4db5905d904d&#x2F;pyOpenSSL-19.0.0-py2.py3-none-any.whl (53kB)</span><br><span class="line">     |████████████████████████████████| 61kB 27kB&#x2F;s</span><br><span class="line">Collecting cryptography&gt;&#x3D;2.3 (from pyopenssl)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;63&#x2F;4e&#x2F;57b7a6bd98906872fcd2531e74b532de2abe17d675a5cf171931fcb4a9e8&#x2F;cryptography-2.7-cp34-abi3-macosx_10_6_intel.whl (1.6MB)</span><br><span class="line">     |████████████████████████████████| 1.6MB 3.7MB&#x2F;s</span><br><span class="line">Collecting six&gt;&#x3D;1.5.2 (from pyopenssl)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;73&#x2F;fb&#x2F;00a976f728d0d1fecfe898238ce23f502a721c0ac0ecfedb80e0d88c64e9&#x2F;six-1.12.0-py2.py3-none-any.whl</span><br><span class="line">Collecting asn1crypto&gt;&#x3D;0.21.0 (from cryptography&gt;&#x3D;2.3-&gt;pyopenssl)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;ea&#x2F;cd&#x2F;35485615f45f30a510576f1a56d1e0a7ad7bd8ab5ed7cdc600ef7cd06222&#x2F;asn1crypto-0.24.0-py2.py3-none-any.whl (101kB)</span><br><span class="line">     |████████████████████████████████| 102kB 7.0MB&#x2F;s</span><br><span class="line">Collecting cffi!&#x3D;1.11.3,&gt;&#x3D;1.8 (from cryptography&gt;&#x3D;2.3-&gt;pyopenssl)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;f0&#x2F;48&#x2F;5aa4ea664eba26dd5142558d04762f5065c02220b4665b3f7eecb9bb614e&#x2F;cffi-1.12.3-cp37-cp37m-macosx_10_9_x86_64.whl (169kB)</span><br><span class="line">     |████████████████████████████████| 174kB 6.6MB&#x2F;s</span><br><span class="line">Collecting pycparser (from cffi!&#x3D;1.11.3,&gt;&#x3D;1.8-&gt;cryptography&gt;&#x3D;2.3-&gt;pyopenssl)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;68&#x2F;9e&#x2F;49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a&#x2F;pycparser-2.19.tar.gz (158kB)</span><br><span class="line">     |████████████████████████████████| 163kB 14.7MB&#x2F;s</span><br><span class="line">Building wheels for collected packages: pycparser</span><br><span class="line">  Building wheel for pycparser (setup.py) ... done</span><br><span class="line">  Stored in directory: &#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;wheels&#x2F;f2&#x2F;9a&#x2F;90&#x2F;de94f8556265ddc9d9c8b271b0f63e57b26fb1d67a45564511</span><br><span class="line">Successfully built pycparser</span><br><span class="line">Installing collected packages: six, asn1crypto, pycparser, cffi, cryptography, pyopenssl</span><br><span class="line">Successfully installed asn1crypto-0.24.0 cffi-1.12.3 cryptography-2.7 pycparser-2.19 pyopenssl-19.0.0 six-1.12.0</span><br></pre></td></tr></table></figure>
+<h2 id="l-192---sudo-pip3-install-scrapy"><a href="#l-192---sudo-pip3-install-scrapy" class="headerlink" title="l@192  ~  sudo pip3 install scrapy"></a>l@192  ~  sudo pip3 install scrapy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;http&#39; or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">WARNING: The directory &#39;&#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#39; or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo&#39;s -H flag.</span><br><span class="line">Collecting scrapy</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;29&#x2F;4b&#x2F;585e8e111ffb01466c59281f34febb13ad1a95d7fb3919fd57c33fc732a5&#x2F;Scrapy-1.7.3-py2.py3-none-any.whl (234kB)</span><br><span class="line">     |████████████████████████████████| 235kB 4.4kB&#x2F;s</span><br><span class="line">Collecting w3lib&gt;&#x3D;1.17.0 (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;6a&#x2F;45&#x2F;1ba17c50a0bb16bd950c9c2b92ec60d40c8ebda9f3371ae4230c437120b6&#x2F;w3lib-1.21.0-py2.py3-none-any.whl</span><br><span class="line">Collecting lxml; python_version !&#x3D; &quot;3.4&quot; (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;bd&#x2F;9f&#x2F;6cda4672d3ad1aa4cf818ab8401a763787efba751c88aaf4b38fc8f923bb&#x2F;lxml-4.4.1-cp37-cp37m-macosx_10_6_intel.macosx_10_9_intel.macosx_10_9_x86_64.macosx_10_10_intel.macosx_10_10_x86_64.whl (8.9MB)</span><br><span class="line">     |████████████████████████████████| 8.9MB 97kB&#x2F;s</span><br><span class="line">Collecting Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot; (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;61&#x2F;31&#x2F;3855dcacd1d3b2e60c0b4ccc8e727b8cd497bd7087d327d81a9f0cbb580c&#x2F;Twisted-19.7.0.tar.bz2 (3.1MB)</span><br><span class="line">     |████████████████████████████████| 3.1MB 207kB&#x2F;s</span><br><span class="line">Collecting parsel&gt;&#x3D;1.5 (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;86&#x2F;c8&#x2F;fc5a2f9376066905dfcca334da2a25842aedfda142c0424722e7c497798b&#x2F;parsel-1.5.2-py2.py3-none-any.whl</span><br><span class="line">Requirement already satisfied: pyOpenSSL in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from scrapy) (19.0.0)</span><br><span class="line">Requirement already satisfied: six&gt;&#x3D;1.5.2 in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from scrapy) (1.12.0)</span><br><span class="line">Collecting queuelib (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;4c&#x2F;85&#x2F;ae64e9145f39dd6d14f8af3fa809a270ef3729f3b90b3c0cf5aa242ab0d4&#x2F;queuelib-1.5.0-py2.py3-none-any.whl</span><br><span class="line">Collecting cssselect&gt;&#x3D;0.9 (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;3b&#x2F;d4&#x2F;3b5c17f00cce85b9a1e6f91096e1cc8e8ede2e1be8e96b87ce1ed09e92c5&#x2F;cssselect-1.1.0-py2.py3-none-any.whl</span><br><span class="line">Collecting service-identity (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;e9&#x2F;7c&#x2F;2195b890023e098f9618d43ebc337d83c8b38d414326685339eb024db2f6&#x2F;service_identity-18.1.0-py2.py3-none-any.whl</span><br><span class="line">Collecting PyDispatcher&gt;&#x3D;2.0.5 (from scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;cd&#x2F;37&#x2F;39aca520918ce1935bea9c356bcbb7ed7e52ad4e31bff9b943dfc8e7115b&#x2F;PyDispatcher-2.0.5.tar.gz</span><br><span class="line">Collecting zope.interface&gt;&#x3D;4.4.2 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;d9&#x2F;3a&#x2F;101934e0f2026f0a58698978bfedec6e2021b28b846d9e1d9b54369e044d&#x2F;zope.interface-4.6.0-cp37-cp37m-macosx_10_14_x86_64.whl (131kB)</span><br><span class="line">     |████████████████████████████████| 133kB 124kB&#x2F;s</span><br><span class="line">Collecting constantly&gt;&#x3D;15.1 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;b9&#x2F;65&#x2F;48c1909d0c0aeae6c10213340ce682db01b48ea900a7d9fce7a7910ff318&#x2F;constantly-15.1.0-py2.py3-none-any.whl</span><br><span class="line">Collecting incremental&gt;&#x3D;16.10.1 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;f5&#x2F;1d&#x2F;c98a587dc06e107115cf4a58b49de20b19222c83d75335a192052af4c4b7&#x2F;incremental-17.5.0-py2.py3-none-any.whl</span><br><span class="line">Collecting Automat&gt;&#x3D;0.3.0 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;a3&#x2F;86&#x2F;14c16bb98a5a3542ed8fed5d74fb064a902de3bdd98d6584b34553353c45&#x2F;Automat-0.7.0-py2.py3-none-any.whl</span><br><span class="line">Collecting hyperlink&gt;&#x3D;17.1.1 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;7f&#x2F;91&#x2F;e916ca10a2de1cb7101a9b24da546fb90ee14629e23160086cf3361c4fb8&#x2F;hyperlink-19.0.0-py2.py3-none-any.whl</span><br><span class="line">Collecting PyHamcrest&gt;&#x3D;1.9.0 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;9a&#x2F;d5&#x2F;d37fd731b7d0e91afcc84577edeccf4638b4f9b82f5ffe2f8b62e2ddc609&#x2F;PyHamcrest-1.9.0-py2.py3-none-any.whl (52kB)</span><br><span class="line">     |████████████████████████████████| 61kB 123kB&#x2F;s</span><br><span class="line">Collecting attrs&gt;&#x3D;17.4.0 (from Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;23&#x2F;96&#x2F;d828354fa2dbdf216eaa7b7de0db692f12c234f7ef888cc14980ef40d1d2&#x2F;attrs-19.1.0-py2.py3-none-any.whl</span><br><span class="line">Requirement already satisfied: cryptography&gt;&#x3D;2.3 in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from pyOpenSSL-&gt;scrapy) (2.7)</span><br><span class="line">Collecting pyasn1 (from service-identity-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;6a&#x2F;6e&#x2F;209351ec34b7d7807342e2bb6ff8a96eef1fd5dcac13bdbadf065c2bb55c&#x2F;pyasn1-0.4.6-py2.py3-none-any.whl (75kB)</span><br><span class="line">     |████████████████████████████████| 81kB 94kB&#x2F;s</span><br><span class="line">Collecting pyasn1-modules (from service-identity-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;be&#x2F;70&#x2F;e5ea8afd6d08a4b99ebfc77bd1845248d56cfcf43d11f9dc324b9580a35c&#x2F;pyasn1_modules-0.2.6-py2.py3-none-any.whl (95kB)</span><br><span class="line">     |████████████████████████████████| 102kB 146kB&#x2F;s</span><br><span class="line">Requirement already satisfied: setuptools in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from zope.interface&gt;&#x3D;4.4.2-&gt;Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy) (41.0.1)</span><br><span class="line">Collecting idna&gt;&#x3D;2.5 (from hyperlink&gt;&#x3D;17.1.1-&gt;Twisted&gt;&#x3D;13.1.0; python_version !&#x3D; &quot;3.4&quot;-&gt;scrapy)</span><br><span class="line">  Downloading https:&#x2F;&#x2F;files.pythonhosted.org&#x2F;packages&#x2F;14&#x2F;2c&#x2F;cd551d81dbe15200be1cf41cd03869a46fe7226e7450af7a6545bfc474c9&#x2F;idna-2.8-py2.py3-none-any.whl (58kB)</span><br><span class="line">     |████████████████████████████████| 61kB 181kB&#x2F;s</span><br><span class="line">Requirement already satisfied: cffi!&#x3D;1.11.3,&gt;&#x3D;1.8 in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from cryptography&gt;&#x3D;2.3-&gt;pyOpenSSL-&gt;scrapy) (1.12.3)</span><br><span class="line">Requirement already satisfied: asn1crypto&gt;&#x3D;0.21.0 in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from cryptography&gt;&#x3D;2.3-&gt;pyOpenSSL-&gt;scrapy) (0.24.0)</span><br><span class="line">Requirement already satisfied: pycparser in &#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages (from cffi!&#x3D;1.11.3,&gt;&#x3D;1.8-&gt;cryptography&gt;&#x3D;2.3-&gt;pyOpenSSL-&gt;scrapy) (2.19)</span><br><span class="line">Building wheels for collected packages: Twisted, PyDispatcher</span><br><span class="line">  Building wheel for Twisted (setup.py) ... done</span><br><span class="line">  Stored in directory: &#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;wheels&#x2F;f4&#x2F;2b&#x2F;d5&#x2F;bf550d6bead12fec7a1383be4e994758848c4aeeb9fc627ecf</span><br><span class="line">  Building wheel for PyDispatcher (setup.py) ... done</span><br><span class="line">  Stored in directory: &#x2F;Users&#x2F;l&#x2F;Library&#x2F;Caches&#x2F;pip&#x2F;wheels&#x2F;88&#x2F;99&#x2F;96&#x2F;cfef6665f9cb1522ee6757ae5955feedf2fe25f1737f91fa7f</span><br><span class="line">Successfully built Twisted PyDispatcher</span><br><span class="line">Installing collected packages: w3lib, lxml, zope.interface, constantly, incremental, attrs, Automat, idna, hyperlink, PyHamcrest, Twisted, cssselect, parsel, queuelib, pyasn1, pyasn1-modules, service-identity, PyDispatcher, scrapy</span><br><span class="line">Successfully installed Automat-0.7.0 PyDispatcher-2.0.5 PyHamcrest-1.9.0 Twisted-19.7.0 attrs-19.1.0 constantly-15.1.0 cssselect-1.1.0 hyperlink-19.0.0 idna-2.8 incremental-17.5.0 lxml-4.4.1 parsel-1.5.2 pyasn1-0.4.6 pyasn1-modules-0.2.6 queuelib-1.5.0 scrapy-1.7.3 service-identity-18.1.0 w3lib-1.21.0 zope.interface-4.6.0</span><br></pre></td></tr></table></figure>
+
+<h2 id="l-192---cd-Users-l-Documents-Py-Pydemo"><a href="#l-192---cd-Users-l-Documents-Py-Pydemo" class="headerlink" title="l@192  ~  cd /Users/l/Documents/Py/Pydemo"></a>l@192  ~  cd /Users/l/Documents/Py/Pydemo</h2><h2 id="l-192--Documents-Py-Pydemo--scrapy-startproject-firstscrapy"><a href="#l-192--Documents-Py-Pydemo--scrapy-startproject-firstscrapy" class="headerlink" title="l@192  ~/Documents/Py/Pydemo  scrapy startproject firstscrapy"></a>l@192  ~/Documents/Py/Pydemo  scrapy startproject firstscrapy</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">New Scrapy project &#39;firstscrapy&#39;, using template directory &#39;&#x2F;usr&#x2F;local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;scrapy&#x2F;templates&#x2F;project&#39;, created in:</span><br><span class="line">    &#x2F;Users&#x2F;l&#x2F;Documents&#x2F;Py&#x2F;Pydemo&#x2F;firstscrapy</span><br><span class="line"></span><br><span class="line">You can start your first spider with:</span><br><span class="line">    cd firstscrapy</span><br><span class="line">    scrapy genspider example example.com</span><br></pre></td></tr></table></figure>
+
+<h2 id="l-192--Documents-Py-Pydemov-cd-firstscrapy"><a href="#l-192--Documents-Py-Pydemov-cd-firstscrapy" class="headerlink" title="l@192  ~/Documents/Py/Pydemov cd firstscrapy"></a>l@192  ~/Documents/Py/Pydemov cd firstscrapy</h2><h2 id="l-192--Documents-Py-Pydemo-firstscrapy"><a href="#l-192--Documents-Py-Pydemo-firstscrapy" class="headerlink" title="l@192  ~/Documents/Py/Pydemo/firstscrapy"></a>l@192  ~/Documents/Py/Pydemo/firstscrapy</h2>
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有,转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2019/08/31/pip3installscrapy/>https://ifeiyv666.github.io/2019/08/31/pip3installscrapy/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='/img/wx2.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='/img/wx1.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T15:20:34+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年4月3日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python3/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>python3</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/scrapy/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>scrapy</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/python/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>python</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2019/08/31/pip3installscrapy/&title=pip3 install scrapy - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2019/08/31/pip3installscrapy/&title=pip3 install scrapy - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2019/08/31/pip3installscrapy/&title=pip3 install scrapy - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+              <a class='prev' href='/2019/10/13/path_provider%E8%8E%B7%E5%8F%96%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95/'>
+                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>path_provider获取系统目录</p>
+                <p class='content'>PathProvider 插件
+PathProvider 访问设备文件系统上的常用位置。
+
+使用方法：
+在pubspec.yaml文件中添加 PathProvider 插件
+path_provi...</p>
+              </a>
+            
+            
+              <a class='next' href='/2019/08/21/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BText%20Widget/'>
+                <p class='title'>Flutter开发之Text Widget<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>Text Widget
+“文本”小组件显示单个样式的文本字符串。字符串可能会跨越多行，也可能全部显示在同一行上，具体取决于布局约束。
+
+1234567891011Text(   //显示的文本 ...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'pip3 install scrapy',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192---python3-m-pip-install-–upgrade-pip"><span class="toc-text">l@192  ~  python3 -m pip install –upgrade pip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192---pip3-install-scrapy"><span class="toc-text">l@192  ~  pip3 install scrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#✘-l-192---pip3-install-scrapy"><span class="toc-text">** ✘ l@192  ~  pip3 install scrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#✘-l-192---pip3-install-Scrapy"><span class="toc-text">✘ l@192  ~  pip3 install Scrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#✘-l-192---pip3-install-Scrapy-1"><span class="toc-text">✘ l@192  ~  pip3 install Scrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#✘-l-192---sudo-pip3-install-–upgrade-pyopenssl"><span class="toc-text">✘ l@192  ~  sudo pip3 install –upgrade pyopenssl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192---sudo-pip3-install-scrapy"><span class="toc-text">l@192  ~  sudo pip3 install scrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192---cd-Users-l-Documents-Py-Pydemo"><span class="toc-text">l@192  ~  cd &#x2F;Users&#x2F;l&#x2F;Documents&#x2F;Py&#x2F;Pydemo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192--Documents-Py-Pydemo--scrapy-startproject-firstscrapy"><span class="toc-text">l@192  ~&#x2F;Documents&#x2F;Py&#x2F;Pydemo  scrapy startproject firstscrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192--Documents-Py-Pydemov-cd-firstscrapy"><span class="toc-text">l@192  ~&#x2F;Documents&#x2F;Py&#x2F;Pydemov cd firstscrapy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#l-192--Documents-Py-Pydemo-firstscrapy"><span class="toc-text">l@192  ~&#x2F;Documents&#x2F;Py&#x2F;Pydemo&#x2F;firstscrapy</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/zz1521"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        本站
+        <a href="" target="_blank" class="codename"><red>飞</red><yellow>羽</yellow><green>博</green><blue>客</blue></a>
+        属于个人博客
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
