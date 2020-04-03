@@ -379,13 +379,13 @@
 <p>一个在水平数组中显示它的子级的小部件</p>
 </blockquote>
 <p>要使子级扩展以填充可用的水平空间, 请将子级包裹在一个展开的小部件中。</p>
-<p><em>想使用竖直布局的，请前往-&gt;<a href=""> Column</a></em></p>
+<p><em>想使用竖直布局的，请前往-&gt;<a href> Column</a></em></p>
 <p>如果你只有一个子级, 那就考虑用 “对齐” 或 “中心” 来定位子级。</p>
 <blockquote>
 <p>本示例将可用空间划分为三个 (水平), 并将文本置于前两个单元格中的中心, 并将 Flutter 图标置于第三个单元格的中心: </p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Row(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    Expanded(</span><br><span class="line">      child: Text(&#39;Deliver features faster&#39;, textAlign: TextAlign.center),</span><br><span class="line">    ),</span><br><span class="line">    Expanded(</span><br><span class="line">      child: Text(&#39;Craft beautiful UIs&#39;, textAlign: TextAlign.center),</span><br><span class="line">    ),</span><br><span class="line">    Expanded(</span><br><span class="line">      child: FittedBox(</span><br><span class="line">        fit: BoxFit.contain, &#x2F;&#x2F; otherwise the logo will be tiny</span><br><span class="line">        child: const FlutterLogo(),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><strong>效果图：</strong><br><br><img src="%22%22" alt="Row"></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Row(</span><br><span class="line">  children: &lt;Widget&gt;[</span><br><span class="line">    Expanded(</span><br><span class="line">      child: Text(<span class="string">'Deliver features faster'</span>, textAlign: TextAlign.center),</span><br><span class="line">    ),</span><br><span class="line">    Expanded(</span><br><span class="line">      child: Text(<span class="string">'Craft beautiful UIs'</span>, textAlign: TextAlign.center),</span><br><span class="line">    ),</span><br><span class="line">    Expanded(</span><br><span class="line">      child: FittedBox(</span><br><span class="line">        fit: BoxFit.contain, <span class="comment">// otherwise the logo will be tiny</span></span><br><span class="line">        child: <span class="keyword">const</span> FlutterLogo(),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><strong>效果图：</strong><br><br><img src="/2019/08/18/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BRow%20Widget/%22%22" alt="Row"></p>
 
           
             <br>
@@ -454,10 +454,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:16:25+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:43:21+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 

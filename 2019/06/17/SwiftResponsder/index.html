@@ -378,7 +378,7 @@
           <h3 id="通过响应者链获取对应的第一个符合条件的Responsder"><a href="#通过响应者链获取对应的第一个符合条件的Responsder" class="headerlink" title="通过响应者链获取对应的第一个符合条件的Responsder"></a>通过响应者链获取对应的第一个符合条件的Responsder</h3><blockquote>
 <p>传入响应检测的起点<code>Responsder</code>，一般用于UIView中查找响应者链中的控制器</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func nextResponder(currentView:UIView)-&gt;UIViewController&#123;</span><br><span class="line">var vc:UIResponder &#x3D; currentView</span><br><span class="line">while vc.isKind(of: UIViewController.self) !&#x3D; true &#123;</span><br><span class="line">vc &#x3D; vc.next!</span><br><span class="line">&#125;</span><br><span class="line">return vc as! UIViewController</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextResponder</span><span class="params">(currentView:UIView)</span></span>-&gt;<span class="type">UIViewController</span>&#123;</span><br><span class="line"><span class="keyword">var</span> vc:<span class="type">UIResponder</span> = currentView</span><br><span class="line"><span class="keyword">while</span> vc.isKind(of: <span class="type">UIViewController</span>.<span class="keyword">self</span>) != <span class="literal">true</span> &#123;</span><br><span class="line">vc = vc.next!</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> vc <span class="keyword">as</span>! <span class="type">UIViewController</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -449,10 +449,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:35:19+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:47:19+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 
@@ -538,7 +538,7 @@
                 <p class='content'>String-&gt;Class
 Swift中引入了命名空间的概念，转Class需要拼接命名空间
 
-123456789101112131415161718&#x2F;&#x2F;这是一个简单的通...</p>
+123456789101112131415161718//这是一个简单的通过字符串类名，转Cl...</p>
               </a>
             
           </div>

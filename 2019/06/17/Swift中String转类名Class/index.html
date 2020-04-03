@@ -24,7 +24,7 @@
     <meta name="description" content="String-&gt;Class
 Swift中引入了命名空间的概念，转Class需要拼接命名空间
 
-123456789101112131415161718&#x2F;&#x2F;这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    &#x...">
+123456789101112131415161718//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    //控制器字符串名称   ...">
   
 
   <!-- feed -->
@@ -383,7 +383,7 @@ Swift中引入了命名空间的概念，转Class需要拼接命名空间
           <h3 id="String-gt-Class"><a href="#String-gt-Class" class="headerlink" title="String-&gt;Class"></a>String-&gt;Class</h3><blockquote>
 <p>Swift中引入了命名空间的概念，转Class需要拼接命名空间</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F;这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子</span><br><span class="line">@objc func OnClick()&#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;控制器字符串名称</span><br><span class="line">    let vcNameString &#x3D; &quot;OneViewController&quot;</span><br><span class="line">    &#x2F;&#x2F;获取命名空间也就是项目名称</span><br><span class="line">    let clsName &#x3D; Bundle.main.infoDictionary![&quot;CFBundleExecutable&quot;] as? String</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;拼接</span><br><span class="line">    let className&#x3D;clsName! + &quot;.&quot; + vcNameString</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;字符串转Class 需要注意的是这里的&#96;UIViewController&#96;强转必须带上&#96;.Type&#96;,否则转换不成功</span><br><span class="line">    let classT &#x3D; NSClassFromString(className)! as! UIViewController.Type</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)</span><br><span class="line">&#125;&#x2F;&#x2F;成功完成跳转</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子</span></span><br><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">OnClick</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//控制器字符串名称</span></span><br><span class="line">    <span class="keyword">let</span> vcNameString = <span class="string">"OneViewController"</span></span><br><span class="line">    <span class="comment">//获取命名空间也就是项目名称</span></span><br><span class="line">    <span class="keyword">let</span> clsName = <span class="type">Bundle</span>.main.infoDictionary![<span class="string">"CFBundleExecutable"</span>] <span class="keyword">as</span>? <span class="type">String</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//拼接</span></span><br><span class="line">    <span class="keyword">let</span> className=clsName! + <span class="string">"."</span> + vcNameString</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//字符串转Class 需要注意的是这里的`UIViewController`强转必须带上`.Type`,否则转换不成功</span></span><br><span class="line">    <span class="keyword">let</span> classT = <span class="type">NSClassFromString</span>(className)! <span class="keyword">as</span>! <span class="type">UIViewController</span>.<span class="type">Type</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="type">URLRouter</span>.shared.pushViewController(viewController:classT.<span class="keyword">init</span>()  , animated: <span class="literal">true</span>)</span><br><span class="line">&#125;<span class="comment">//成功完成跳转</span></span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
@@ -462,10 +462,10 @@ Swift中引入了命名空间的概念，转Class需要拼接命名空间
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:34:06+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:47:13+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 
@@ -495,7 +495,7 @@ Swift中引入了命名空间的概念，转Class需要拼接命名空间
           href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2019/06/17/Swift%E4%B8%ADString%E8%BD%AC%E7%B1%BB%E5%90%8DClass/&title=Swift中String转类名Class - 飞羽的博客&summary=String-&gt;Class
 Swift中引入了命名空间的概念，转Class需要拼接命名空间
 
-123456789101112131415161718&#x2F;&#x2F;这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    &#x2F;&#x2F;控制器字符串名称    let vcNameString &#x3D; &quot;OneViewController&quot;    &#x2F;&#x2F;获取命名空间也就是项目名称    let clsName &#x3D; Bundle.main.infoDictionary![&quot;CFBundleExecutable&quot;] as? String        &#x2F;&#x2F;拼接    let className&#x3D;clsName! + &quot;.&quot; + vcNameString        &#x2F;&#x2F;字符串转Class 需要注意的是这里的&#96;UIViewController&#96;强转必须带上&#96;.Type&#96;,否则转换不成功    let classT &#x3D; NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;&#x2F;&#x2F;成功完成跳转"
+123456789101112131415161718//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    //控制器字符串名称    let vcNameString = "OneViewController"    //获取命名空间也就是项目名称    let clsName = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String        //拼接    let className=clsName! + "." + vcNameString        //字符串转Class 需要注意的是这里的`UIViewController`强转必须带上`.Type`,否则转换不成功    let classT = NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;//成功完成跳转"
           
           >
           
@@ -510,7 +510,7 @@ Swift中引入了命名空间的概念，转Class需要拼接命名空间
           href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2019/06/17/Swift%E4%B8%ADString%E8%BD%AC%E7%B1%BB%E5%90%8DClass/&title=Swift中String转类名Class - 飞羽的博客&summary=String-&gt;Class
 Swift中引入了命名空间的概念，转Class需要拼接命名空间
 
-123456789101112131415161718&#x2F;&#x2F;这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    &#x2F;&#x2F;控制器字符串名称    let vcNameString &#x3D; &quot;OneViewController&quot;    &#x2F;&#x2F;获取命名空间也就是项目名称    let clsName &#x3D; Bundle.main.infoDictionary![&quot;CFBundleExecutable&quot;] as? String        &#x2F;&#x2F;拼接    let className&#x3D;clsName! + &quot;.&quot; + vcNameString        &#x2F;&#x2F;字符串转Class 需要注意的是这里的&#96;UIViewController&#96;强转必须带上&#96;.Type&#96;,否则转换不成功    let classT &#x3D; NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;&#x2F;&#x2F;成功完成跳转"
+123456789101112131415161718//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    //控制器字符串名称    let vcNameString = "OneViewController"    //获取命名空间也就是项目名称    let clsName = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String        //拼接    let className=clsName! + "." + vcNameString        //字符串转Class 需要注意的是这里的`UIViewController`强转必须带上`.Type`,否则转换不成功    let classT = NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;//成功完成跳转"
           
           >
           
@@ -525,7 +525,7 @@ Swift中引入了命名空间的概念，转Class需要拼接命名空间
           href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2019/06/17/Swift%E4%B8%ADString%E8%BD%AC%E7%B1%BB%E5%90%8DClass/&title=Swift中String转类名Class - 飞羽的博客&summary=String-&gt;Class
 Swift中引入了命名空间的概念，转Class需要拼接命名空间
 
-123456789101112131415161718&#x2F;&#x2F;这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    &#x2F;&#x2F;控制器字符串名称    let vcNameString &#x3D; &quot;OneViewController&quot;    &#x2F;&#x2F;获取命名空间也就是项目名称    let clsName &#x3D; Bundle.main.infoDictionary![&quot;CFBundleExecutable&quot;] as? String        &#x2F;&#x2F;拼接    let className&#x3D;clsName! + &quot;.&quot; + vcNameString        &#x2F;&#x2F;字符串转Class 需要注意的是这里的&#96;UIViewController&#96;强转必须带上&#96;.Type&#96;,否则转换不成功    let classT &#x3D; NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;&#x2F;&#x2F;成功完成跳转"
+123456789101112131415161718//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子@objc func OnClick()&#123;    //控制器字符串名称    let vcNameString = "OneViewController"    //获取命名空间也就是项目名称    let clsName = Bundle.main.infoDictionary!["CFBundleExecutable"] as? String        //拼接    let className=clsName! + "." + vcNameString        //字符串转Class 需要注意的是这里的`UIViewController`强转必须带上`.Type`,否则转换不成功    let classT = NSClassFromString(className)! as! UIViewController.Type            URLRouter.shared.pushViewController(viewController:classT.init()  , animated: true)&#125;//成功完成跳转"
           
           >
           

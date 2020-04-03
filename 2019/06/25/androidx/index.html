@@ -376,25 +376,26 @@
         <div class="article-entry" itemprop="articleBody">
           
           <h4 id="1-ViewModelProviders"><a href="#1-ViewModelProviders" class="headerlink" title="1. ViewModelProviders"></a>1. ViewModelProviders</h4><p>在<code>build.gradle</code> 的 <code>dependencies</code> 中加入</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#39;androidx.lifecycle:lifecycle-extensions:2.0.0&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">'androidx.lifecycle:lifecycle-extensions:2.0.0'</span></span><br></pre></td></tr></table></figure>
 
 <p>在使用的地方导入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import androidx.lifecycle.ViewModelProviders;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> androidx.lifecycle.ViewModelProviders;</span><br></pre></td></tr></table></figure>
 
 <p>即可使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myViewModel &#x3D; ViewModelProviders.of(this).get(MyViewModel.class);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">myViewModel = ViewModelProviders.of(<span class="keyword">this</span>).get(MyViewModel<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>该方法 2.1.0 已弃用 ViewModelProviders.of() ,改为</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;导入 import androidx.lifecycle.ViewModelProvider;</span><br><span class="line">myViewModel &#x3D; ViewModelProvider(this).get(MyViewModel.class);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;或者</span><br><span class="line">myViewModel &#x3D; ViewModelProvider(getActivity()).get(MyViewModel.class);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导入 import androidx.lifecycle.ViewModelProvider;</span></span><br><span class="line">myViewModel = ViewModelProvider(<span class="keyword">this</span>).get(MyViewModel<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">myViewModel = ViewModelProvider(getActivity()).get(MyViewModel<span class="class">.<span class="keyword">class</span>)</span>;</span><br></pre></td></tr></table></figure>
 
 
 <h4 id="2-DataBinding"><a href="#2-DataBinding" class="headerlink" title="2. DataBinding"></a>2. DataBinding</h4><p>在 <code>build.gradle</code> 的  defaultConfig中加入 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dataBinding&#123;</span><br><span class="line">    enabled true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dataBinding&#123;</span><br><span class="line">    enabled <span class="keyword">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>Sync Now</code>一下，把下面代码套在布局最外层，即可使用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res&#x2F;android&quot;</span><br><span class="line">    xmlns:app&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;apk&#x2F;res-auto&quot;</span><br><span class="line">    xmlns:tools&#x3D;&quot;http:&#x2F;&#x2F;schemas.android.com&#x2F;tools&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;data&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;data&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line">    &#x2F;&#x2F;这里写自己的布局</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;&#x2F;layout&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;layout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;data&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/data&gt;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//============</span></span><br><span class="line">    <span class="comment">//这里写自己的布局</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&lt;/layout&gt;</span><br></pre></td></tr></table></figure>
+
 
           
             <br>
@@ -463,10 +464,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T14:56:54+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:38:33+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 

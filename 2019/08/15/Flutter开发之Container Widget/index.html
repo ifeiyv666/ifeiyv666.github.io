@@ -399,7 +399,7 @@
 
 <p><strong>这个例子展示了如何同时使用容器的许多特性。这些约束被设置为适合字体大小加上足够的垂直净空，同时水平展开以适合父级。填充用于确保内容和文本之间有空间。这个颜色使盒子变成蓝色。对齐会使子项在框中居中。最后，变换对整个装置应用轻微的旋转以完成效果:</strong></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/11100630-8872dd960763226b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-05-25 下午6.39.27.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">  constraints: BoxConstraints.expand(</span><br><span class="line">    height: Theme.of(context).textTheme.display1.fontSize * 1.1 + 200.0,</span><br><span class="line">  ),</span><br><span class="line">  padding: const EdgeInsets.all(8.0),</span><br><span class="line">  color: Colors.blue[600],</span><br><span class="line">  alignment: Alignment.center,</span><br><span class="line">  child: Text(&#39;Hello World&#39;,</span><br><span class="line">    style: Theme.of(context)</span><br><span class="line">        .textTheme</span><br><span class="line">        .display1</span><br><span class="line">        .copyWith(color: Colors.white)),</span><br><span class="line">  transform: Matrix4.rotationZ(0.1),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">  constraints: BoxConstraints.expand(</span><br><span class="line">    height: Theme.of(context).textTheme.display1.fontSize * <span class="number">1.1</span> + <span class="number">200.0</span>,</span><br><span class="line">  ),</span><br><span class="line">  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">  color: Colors.blue[<span class="number">600</span>],</span><br><span class="line">  alignment: Alignment.center,</span><br><span class="line">  child: Text(<span class="string">'Hello World'</span>,</span><br><span class="line">    style: Theme.of(context)</span><br><span class="line">        .textTheme</span><br><span class="line">        .display1</span><br><span class="line">        .copyWith(color: Colors.white)),</span><br><span class="line">  transform: Matrix4.rotationZ(<span class="number">0.1</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 
 <p><strong>也可以看看：</strong></p>
@@ -407,30 +407,27 @@
 <h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
 <p>创建一个小部件, 结合了普通的绘画、定位和大小调整小部件。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Container(&#123;Key key, </span><br><span class="line">    AlignmentGeometry alignment,</span><br><span class="line">    EdgeInsetsGeometry padding, </span><br><span class="line">    Color color, </span><br><span class="line">    Decoration decoration, </span><br><span class="line">    Decoration foregroundDecoration, </span><br><span class="line">    double width, </span><br><span class="line">    double height, </span><br><span class="line">    BoxConstraints constraints, EdgeInsetsGeometry margin, </span><br><span class="line">    Matrix4 transform, </span><br><span class="line">    Widget child </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Container(&#123;Key key, </span><br><span class="line">    AlignmentGeometry alignment,</span><br><span class="line">    EdgeInsetsGeometry padding, </span><br><span class="line">    Color color, </span><br><span class="line">    Decoration decoration, </span><br><span class="line">    Decoration foregroundDecoration, </span><br><span class="line">    <span class="built_in">double</span> width, </span><br><span class="line">    <span class="built_in">double</span> height, </span><br><span class="line">    BoxConstraints constraints, EdgeInsetsGeometry margin, </span><br><span class="line">    Matrix4 transform, </span><br><span class="line">    Widget child </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
 <li><p>alignment → AlignmentGeometry</p>
-<ul>
-<li><em>对齐内部的子级</em></li>
-</ul>
+</li>
+<li><p><em>对齐内部的子级</em></p>
 </li>
 <li><p>child → Widget</p>
-<ul>
-<li><em>容器内部的子级</em></li>
-</ul>
+</li>
+<li><p><em>容器内部的子级</em></p>
 </li>
 <li><p>constraints → BoxConstraints </p>
-<ul>
-<li><em>要应用于子级的附加约束</em></li>
-</ul>
+</li>
+<li><p><em>要应用于子级的附加约束</em></p>
 </li>
 <li><p>decoration → Decoration</p>
 <ul>
 <li><em>子级背后的装饰</em></li>
 <li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
-<li><em>需要注意的是 <code>deoration</code>和 <code>color</code> 背景颜色不能共存，二者同时只能有一个</em><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">decoration: new BoxDecoration(</span><br><span class="line">               border: new Border.all(width: 2.0, color: Colors.red),</span><br><span class="line">               color: Colors.grey,</span><br><span class="line">               borderRadius: new BorderRadius.all(new Radius.circular(20.0)),</span><br><span class="line">               image: new DecorationImage(</span><br><span class="line">                 image: new NetworkImage(&#39;http:&#x2F;&#x2F;b-ssl.duitang.com&#x2F;uploads&#x2F;item&#x2F;201609&#x2F;26&#x2F;20160926203611_HXQxk.jpeg&#39;),</span><br><span class="line">                 centerSlice: new Rect.fromLTRB(270.0, 180.0, 1360.0, 730.0),</span><br><span class="line">               ),</span><br><span class="line">             ),</span><br></pre></td></tr></table></figure></li>
-<li><img src="" alt="nodecoration">)<img src="" alt="nodecoration"></li>
+<li><em>需要注意的是 <code>deoration</code>和 <code>color</code> 背景颜色不能共存，二者同时只能有一个</em><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">decoration: <span class="keyword">new</span> BoxDecoration(</span><br><span class="line">               border: <span class="keyword">new</span> Border.all(width: <span class="number">2.0</span>, color: Colors.red),</span><br><span class="line">               color: Colors.grey,</span><br><span class="line">               borderRadius: <span class="keyword">new</span> BorderRadius.all(<span class="keyword">new</span> Radius.circular(<span class="number">20.0</span>)),</span><br><span class="line">               image: <span class="keyword">new</span> DecorationImage(</span><br><span class="line">                 image: <span class="keyword">new</span> NetworkImage(<span class="string">'http://b-ssl.duitang.com/uploads/item/201609/26/20160926203611_HXQxk.jpeg'</span>),</span><br><span class="line">                 centerSlice: <span class="keyword">new</span> Rect.fromLTRB(<span class="number">270.0</span>, <span class="number">180.0</span>, <span class="number">1360.0</span>, <span class="number">730.0</span>),</span><br><span class="line">               ),</span><br><span class="line">             ),</span><br></pre></td></tr></table></figure></li>
+<li><img src alt="nodecoration">)<img src alt="nodecoration"></li>
 <li><em>第一张图设置了背景色，未使用decoration；第二张图设置了decoration，未设置背景色</em></li>
 </ul>
 </li>
@@ -440,18 +437,16 @@
 <li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
 <li><em><code>foregroundDecoration</code>和 <code>color</code> 背景颜色可以共存，但是<code>color</code>有可能被遮挡</em></li>
 <li><em>会遮挡child</em></li>
-<li><img src="" alt="nodecoration"></li>
+<li><img src alt="nodecoration"></li>
 </ul>
 </li>
 <li><p>margin → EdgeInsetsGeometry</p>
-<ul>
-<li><em>我的理解就是外边距</em></li>
-</ul>
+</li>
+<li><p><em>我的理解就是外边距</em></p>
 </li>
 <li><p>padding → EdgeInsetsGeometry</p>
-<ul>
-<li><em>我的理解就是内边距</em></li>
-</ul>
+</li>
+<li><p><em>我的理解就是内边距</em></p>
 </li>
 <li><p>transform → Matrix4</p>
 <ul>
@@ -459,9 +454,8 @@
 </ul>
 </li>
 <li><p>hashCode → int</p>
-<ul>
-<li><em>此对象的哈希代码</em></li>
-</ul>
+</li>
+<li><p><em>此对象的哈希代码</em></p>
 </li>
 <li><p>key → Key</p>
 <ul>
@@ -490,7 +484,7 @@
 <p>创建StatelessElement以管理此窗口小部件在树中的位置</p>
 </blockquote>
 </li>
-<li><p>debugDescribeChildren() → List<DiagnosticsNode></p>
+<li><p>debugDescribeChildren() → List<DiagnosticsNode></DiagnosticsNode></p>
 <blockquote>
 <p>返回描述此节点的子节点的DiagnosticsNode对象列表。</p>
 </blockquote>
@@ -594,10 +588,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:13:08+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:42:17+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 

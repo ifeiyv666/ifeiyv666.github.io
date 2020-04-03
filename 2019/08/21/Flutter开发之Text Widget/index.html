@@ -378,12 +378,12 @@
           <h3 id="Text-Widget"><a href="#Text-Widget" class="headerlink" title="Text Widget"></a>Text Widget</h3><blockquote>
 <p>“文本”小组件显示单个样式的文本字符串。字符串可能会跨越多行，也可能全部显示在同一行上，具体取决于布局约束。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">   &#x2F;&#x2F;显示的文本</span><br><span class="line">  &#39;Hello, $_name! How are you?&#39;,</span><br><span class="line">  &#x2F;&#x2F;对齐的方式</span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">  </span><br><span class="line">  overflow: TextOverflow.ellipsis,</span><br><span class="line">  </span><br><span class="line">  &#x2F;&#x2F;文本样式</span><br><span class="line">  style: TextStyle(fontWeight: FontWeight.bold),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Text(</span><br><span class="line">   <span class="comment">//显示的文本</span></span><br><span class="line">  <span class="string">'Hello, <span class="subst">$_name</span>! How are you?'</span>,</span><br><span class="line">  <span class="comment">//对齐的方式</span></span><br><span class="line">  textAlign: TextAlign.center,</span><br><span class="line">  </span><br><span class="line">  overflow: TextOverflow.ellipsis,</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//文本样式</span></span><br><span class="line">  style: TextStyle(fontWeight: FontWeight.bold),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>下面使用Text.rich构造函数，Text小部件可以显示具有不同样式TextSpans的段落。下面的示例显示每个单词具有不同样式的“Hello beautiful world”。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const Text.rich(</span><br><span class="line">  TextSpan(</span><br><span class="line">    text: &#39;Hello&#39;, &#x2F;&#x2F; default text style</span><br><span class="line">    children: &lt;TextSpan&gt;[</span><br><span class="line">      TextSpan(text: &#39; beautiful &#39;, style: TextStyle(fontStyle: FontStyle.italic)),</span><br><span class="line">      TextSpan(text: &#39;world&#39;, style: TextStyle(fontWeight: FontWeight.bold)),</span><br><span class="line">    ],</span><br><span class="line">  ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Text.rich(</span><br><span class="line">  TextSpan(</span><br><span class="line">    text: <span class="string">'Hello'</span>, <span class="comment">// default text style</span></span><br><span class="line">    children: &lt;TextSpan&gt;[</span><br><span class="line">      TextSpan(text: <span class="string">' beautiful '</span>, style: TextStyle(fontStyle: FontStyle.italic)),</span><br><span class="line">      TextSpan(text: <span class="string">'world'</span>, style: TextStyle(fontWeight: FontWeight.bold)),</span><br><span class="line">    ],</span><br><span class="line">  ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <h4 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h4><p>要使Text对触摸事件做出反应，请使用GestureDetector.onTap处理程序将其包装在GestureDetector小部件中。</p>
 <p>在材料设计应用程序中，请考虑使用FlatButton，或者如果不合适，至少使用InkWell而不是GestureDetector。</p>
@@ -391,15 +391,14 @@
 <blockquote>
 <p><a href="https://api.flutter.dev/flutter/widgets/RichText-class.html" target="_blank" rel="noopener">RichText</a>，它可以让您更好地控制文本样式。<br><a href="https://api.flutter.dev/flutter/widgets/DefaultTextStyle-class.html" target="_blank" rel="noopener">DefaultTextStyle</a>，用于设置Text小部件的默认样式。</p>
 </blockquote>
-<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">Text(String data, &#123; </span><br><span class="line">           Key key, </span><br><span class="line">           TextStyle style, </span><br><span class="line">           StrutStyle strutStyle,</span><br><span class="line">           TextAlign textAlign,</span><br><span class="line">           TextDirection textDirection,</span><br><span class="line">           Locale locale, </span><br><span class="line">           bool softWrap, </span><br><span class="line">           TextOverflow overflow, </span><br><span class="line">           double textScaleFactor, </span><br><span class="line">           int maxLines, </span><br><span class="line">           String semanticsLabel </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">Text(<span class="built_in">String</span> data, &#123; </span><br><span class="line">           Key key, </span><br><span class="line">           TextStyle style, </span><br><span class="line">           StrutStyle strutStyle,</span><br><span class="line">           TextAlign textAlign,</span><br><span class="line">           TextDirection textDirection,</span><br><span class="line">           Locale locale, </span><br><span class="line">           <span class="built_in">bool</span> softWrap, </span><br><span class="line">           TextOverflow overflow, </span><br><span class="line">           <span class="built_in">double</span> textScaleFactor, </span><br><span class="line">           <span class="built_in">int</span> maxLines, </span><br><span class="line">           <span class="built_in">String</span> semanticsLabel </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Text.rich(TextSpan textSpan, &#123; </span><br><span class="line">                   Key key, </span><br><span class="line">                   TextStyle style,</span><br><span class="line">                   StrutStyle strutStyle,</span><br><span class="line">                   TextAlign textAlign,</span><br><span class="line">                   TextDirection textDirection, </span><br><span class="line">                   Locale locale, </span><br><span class="line">                   bool softWrap, </span><br><span class="line">                   TextOverflow overflow, </span><br><span class="line">                   double textScaleFactor, </span><br><span class="line">                   int maxLines, </span><br><span class="line">                   String semanticsLabel </span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Text.rich(TextSpan textSpan, &#123; </span><br><span class="line">                   Key key, </span><br><span class="line">                   TextStyle style,</span><br><span class="line">                   StrutStyle strutStyle,</span><br><span class="line">                   TextAlign textAlign,</span><br><span class="line">                   TextDirection textDirection, </span><br><span class="line">                   Locale locale, </span><br><span class="line">                   <span class="built_in">bool</span> softWrap, </span><br><span class="line">                   TextOverflow overflow, </span><br><span class="line">                   <span class="built_in">double</span> textScaleFactor, </span><br><span class="line">                   <span class="built_in">int</span> maxLines, </span><br><span class="line">                   <span class="built_in">String</span> semanticsLabel </span><br><span class="line">    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h4><ul>
 <li><p>data → String   </p>
-<ul>
-<li><em>要显示的文字</em></li>
-</ul>
+</li>
+<li><p><em>要显示的文字</em></p>
 </li>
 <li><p>locale → Locale</p>
 <ul>
@@ -409,9 +408,8 @@
 </ul>
 </li>
 <li><p>maxLines→int</p>
-<ul>
-<li><em>文本要跨越的可选最大行数，必要时包装。如果文本超过给定的行数，则会根据溢出将其截断</em></li>
-</ul>
+</li>
+<li><p><em>文本要跨越的可选最大行数，必要时包装。如果文本超过给定的行数，则会根据溢出将其截断</em></p>
 </li>
 <li><p>overflow→TextOverflow</p>
 <ul>
@@ -421,7 +419,7 @@
 <li>ellipsis→const TextOverflow<br>将溢出的文本淡化为透明。<br>const TextOverflow（1）</li>
 <li>ellipsis→const TextOverflow<br>使用省略号表示文本已溢出。<br>const TextOverflow（2）</li>
 <li>visible→const TextOverflow<br>在其容器外部渲染溢出的文本。<br>const TextOverflow（3）</li>
-<li>values→const List <TextOverflow><br>此枚举中值的常量列表，按其声明顺序排列。<br>const List <TextOverflow></li>
+<li>values→const List <TextOverflow><br>此枚举中值的常量列表，按其声明顺序排列。<br>const List <TextOverflow></TextOverflow></TextOverflow></li>
 </ul>
 </li>
 </ul>
@@ -448,7 +446,7 @@
 <li><p><em>强烈建议至少指定一个字体. 有关详细信息, 请参见 <a href="https://api.flutter.dev/flutter/painting/StrutStyle-class.html" target="_blank" rel="noopener">StrutStyle</a>。</em></p>
 </li>
 <li><p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   const Text(</span><br><span class="line">        &#39;Hello, world!\nSecond line!&#39;,</span><br><span class="line">        style: TextStyle(</span><br><span class="line">        fontSize: 10,</span><br><span class="line">        fontFamily: &#39;Raleway&#39;,</span><br><span class="line">    ),</span><br><span class="line">  strutStyle: StrutStyle(</span><br><span class="line">        fontFamily: &#39;Roboto&#39;,</span><br><span class="line">        fontSize: 30,</span><br><span class="line">        height: 1.5,</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">const</span> Text(</span><br><span class="line">        <span class="string">'Hello, world!\nSecond line!'</span>,</span><br><span class="line">        style: TextStyle(</span><br><span class="line">        fontSize: <span class="number">10</span>,</span><br><span class="line">        fontFamily: <span class="string">'Raleway'</span>,</span><br><span class="line">    ),</span><br><span class="line">  strutStyle: StrutStyle(</span><br><span class="line">        fontFamily: <span class="string">'Roboto'</span>,</span><br><span class="line">        fontSize: <span class="number">30</span>,</span><br><span class="line">        height: <span class="number">1.5</span>,</span><br><span class="line">  ),</span><br><span class="line">),</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -469,7 +467,7 @@
 <li>justify → const TextAlign 拉伸以柔和的换行符结束的文本行, 以填充容器的宽度. 以硬线符结束的线条与起始边缘对齐。const TextAlign(3)</li>
 <li>start → const TextAlign  文本开始处对齐 从左到右即为左边，从右到左即为右边 const TextAlign(4)</li>
 <li>end → const TextAlign 文本结束处对齐 从左到右即为右边，从右到左即为左边 const TextAlign(5)</li>
-<li>values → const List<TextAlign> 此枚举中值的常量列表，按其声明顺序排列。</li>
+<li>values → const List<TextAlign> 此枚举中值的常量列表，按其声明顺序排列。</TextAlign></li>
 </ul>
 </li>
 </ul>
@@ -489,19 +487,16 @@
 </ul>
 </li>
 <li><p>textSpan→TextSpan</p>
-<ul>
-<li><em>要显示为TextSpan的文本</em></li>
-</ul>
+</li>
+<li><p><em>要显示为TextSpan的文本</em></p>
 </li>
 <li><p>hashCode→int</p>
-<ul>
-<li><em>此对象的哈希码</em></li>
-</ul>
+</li>
+<li><p><em>此对象的哈希码</em></p>
 </li>
 <li><p>key→Key</p>
-<ul>
-<li><em>控制一个小部件如何替换树中的另一个小部件</em></li>
-</ul>
+</li>
+<li><p><em>控制一个小部件如何替换树中的另一个小部件</em></p>
 </li>
 <li><p>runtimeType→Type</p>
 <ul>
@@ -525,7 +520,7 @@
 <li><em>创建StatelessElement以管理此窗口小部件在树中的位置。 […]</em></li>
 </ul>
 </li>
-<li><p>debugDescribeChildren（）→ List<DiagnosticsNode></p>
+<li><p>debugDescribeChildren（）→ List<DiagnosticsNode></DiagnosticsNode></p>
 <ul>
 <li><em>返回描述此节点的子节点的DiagnosticsNode对象列表。 […]</em></li>
 </ul>
@@ -635,10 +630,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:18:17+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:44:01+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 

@@ -379,61 +379,100 @@
 <p>nginx是非常优秀的开源服务器，用它来做hls或者rtmp流媒体服务器是非常不错的选择</p>
 </blockquote>
 <h4 id="1、安装Homebrow"><a href="#1、安装Homebrow" class="headerlink" title="1、安装Homebrow"></a>1、安装Homebrow</h4><p>（1）执行克隆命令,github的项目(<a href="https://github.com/denji/homebrew-nginx" target="_blank" rel="noopener">https://github.com/denji/homebrew-nginx</a>)</p>
-<pre><code>brew tap denji/nginx</code></pre><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap denji/nginx</span><br></pre></td></tr></table></figure>
+
+<blockquote>
 <p>注意<code>brew tap homebrew/nginx</code>报下面的错误,<code>homebrew/nginx</code>已经弃用. 报错：<code>Error: homebrew/nginx was deprecated. This tap is now empty as all its formulae were migrated</code>.</p>
 </blockquote>
 <p>（2）执行安装命令:</p>
-<pre><code>brew install nginx-full --with-rtmp-module  </code></pre><p>（3）至此nginx和rtmp模块就安装好了，下面开始来配置nginx的rtmp模块<br> 接下来看一下nginx安装在什么地方:</p>
-<pre><code>brew info nginx-full  </code></pre><p><em>打印信息</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The default port has been set in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files in &#x2F;usr&#x2F;local&#x2F;etc&#x2F;nginx&#x2F;servers&#x2F;.</span><br><span class="line"></span><br><span class="line">- Tips -</span><br><span class="line">Run port 80:</span><br><span class="line"> $ sudo chown root:wheel &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line"> $ sudo chmod u+s &#x2F;usr&#x2F;local&#x2F;opt&#x2F;nginx-full&#x2F;bin&#x2F;nginx</span><br><span class="line">Reload config:</span><br><span class="line"> $ nginx -s reload</span><br><span class="line">Reopen Logfile:</span><br><span class="line"> $ nginx -s reopen</span><br><span class="line">Stop process:</span><br><span class="line"> $ nginx -s stop</span><br><span class="line">Waiting on exit process</span><br><span class="line"> $ nginx -s quit</span><br><span class="line"></span><br><span class="line">To have launchd start denji&#x2F;nginx&#x2F;nginx-full now and restart at login:</span><br><span class="line">  brew services start denji&#x2F;nginx&#x2F;nginx-full</span><br><span class="line">Or, if you don&#39;t want&#x2F;need a background service you can just run:</span><br><span class="line">  nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx-full --with-rtmp-module</span><br></pre></td></tr></table></figure>
+
+<p>（3）至此nginx和rtmp模块就安装好了，下面开始来配置nginx的rtmp模块<br> 接下来看一下nginx安装在什么地方:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew info nginx-full</span><br></pre></td></tr></table></figure>
+
+<p><em>打印信息</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">The default port has been <span class="built_in">set</span> <span class="keyword">in</span> /usr/<span class="built_in">local</span>/etc/nginx/nginx.conf to 8080 so that</span><br><span class="line">nginx can run without sudo.</span><br><span class="line"></span><br><span class="line">nginx will load all files <span class="keyword">in</span> /usr/<span class="built_in">local</span>/etc/nginx/servers/.</span><br><span class="line"></span><br><span class="line">- Tips -</span><br><span class="line">Run port 80:</span><br><span class="line"> $ sudo chown root:wheel /usr/<span class="built_in">local</span>/opt/nginx-full/bin/nginx</span><br><span class="line"> $ sudo chmod u+s /usr/<span class="built_in">local</span>/opt/nginx-full/bin/nginx</span><br><span class="line">Reload config:</span><br><span class="line"> $ nginx -s reload</span><br><span class="line">Reopen Logfile:</span><br><span class="line"> $ nginx -s reopen</span><br><span class="line">Stop process:</span><br><span class="line"> $ nginx -s stop</span><br><span class="line">Waiting on <span class="built_in">exit</span> process</span><br><span class="line"> $ nginx -s quit</span><br><span class="line"></span><br><span class="line">To have launchd start denji/nginx/nginx-full now and restart at login:</span><br><span class="line">  brew services start denji/nginx/nginx-full</span><br><span class="line">Or, <span class="keyword">if</span> you don<span class="string">'t want/need a background service you can just run:</span></span><br><span class="line"><span class="string">  nginx</span></span><br></pre></td></tr></table></figure>
 
 <p>nginx安装所在位置:</p>
-<pre><code>/usr/local/opt/nginx-full/bin/nginx</code></pre><p>nginx配置文件所在位置:</p>
-<pre><code>/usr/local/etc/nginx/nginx.conf</code></pre><p>（4）启动nginx,执行命令:</p>
-<pre><code>sudo  nginx</code></pre><h4 id="2、测试nginx："><a href="#2、测试nginx：" class="headerlink" title="2、测试nginx："></a>2、测试nginx：</h4><pre><code>在浏览器中打开如下地址：http://localhost:8080入过</code></pre><p>如果出现<code>Welcome to nginx!</code>,说明安装成功.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/opt/nginx-full/bin/nginx</span><br></pre></td></tr></table></figure>
+
+<p>nginx配置文件所在位置:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>（4）启动nginx,执行命令:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span>  nginx</span><br></pre></td></tr></table></figure>
+
+<h4 id="2、测试nginx："><a href="#2、测试nginx：" class="headerlink" title="2、测试nginx："></a>2、测试nginx：</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在浏览器中打开如下地址：http://localhost:8080入过</span><br></pre></td></tr></table></figure>
+
+<p>如果出现<code>Welcome to nginx!</code>,说明安装成功.</p>
 <p>如果终端上提示：</p>
-<pre><code>nginx: [emerg] bind() to 0.0.0.0:8080 failed (48: Address already in use)  </code></pre><p>则表示8080端口被占用了, 查看端口PID</p>
-<pre><code>lsof -i tcp:8080  </code></pre><p>kill掉占用8080端口的PID</p>
-<pre><code>kill 9603（这里替换成占用8080端口的PID）  </code></pre><h4 id="3、重新加载nginx的配置文件"><a href="#3、重新加载nginx的配置文件" class="headerlink" title="3、重新加载nginx的配置文件"></a>3、重新加载nginx的配置文件</h4><p>（1）修改nginx.conf这个配置文件，配置rtmp<br> 复制nginx配置文件所在位置:</p>
-<pre><code>vi /usr/local/etc/nginx/nginx.conf  </code></pre><p>（2）执行上面命令会直接编辑,或者直接前往当前文件用记事本打开.<br> 滚动到最后面(最后一个}后面即可，不能在{}里面)，添加一下代码，进行配置，最后记得保存。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rtmp &#123;  </span><br><span class="line">  server &#123;  </span><br><span class="line">      listen 1935;  </span><br><span class="line">    #直播流配置  </span><br><span class="line">      application rtmplive &#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          #为 rtmp 引擎设置最大连接数。默认为 off  </span><br><span class="line">          max_connections 1024;  </span><br><span class="line">       &#125;  </span><br><span class="line">      application hls&#123;  </span><br><span class="line">          live on;  </span><br><span class="line">          hls on;  </span><br><span class="line">          hls_path &#x2F;usr&#x2F;local&#x2F;var&#x2F;www&#x2F;hls;  </span><br><span class="line">          hls_fragment 1s;  </span><br><span class="line">      &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx: [emerg] bind() to 0.0.0.0:8080 failed (48: Address already in use)</span><br></pre></td></tr></table></figure>
+
+<p>则表示8080端口被占用了, 查看端口PID</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lsof</span> -i tcp:<span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<p>kill掉占用8080端口的PID</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">kill</span> <span class="number">9603</span>（这里替换成占用<span class="number">8080</span>端口的PID）</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、重新加载nginx的配置文件"><a href="#3、重新加载nginx的配置文件" class="headerlink" title="3、重新加载nginx的配置文件"></a>3、重新加载nginx的配置文件</h4><p>（1）修改nginx.conf这个配置文件，配置rtmp<br> 复制nginx配置文件所在位置:</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vi</span> /usr/local/etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+
+<p>（2）执行上面命令会直接编辑,或者直接前往当前文件用记事本打开.<br> 滚动到最后面(最后一个}后面即可，不能在{}里面)，添加一下代码，进行配置，最后记得保存。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">rtmp</span> &#123;  </span><br><span class="line">  <span class="section">server</span> &#123;  </span><br><span class="line">      <span class="attribute">listen</span> <span class="number">1935</span>;  </span><br><span class="line">    <span class="comment">#直播流配置  </span></span><br><span class="line">      <span class="attribute">application</span> rtmplive &#123;  </span><br><span class="line">          <span class="attribute">live</span> <span class="literal">on</span>;  </span><br><span class="line">          <span class="comment">#为 rtmp 引擎设置最大连接数。默认为 off  </span></span><br><span class="line">          <span class="attribute">max_connections</span> <span class="number">1024</span>;  </span><br><span class="line">       &#125;  </span><br><span class="line">      <span class="attribute">application</span> hls&#123;  </span><br><span class="line">          <span class="attribute">live</span> <span class="literal">on</span>;  </span><br><span class="line">          <span class="attribute">hls</span> <span class="literal">on</span>;  </span><br><span class="line">          <span class="attribute">hls_path</span> /usr/local/var/www/hls;  </span><br><span class="line">          <span class="attribute">hls_fragment</span> <span class="number">1s</span>;  </span><br><span class="line">      &#125;  </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>（3）编辑完成之后,执行一下重新加载配置文件命令:</p>
-<pre><code>sudo nginx -s reload</code></pre><blockquote>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<blockquote>
 <p>需要输入开机密码 sudo不加的话会报错： <code>nginx: [alert] could not open error log file: open() &quot;/usr/local/var/log/nginx/error.log&quot; failed (13: Permission denied)</code>该命令执行后会出来一个弹框询问是否允许 nginx 加入到网络中，选择允许即可。</p>
 </blockquote>
 <p>（4）重启nginx：</p>
-<pre><code>sudo /usr/local/opt/nginx-full/bin/nginx -s reload  </code></pre><p>PS：如果你之前不是按照我上面的方法按照的 nginx，在执行 sudo nginx -s reload 时报了如下错，建议你卸载 nginx后按照我上面的步骤重新安装nginx。<br> nginx: [emerg] unknown directive “rtmp” in /usr/local/etc/nginx/nginx.conf:119</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> /usr/local/opt/nginx-full/bin/nginx -s reload</span><br></pre></td></tr></table></figure>
+
+<p>PS：如果你之前不是按照我上面的方法按照的 nginx，在执行 sudo nginx -s reload 时报了如下错，建议你卸载 nginx后按照我上面的步骤重新安装nginx。<br> nginx: [emerg] unknown directive “rtmp” in /usr/local/etc/nginx/nginx.conf:119</p>
 <p><strong>nginx常用方法:</strong></p>
 <blockquote>
 <p>出现权限不足的错误提示时，命令前加上 sudo</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重新加载配置文件:  nginx -s reload</span><br><span class="line">重新加载日志:     nginx -s reopen </span><br><span class="line">停止 nginx:      nginx -s stop  </span><br><span class="line">有序退出 nginx:   nginx -s quit</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重新加载配置文件:  nginx -s reload</span><br><span class="line">重新加载日志:     nginx -s reopen </span><br><span class="line">停止 nginx:      nginx -s stop  </span><br><span class="line">有序退出 nginx:   nginx -s quit</span><br></pre></td></tr></table></figure>
 
-<h4 id="4、安装ffmepg工具"><a href="#4、安装ffmepg工具" class="headerlink" title="4、安装ffmepg工具"></a>4、安装ffmepg工具</h4><pre><code>brew install ffmpeg</code></pre><h4 id="5、本地推流"><a href="#5、本地推流" class="headerlink" title="5、本地推流"></a>5、本地推流</h4><p>(1)、搭建本地视频直播，比如电脑上面有很多电影，我们可以通过推流的形式实现实时直播：</p>
+<h4 id="4、安装ffmepg工具"><a href="#4、安装ffmepg工具" class="headerlink" title="4、安装ffmepg工具"></a>4、安装ffmepg工具</h4><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">brew</span> install ffmpeg</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、本地推流"><a href="#5、本地推流" class="headerlink" title="5、本地推流"></a>5、本地推流</h4><p>(1)、搭建本地视频直播，比如电脑上面有很多电影，我们可以通过推流的形式实现实时直播：</p>
 <p>A：在电脑上播放推流内容<br> 安装一个支持rtmp协议的视频播放器，Mac下可以用VLC<br> 下载<a href="http://soft.macx.cn/3164.htm" target="_blank" rel="noopener">VLC</a></p>
 <p> 本地下载一个视频文件路径为 /Users/iOS002/Desktop/loginmovie.mp4</p>
 <p> 执行以下命令:</p>
-<pre><code>ffmpeg -re -i /Users/iOS002/Desktop/loginmovie.mp4  -vcodec libx264 -acodec aac -strict -2 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>用vlc 然后打开 VLC 中 的 file – Open Network, 直接输入代码中的 url:</p>
-<pre><code>rtmp://localhost:1935/rtmplive/room</code></pre><p>即可以通过VLC来播放终端中实时推过来的 RTMP流。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ffmpeg</span> -re -i /Users/iOS002/Desktop/loginmovie.mp4  -vcodec libx264 -acodec aac -strict -<span class="number">2</span> -f flv rtmp://localhost:1935/rtmplive/room</span><br></pre></td></tr></table></figure>
+
+<p>用vlc 然后打开 VLC 中 的 file – Open Network, 直接输入代码中的 url:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtmp://localhost:1935/rtmplive/room</span><br></pre></td></tr></table></figure>
+
+<p>即可以通过VLC来播放终端中实时推过来的 RTMP流。</p>
 <p>B：通过手机观看电脑的推流</p>
 <p> 通过集成 ijkplayer 把地址换成推流的地址即可观看</p>
 <p> 播放端用的针对RTMP优化过的ijkplayer，ijkplayer是基于FFmpeg的跨平台播放器，这个开源项目已经被多个 App 使用，其中映客、美拍和斗鱼使用了 ijkplayer。</p>
 <p>(2)、桌面录制或者分享</p>
-<pre><code>ffmpeg -f avfoundation -i &quot;1&quot; -vcodec libx264 -preset ultrafast -acodec libfaac -f flv rtmp://localhost:1935/rtmplive/room </code></pre><p>(3)、桌面+麦克风</p>
-<pre><code>ffmpeg -f avfoundation -i &quot;1:0&quot; -vcodec libx264 -preset ultrafast -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:1935/rtmplive/room</code></pre><p>(4)、桌面+麦克风，并且还要摄像头拍摄到自己</p>
-<pre><code>ffmpeg -f avfoundation -framerate 30 -i &quot;1:0&quot; \-f avfoundation -framerate 30 -video_size 640x480 -i &quot;0&quot; \-c:v libx264 -preset ultrafast \-filter_complex &apos;overlay=main_w-overlay_w-10:main_h-overlay_h-10&apos; -acodec libmp3lame -ar 44100 -ac 1 -f flv rtmp://localhost:2016/rtmplive/room  </code></pre><h4 id="6、手机推流"><a href="#6、手机推流" class="headerlink" title="6、手机推流"></a>6、手机推流</h4><p>可以用  LFLiveKit 集成到工程进行推流，LFLiveKit已经帮我们实现了视频采集、后台录制、美颜功能、支持h264、AAC编码，动态改变速率，RTMP传输等，我们开发的时候就很简单了只需把localhost:8080换成自己电脑的ip地址即可:</p>
-<pre><code>rtmp://10.0.0.17:1935/rtmplive/room</code></pre><p>注意通过网络查看电脑的局域网 IP替换掉 localhost 即可。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ffmpeg</span> -f avfoundation -i <span class="string">"1"</span> -vcodec libx264 -preset ultrafast -acodec libfaac -f flv rtmp://localhost:1935/rtmplive/room</span><br></pre></td></tr></table></figure>
+
+<p>(3)、桌面+麦克风</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ffmpeg</span> -f avfoundation -i <span class="string">"1:0"</span> -vcodec libx264 -preset ultrafast -acodec libmp3lame -ar <span class="number">44100</span> -ac <span class="number">1</span> -f flv rtmp://localhost:1935/rtmplive/room</span><br></pre></td></tr></table></figure>
+
+<p>(4)、桌面+麦克风，并且还要摄像头拍摄到自己</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ffmpeg</span> -f avfoundation -framerate <span class="number">30</span> -i <span class="string">"1:0"</span> \-f avfoundation -framerate <span class="number">30</span> -video_size 640x480 -i <span class="string">"0"</span> \-c:v libx264 -preset ultrafast \-filter_complex <span class="string">'overlay=main_w-overlay_w-10:main_h-overlay_h-10'</span> -acodec libmp3lame -ar <span class="number">44100</span> -ac <span class="number">1</span> -f flv rtmp://localhost:2016/rtmplive/room</span><br></pre></td></tr></table></figure>
+
+<h4 id="6、手机推流"><a href="#6、手机推流" class="headerlink" title="6、手机推流"></a>6、手机推流</h4><p>可以用  LFLiveKit 集成到工程进行推流，LFLiveKit已经帮我们实现了视频采集、后台录制、美颜功能、支持h264、AAC编码，动态改变速率，RTMP传输等，我们开发的时候就很简单了只需把localhost:8080换成自己电脑的ip地址即可:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rtmp://10.0.0.17:1935/rtmplive/room</span><br></pre></td></tr></table></figure>
+<p>注意通过网络查看电脑的局域网 IP替换掉 localhost 即可。</p>
 <p>A：通过VLC观看手机的推流</p>
 <p> 打开手机直播后，然后在电脑上打开VLC（同上），就能实现手机推流，在电脑上拉流播放了！！(注：手机需要和电脑连接同一网络！)</p>
 <p>B：通过手机观看手机的推流（这也就是市面上的那些直播App的最终实现形式了）</p>
 <p> 通过集成 ijkplayer 把地址换成推流的地址即可观看。</p>
 <p>PS：一个很隐蔽的报错：</p>
 <p>如果你发现你的推流地址和拉流地址在电脑上都是好好的，但是通过手机实现的时候就是报错，那么估计就是因为Mac防火墙的问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br><span class="line">ERROR: PILI_RTMP_Connect0, failed to connect socket. 60 (Operation timed out)</span><br><span class="line">ERROR: WriteN, PILI_RTMP send error 9, Bad file descriptor, (140 bytes)</span><br></pre></td></tr></table></figure>
 
 <p>关闭 Mac 的防火墙即可解决问题。</p>
-<pre><code>偏好设置-&gt;安全性与隐私-&gt;防火墙</code></pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">偏好设置-&gt;安全性与隐私-&gt;防火墙</span><br></pre></td></tr></table></figure>
           
             <br>
             
@@ -501,10 +540,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:57:22+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:36:56+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 

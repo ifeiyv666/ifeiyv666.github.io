@@ -379,33 +379,21 @@
 <li>修改<code>Flutter SDK</code>中的<code>flutter.gradle</code>文件,通过 <code>flutter&gt;packages&gt;flutter_tools&gt;gradle&gt;flutter.gradle</code>(注意这是Flutter SDK安装位置不是Android Studio的)路径找到<code>flutter.gradle</code>，打开<code>flutter.gradle</code>文件，修改配置：</li>
 </ol>
 <p>注释掉<code>google()</code>和<code>jcenter()</code>,加入阿里的配置项</p>
-<pre><code>maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}</code></pre><p> 修改后：</p>
-<pre><code>buildscript {
-    repositories {
-        //注释掉 google()和jcenter()
-        // google()
-        // jcenter()
-        maven {url &apos;https://maven.aliyun.com/repository/google&apos;}
-        maven {url &apos;https://maven.aliyun.com/repository/jcenter&apos;}
-        maven {url &apos;https://maven.aliyun.com/nexus/content/groups/public&apos;}
-    }
-    dependencies {
-        classpath &apos;com.android.tools.build:gradle:3.2.1&apos;
-    }
-}</code></pre><ol start="2">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">maven &#123;url <span class="string">'https://maven.aliyun.com/repository/google'</span>&#125;</span><br><span class="line">maven &#123;url <span class="string">'https://maven.aliyun.com/repository/jcenter'</span>&#125;</span><br><span class="line">maven &#123;url <span class="string">'https://maven.aliyun.com/nexus/content/groups/public'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 修改后：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        <span class="comment">//注释掉 google()和jcenter()</span></span><br><span class="line">        <span class="comment">// google()</span></span><br><span class="line">        <span class="comment">// jcenter()</span></span><br><span class="line">    	maven &#123;url <span class="string">'https://maven.aliyun.com/repository/google'</span>&#125;</span><br><span class="line">    	maven &#123;url <span class="string">'https://maven.aliyun.com/repository/jcenter'</span>&#125;</span><br><span class="line">    	maven &#123;url <span class="string">'https://maven.aliyun.com/nexus/content/groups/public'</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.2.1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
 <li><p>手动下载<code>gradle</code>进行配置</p>
 <p>找到创建的flutter项目：</p>
 <p>通过路径<code>flutterdemo001/android/gradle/wrapper/gradle-wrapper.properties</code>找到对应文件打开后：</p>
 </li>
 </ol>
-<pre><code>#Fri Jun 23 08:50:38 CEST 2017
-distributionBase=GRADLE_USER_HOME
-distributionPath=wrapper/dists
-zipStoreBase=GRADLE_USER_HOME
-zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip</code></pre><p>  找到<code>distributionUrl</code>对应的地址<code>https://services.gradle.org/distributions/gradle-4.10.2-all.zip</code>就是gradle的下载地址,注意文件中https后面有个<code>\</code>,复制到浏览器记得要删掉</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Fri Jun 23 08:50:38 CEST 2017</span><br><span class="line">distributionBase=GRADLE_USER_HOME</span><br><span class="line">distributionPath=wrapper/dists</span><br><span class="line">zipStoreBase=GRADLE_USER_HOME</span><br><span class="line">zipStorePath=wrapper/dists</span><br><span class="line">distributionUrl=https\:<span class="comment">//services.gradle.org/distributions/gradle-4.10.2-all.zip</span></span><br></pre></td></tr></table></figure>
+
+
+<p>​<br>  找到<code>distributionUrl</code>对应的地址<code>https://services.gradle.org/distributions/gradle-4.10.2-all.zip</code>就是gradle的下载地址,注意文件中https后面有个<code>\</code>,复制到浏览器记得要删掉</p>
 <p>   点击下载 <a href="https://services.gradle.org/distributions/gradle-4.10.2-all.zip" target="_blank" rel="noopener">gradle-4.10.2-all.zip</a></p>
 <p>   点击下载<a href="http://services.gradle.org/distributions/" target="_blank" rel="noopener">其他版本gradle</a></p>
 <p>   下载完成后，进行解压。<br>   然后打开目录：<code>Macintosh HD 》 用户 》当前登录用户名称》.gradle》wrapper》dists</code>⁩,<br>   可能有些电脑未打开隐藏文件可见，是看不到<code>.gradle</code>文件夹的,它是一个隐藏文件夹。<br>   使用快捷键<code>shift+command+.</code>来切换隐藏文件可见还是隐藏。找到dists文件夹后，把解压后的<code>gradle</code>拷贝一份放到dists文件夹下即可。</p>
@@ -477,10 +465,10 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T14:55:39+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:37:35+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 
@@ -558,7 +546,7 @@ distributionUrl=https\://services.gradle.org/distributions/gradle-4.10.2-all.zip
               <a class='prev' href='/2019/06/25/androidx/'>
                 <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>androidx</p>
                 <p class='content'>1. ViewModelProviders在build.gradle 的 dependencies 中加入
-1implementation &#39;androidx.lifecycle:lif...</p>
+1implementation 'androidx.lifecycle:lifecyc...</p>
               </a>
             
             

@@ -375,12 +375,12 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <h4 id="AndroidStudio生成签名信息报错"><a href="#AndroidStudio生成签名信息报错" class="headerlink" title="AndroidStudio生成签名信息报错"></a>AndroidStudio生成签名信息报错</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Key was created with errors:</span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 </span><br><span class="line">&quot;keytool -importkeystore -srckeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -destkeystore</span><br><span class="line">(存放路径)\AndroidSigh.jks -deststoretype pkcs12&quot;</span><br><span class="line">迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
+          <h4 id="AndroidStudio生成签名信息报错"><a href="#AndroidStudio生成签名信息报错" class="headerlink" title="AndroidStudio生成签名信息报错"></a>AndroidStudio生成签名信息报错</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Key was created with errors:</span><br><span class="line">Warning:</span><br><span class="line">JKS 密钥库使用专用格式。建议使用 </span><br><span class="line"><span class="string">"keytool -importkeystore -srckeystore</span></span><br><span class="line"><span class="string">(存放路径)\AndroidSigh.jks -destkeystore</span></span><br><span class="line"><span class="string">(存放路径)\AndroidSigh.jks -deststoretype pkcs12"</span></span><br><span class="line">迁移到行业标准格式 PKCS12。</span><br></pre></td></tr></table></figure>
 
 <blockquote>
 <p>解决方案在终端中输入以下命令：</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -alias (alias名称) -keypass (alias密码) -keyalg RSA -keysize 2048 -validity 36500 -keystore (存放路径)\(保存jks文件名称).jks -storepass (keyStore密码)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;然后根据提示信息填写即可（上面命令中的括号要删掉）</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -alias (alias名称) -keypass (alias密码) -keyalg RSA -keysize <span class="number">2048</span> -validity <span class="number">36500</span> -keystore (存放路径)\(保存jks文件名称).jks -storepass (keyStore密码)</span><br><span class="line"></span><br><span class="line"><span class="comment">//然后根据提示信息填写即可（上面命令中的括号要删掉）</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -451,10 +451,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-01T14:21:23+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:37:52+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年4月1日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 
@@ -537,7 +537,7 @@
             
               <a class='next' href='/2020/01/15/Swift%E5%88%A4%E6%96%AD%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%98%AF%E5%90%A6%E5%90%AB%E6%9C%89%E4%B8%AD%E6%96%87/'>
                 <p class='title'>Swift判断字符串中是否含有中文<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>123456789101112131415var str &#x3D; &quot;l我o是v中e文123456789&quot;func judgeStringIncludeChineseWo...</p>
+                <p class='content'>123456789101112131415var str = "l我o是v中e文123456789"func judgeStringIncludeChineseWord(string: Stri...</p>
               </a>
             
           </div>

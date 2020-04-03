@@ -394,95 +394,111 @@
 <p><strong>此示例显示BottomNavigationBar，因为它在Scaffold小部件中使用。 BottomNavigationBar有三个BottomNavigationBarItem小部件，currentIndex设置为索引0.所选项目为琥珀色。 _onItemTapped函数更改所选项的索引，并在Scaffold的中心显示相应的消息:</strong></p>
 <p><img src="https://flutter.github.io/assets-for-api-docs/assets/material/bottom_navigation_bar.png" alt="IMG"> </p>
 <p><strong>源码：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">int _selectedIndex &#x3D; 0;</span><br><span class="line">static const TextStyle optionStyle &#x3D; TextStyle(fontSize: 30, fontWeight: FontWeight.bold);</span><br><span class="line">static const List&lt;Widget&gt; _widgetOptions &#x3D; &lt;Widget&gt;[</span><br><span class="line">  Text(</span><br><span class="line">    &#39;Index 0: Home&#39;,</span><br><span class="line">    style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     &#39;Index 1: Business&#39;,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     &#39;Index 2: School&#39;,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">void _onItemTapped(int index) &#123;</span><br><span class="line">  setState(() &#123;</span><br><span class="line">    _selectedIndex &#x3D; index;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@override</span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  return Scaffold(</span><br><span class="line">    appBar: AppBar(</span><br><span class="line">      title: const Text(&#39;BottomNavigationBar Sample&#39;),</span><br><span class="line">    ),</span><br><span class="line">    body: Center(</span><br><span class="line">      child: _widgetOptions.elementAt(_selectedIndex),</span><br><span class="line">    ),</span><br><span class="line">    bottomNavigationBar: BottomNavigationBar(</span><br><span class="line">      items: const &lt;BottomNavigationBarItem&gt;[</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.home),</span><br><span class="line">          title: Text(&#39;Home&#39;),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.business),</span><br><span class="line">          title: Text(&#39;Business&#39;),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.school),</span><br><span class="line">          title: Text(&#39;School&#39;),</span><br><span class="line">        ),</span><br><span class="line">      ],</span><br><span class="line">      currentIndex: _selectedIndex,</span><br><span class="line">      selectedItemColor: Colors.amber[800],</span><br><span class="line">      onTap: _onItemTapped,</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> _selectedIndex = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> TextStyle optionStyle = TextStyle(fontSize: <span class="number">30</span>, fontWeight: FontWeight.bold);</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">List</span>&lt;Widget&gt; _widgetOptions = &lt;Widget&gt;[</span><br><span class="line">  Text(</span><br><span class="line">    <span class="string">'Index 0: Home'</span>,</span><br><span class="line">    style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     <span class="string">'Index 1: Business'</span>,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     <span class="string">'Index 2: School'</span>,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _onItemTapped(<span class="built_in">int</span> index) &#123;</span><br><span class="line">  setState(() &#123;</span><br><span class="line">    _selectedIndex = index;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> Scaffold(</span><br><span class="line">    appBar: AppBar(</span><br><span class="line">      title: <span class="keyword">const</span> Text(<span class="string">'BottomNavigationBar Sample'</span>),</span><br><span class="line">    ),</span><br><span class="line">    body: Center(</span><br><span class="line">      child: _widgetOptions.elementAt(_selectedIndex),</span><br><span class="line">    ),</span><br><span class="line">    bottomNavigationBar: BottomNavigationBar(</span><br><span class="line">      items: <span class="keyword">const</span> &lt;BottomNavigationBarItem&gt;[</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.home),</span><br><span class="line">          title: Text(<span class="string">'Home'</span>),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.business),</span><br><span class="line">          title: Text(<span class="string">'Business'</span>),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.school),</span><br><span class="line">          title: Text(<span class="string">'School'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ],</span><br><span class="line">      currentIndex: _selectedIndex,</span><br><span class="line">      selectedItemColor: Colors.amber[<span class="number">800</span>],</span><br><span class="line">      onTap: _onItemTapped,</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 <h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
 <p>创建一个底部导航栏，通常用作Scaffold的Scaffold.bottomNavigationBar参数。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BottomNavigationBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    @required List&lt;BottomNavigationBarItem&gt; items, </span><br><span class="line">    ValueChanged&lt;int&gt; onTap, </span><br><span class="line">    int currentIndex: 0, </span><br><span class="line">    double elevation: 8.0, </span><br><span class="line">    BottomNavigationBarType type, </span><br><span class="line">    Color fixedColor, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    double iconSize: 24.0, </span><br><span class="line">    Color selectedItemColor, </span><br><span class="line">    Color unselectedItemColor, </span><br><span class="line">    double selectedFontSize: 14.0, </span><br><span class="line">    double unselectedFontSize: 12.0, </span><br><span class="line">    bool showSelectedLabels: true, </span><br><span class="line">    bool showUnselectedLabels </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BottomNavigationBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">List</span>&lt;BottomNavigationBarItem&gt; items, </span><br><span class="line">    ValueChanged&lt;<span class="built_in">int</span>&gt; onTap, </span><br><span class="line">    <span class="built_in">int</span> currentIndex: <span class="number">0</span>, </span><br><span class="line">    <span class="built_in">double</span> elevation: <span class="number">8.0</span>, </span><br><span class="line">    BottomNavigationBarType type, </span><br><span class="line">    Color fixedColor, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    <span class="built_in">double</span> iconSize: <span class="number">24.0</span>, </span><br><span class="line">    Color selectedItemColor, </span><br><span class="line">    Color unselectedItemColor, </span><br><span class="line">    <span class="built_in">double</span> selectedFontSize: <span class="number">14.0</span>, </span><br><span class="line">    <span class="built_in">double</span> unselectedFontSize: <span class="number">12.0</span>, </span><br><span class="line">    <span class="built_in">bool</span> showSelectedLabels: <span class="keyword">true</span>, </span><br><span class="line">    <span class="built_in">bool</span> showUnselectedLabels </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
-<li><p><code>backgroundColor → Color</code></p>
+<li><code>backgroundColor → Color</code></li>
+</ul>
 <blockquote>
 <p>背景颜色</p>
 </blockquote>
-</li>
-<li><p><code>currentIndex → int</code></p>
+<ul>
+<li><code>currentIndex → int</code></li>
+</ul>
 <blockquote>
 <p>当前活动<code>BottomNavigationBarItem</code>的项目索引(一般就是当前选中的那个项目索引)</p>
 </blockquote>
-</li>
-<li><p><code>elevation → double</code></p>
+<ul>
+<li><code>elevation → double</code></li>
+</ul>
 <blockquote>
 <p>此底部导航栏的Z坐标</p>
 </blockquote>
-</li>
-<li><p><code>fixedColor → Color</code></p>
+<ul>
+<li><code>fixedColor → Color</code></li>
+</ul>
 <blockquote>
 <p>选中项目颜色的值（只读）</p>
 </blockquote>
-</li>
-<li><p><code>iconSize → double</code></p>
+<ul>
+<li><code>iconSize → double</code></li>
+</ul>
 <blockquote>
 <p>所有<code>BottomNavigationBarItem</code>图标的大小</p>
 </blockquote>
-</li>
-<li><p><code>items → List&lt;BottomNavigationBarItem&gt;</code></p>
+<ul>
+<li><code>items → List&lt;BottomNavigationBarItem&gt;</code></li>
+</ul>
 <blockquote>
 <p>定义在底部导航栏中排列的按钮项的外观</p>
 </blockquote>
-</li>
-<li><p><code>onTap → ValueChanged&lt;int&gt;</code></p>
+<ul>
+<li><code>onTap → ValueChanged&lt;int&gt;</code></li>
+</ul>
 <blockquote>
 <p>点击其中一个项目时响应事件</p>
 </blockquote>
-</li>
-<li><p><code>selectedFontSize → double</code></p>
+<ul>
+<li><code>selectedFontSize → double</code></li>
+</ul>
 <blockquote>
 <p>选中时<code>BottomNavigationBarItem</code>标签的字体大小</p>
 </blockquote>
-</li>
-<li><p><code>selectedItemColor → Color</code></p>
+<ul>
+<li><code>selectedItemColor → Color</code></li>
+</ul>
 <blockquote>
 <p>选中时<code>BottomNavigationBarItem.icon</code>和<code>BottomNavigationBarItem.label</code>的颜色</p>
 </blockquote>
-</li>
-<li><p><code>showSelectedLabels → bool</code></p>
+<ul>
+<li><code>showSelectedLabels → bool</code></li>
+</ul>
 <blockquote>
 <p>是否为未选择的<code>BottomNavigationBarItems</code>显示标签</p>
 </blockquote>
-</li>
-<li><p><code>showUnselectedLabels → bool</code></p>
+<ul>
+<li><code>showUnselectedLabels → bool</code></li>
+</ul>
 <blockquote>
 <p>是否为选定的<code>BottomNavigationBarItem</code>显示标签</p>
 </blockquote>
-</li>
-<li><p><code>type → BottomNavigationBarType</code></p>
+<ul>
+<li><code>type → BottomNavigationBarType</code></li>
+</ul>
 <blockquote>
 <p>定义<code>BottomNavigationBar</code>的布局和行为</p>
 </blockquote>
-</li>
-<li><p><code>unselectedFontSize → double</code></p>
+<ul>
+<li><code>unselectedFontSize → double</code></li>
+</ul>
 <blockquote>
 <p>未选中<code>BottomNavigationBarItem</code>标签的字体大小</p>
 </blockquote>
-</li>
-<li><p><code>unselectedItemColor → Color</code></p>
+<ul>
+<li><code>unselectedItemColor → Color</code></li>
+</ul>
 <blockquote>
 <p>未选中的<code>BottomNavigationBarItem.icon</code>和<code>BottomNavigationBarItem.labels</code>的颜色</p>
 </blockquote>
-</li>
-<li><p><code>hashCode → int</code></p>
+<ul>
+<li><code>hashCode → int</code></li>
+</ul>
 <blockquote>
 <p>对象的哈希值（只读）</p>
 </blockquote>
-</li>
-<li><p><code>key → Key</code></p>
+<ul>
+<li><code>key → Key</code></li>
+</ul>
 <blockquote>
 <p>控制一个小部件如何替换树中的另一个小部件</p>
 </blockquote>
-</li>
+<ul>
 <li><p><code>runtimeType → Type</code></p>
 <blockquote>
 <p>表示对象的运行时类型(只读)</p>
@@ -581,101 +597,119 @@
       <h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a>AppBar</h3><p>应用栏通常用于Scaffold.appBar属性，该属性将应用栏放置在屏幕顶部的固定高度小部件中。对于可滚动的应用栏，请参阅<a href="https://api.flutter.dev/flutter/material/SliverAppBar-class.html" target="_blank" rel="noopener">SliverAppBar</a>，它将一个AppBar嵌入到一个条子中，以便在CustomScrollView中使用。</p>
 <p>AppBar在底部（如果有）上方显示工具栏小部件，前导，标题和操作。底部通常用于TabBar。如果指定了flexibleSpace窗口小部件，则它将堆叠在工具栏和底部窗口小部件后面。下图显示了当编写语言从左到右（例如英语）时，每个插槽在工具栏中的显示位置：<br><img src="https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png" alt="image"></p>
 <p>如果省略了前导小部件，但AppBar位于带有抽屉的脚手架中，则会插入一个按钮以打开抽屉。否则，如果最近的导航器具有任何先前的路径，则会插入BackButton。可以通过将automatedImplyLeading设置为false来关闭此行为。在这种情况下，空的前导小部件将导致中间/标题小部件拉伸开始。</p>
-<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    Widget leading, </span><br><span class="line">    bool automaticallyImplyLeading: true, </span><br><span class="line">    Widget title, </span><br><span class="line">    List&lt;Widget&gt; actions, </span><br><span class="line">    Widget flexibleSpace, </span><br><span class="line">    PreferredSizeWidget bottom, </span><br><span class="line">    double elevation, </span><br><span class="line">    ShapeBorder shape, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    Brightness brightness, </span><br><span class="line">    IconThemeData iconTheme, </span><br><span class="line">    IconThemeData actionsIconTheme, </span><br><span class="line">    TextTheme textTheme, </span><br><span class="line">    bool primary: true, </span><br><span class="line">    bool centerTitle, double titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">    double toolbarOpacity: 1.0, </span><br><span class="line">    double bottomOpacity: 1.0 </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    Widget leading, </span><br><span class="line">    <span class="built_in">bool</span> automaticallyImplyLeading: <span class="keyword">true</span>, </span><br><span class="line">    Widget title, </span><br><span class="line">    <span class="built_in">List</span>&lt;Widget&gt; actions, </span><br><span class="line">    Widget flexibleSpace, </span><br><span class="line">    PreferredSizeWidget bottom, </span><br><span class="line">    <span class="built_in">double</span> elevation, </span><br><span class="line">    ShapeBorder shape, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    Brightness brightness, </span><br><span class="line">    IconThemeData iconTheme, </span><br><span class="line">    IconThemeData actionsIconTheme, </span><br><span class="line">    TextTheme textTheme, </span><br><span class="line">    <span class="built_in">bool</span> primary: <span class="keyword">true</span>, </span><br><span class="line">    <span class="built_in">bool</span> centerTitle, <span class="built_in">double</span> titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">    <span class="built_in">double</span> toolbarOpacity: <span class="number">1.0</span>, </span><br><span class="line">    <span class="built_in">double</span> bottomOpacity: <span class="number">1.0</span> </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>eg:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(</span><br><span class="line">  title: Text(&#39;My Fancy Dress&#39;),</span><br><span class="line">  actions: &lt;Widget&gt;[</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_play),</span><br><span class="line">      tooltip: &#39;Air it&#39;,</span><br><span class="line">      onPressed: _airDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add),</span><br><span class="line">      tooltip: &#39;Restitch it&#39;,</span><br><span class="line">      onPressed: _restitchDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add_check),</span><br><span class="line">      tooltip: &#39;Repair it&#39;,</span><br><span class="line">      onPressed: _repairDress,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(</span><br><span class="line">  title: Text(<span class="string">'My Fancy Dress'</span>),</span><br><span class="line">  actions: &lt;Widget&gt;[</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_play),</span><br><span class="line">      tooltip: <span class="string">'Air it'</span>,</span><br><span class="line">      onPressed: _airDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add),</span><br><span class="line">      tooltip: <span class="string">'Restitch it'</span>,</span><br><span class="line">      onPressed: _restitchDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add_check),</span><br><span class="line">      tooltip: <span class="string">'Repair it'</span>,</span><br><span class="line">      onPressed: _repairDress,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
 <h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
-<li><p>actions → List<Widget></p>
+<li>actions → List<Widget></Widget></li>
+</ul>
 <blockquote>
 <p>要在标题小部件后显示的小部件</p>
 </blockquote>
-</li>
-<li><p>actionsIconTheme → IconThemeData</p>
+<ul>
+<li>actionsIconTheme → IconThemeData</li>
+</ul>
 <blockquote>
 <p>用于应用栏操作中显示的图标的颜色，不透明度和大小。仅当操作的主题不同于应用栏的主要小部件中显示的图标时，才应使用此选项</p>
 </blockquote>
-</li>
-<li><p>automaticallyImplyLeading → bool</p>
+<ul>
+<li>automaticallyImplyLeading → bool</li>
+</ul>
 <blockquote>
 <p>Controls whether we should try to imply the leading widget if null. […]</p>
 </blockquote>
-</li>
-<li><p>backgroundColor → Color</p>
+<ul>
+<li>backgroundColor → Color</li>
+</ul>
 <blockquote>
 <p>用于应用栏材质的颜色。通常这应该与亮度，iconTheme，textTheme一起设置。</p>
 </blockquote>
-</li>
-<li><p>bottom → PreferredSizeWidget</p>
+<ul>
+<li>bottom → PreferredSizeWidget</li>
+</ul>
 <blockquote>
 <p>此小组件显示在应用栏的底部</p>
 </blockquote>
-</li>
-<li><p>bottomOpacity → double</p>
+<ul>
+<li>bottomOpacity → double</li>
+</ul>
 <blockquote>
 <p>应用栏底部的不透明程度(0.0 - 1.0)</p>
 </blockquote>
-</li>
-<li><p>brightness → Brightness</p>
+<ul>
+<li>brightness → Brightness</li>
+</ul>
 <blockquote>
 <p>应用栏材质的亮度。通常，这与backgroundColor，iconTheme，textTheme一起设置</p>
 </blockquote>
-</li>
-<li><p>centerTitle → bool</p>
+<ul>
+<li>centerTitle → bool</li>
+</ul>
 <blockquote>
 <p>标题是否居中</p>
 </blockquote>
-</li>
-<li><p>elevation → double</p>
+<ul>
+<li>elevation → double</li>
+</ul>
 <blockquote>
 <p>放置此应用程序栏相对于其父应用程序栏的Z坐标</p>
 </blockquote>
-</li>
-<li><p>flexibleSpace → Widget</p>
+<ul>
+<li>flexibleSpace → Widget</li>
+</ul>
 <blockquote>
 <p>此小组件堆叠在工具栏和选项卡栏后面。它的高度与应用栏的整体高度相同</p>
 </blockquote>
-</li>
-<li><p>iconTheme → IconThemeData</p>
+<ul>
+<li>iconTheme → IconThemeData</li>
+</ul>
 <blockquote>
 <p>用于应用栏图标的颜色，不透明度和大小。通常，这与backgroundColor，brightness，textTheme一起设置</p>
 </blockquote>
-</li>
-<li><p>leading → Widget</p>
+<ul>
+<li>leading → Widget</li>
+</ul>
 <blockquote>
 <p>要在标题之前显示的小部件</p>
 </blockquote>
-</li>
-<li><p>preferredSize → Size</p>
+<ul>
+<li>preferredSize → Size</li>
+</ul>
 <blockquote>
 <p>高度为kToolbarHeight和底部窗口小部件首选高度之和的大小</p>
 </blockquote>
-</li>
-<li><p>primary → bool</p>
+<ul>
+<li>primary → bool</li>
+</ul>
 <blockquote>
 <p>此应用栏是否显示在屏幕顶部</p>
 </blockquote>
-</li>
-<li><p>shape → ShapeBorder</p>
+<ul>
+<li>shape → ShapeBorder</li>
+</ul>
 <blockquote>
 <p>形状和阴影</p>
 </blockquote>
-</li>
-<li><p>textTheme → TextTheme</p>
+<ul>
+<li>textTheme → TextTheme</li>
+</ul>
 <blockquote>
 <p>应用栏中用于文本的排版样式。通常，这与亮度backgroundColor，iconTheme一起设置</p>
 </blockquote>
-</li>
-<li><p>title → Widget</p>
+<ul>
+<li>title → Widget</li>
+</ul>
 <blockquote>
 <p>appbar中显示的主要小部件</p>
 </blockquote>
-</li>
-<li><p>titleSpacing → double</p>
+<ul>
+<li>titleSpacing → double</li>
+</ul>
 <blockquote>
 <p>横轴上标题内容周围的间距。即使没有前导内容或操作，也会应用此间距。如果希望title占用所有可用空间，请将此值设置为0.0</p>
 </blockquote>
-</li>
+<ul>
 <li><p>toolbarOpacity → double</p>
 <blockquote>
 <p>应用栏的工具栏部分透明度(0.0-1.0)</p>
@@ -917,7 +951,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="flutter-go-项目下载后，运行报如下错误："><a href="#flutter-go-项目下载后，运行报如下错误：" class="headerlink" title="flutter go 项目下载后，运行报如下错误："></a>flutter go 项目下载后，运行报如下错误：</h3><figure class="highlight plain"><figcaption><span>flutter run</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Launching lib&#x2F;main.dart on iPhone Xʀ in debug mode...</span><br><span class="line">Running Xcode build...                                                  </span><br><span class="line">                                                   </span><br><span class="line">Xcode build done.                                            3.3s</span><br><span class="line">Failed to build iOS app</span><br><span class="line">Error output from Xcode build:</span><br><span class="line">↳</span><br><span class="line">    ** BUILD FAILED **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Xcode&#39;s output:</span><br><span class="line">↳</span><br><span class="line">    &#x3D;&#x3D;&#x3D; BUILD TARGET firebase_analytics OF PROJECT Pods WITH CONFIGURATION Debug &#x3D;&#x3D;&#x3D;</span><br><span class="line">    &#x2F;Users&#x2F;l&#x2F;Documents&#x2F;flutter&#x2F;.pub-cache&#x2F;hosted&#x2F;pub.dartlang.org&#x2F;firebase_analytics-2.1.1+2&#x2F;ios&#x2F;Classes&#x2F;FirebaseAnalyticsPlu</span><br><span class="line">    gin.m:60:7: error: use of undeclared identifier &#39;FIRAnalyticsConfiguration&#39;</span><br><span class="line">        [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[enabled boolValue]];</span><br><span class="line">          ^</span><br><span class="line">    1 error generated.</span><br><span class="line"></span><br><span class="line">Could not build the application for the simulator.</span><br><span class="line">Error launching application on iPhone Xʀ.</span><br></pre></td></tr></table></figure>
+      <h3 id="flutter-go-项目下载后，运行报如下错误："><a href="#flutter-go-项目下载后，运行报如下错误：" class="headerlink" title="flutter go 项目下载后，运行报如下错误："></a>flutter go 项目下载后，运行报如下错误：</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Launching lib/main.dart <span class="keyword">on</span> iPhone Xʀ <span class="keyword">in</span> debug mode...</span><br><span class="line">Running Xcode build...                                                  </span><br><span class="line">                                                   </span><br><span class="line">Xcode build done.                                            <span class="number">3.3</span>s</span><br><span class="line">Failed to build iOS app</span><br><span class="line">Error output from Xcode build:</span><br><span class="line">↳</span><br><span class="line">    ** BUILD FAILED **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Xcode<span class="string">'s output:</span></span><br><span class="line"><span class="string">↳</span></span><br><span class="line"><span class="string">    === BUILD TARGET firebase_analytics OF PROJECT Pods WITH CONFIGURATION Debug ===</span></span><br><span class="line"><span class="string">    /Users/l/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-2.1.1+2/ios/Classes/FirebaseAnalyticsPlu</span></span><br><span class="line"><span class="string">    gin.m:60:7: error: use of undeclared identifier '</span>FIRAnalyticsConfiguration<span class="string">'</span></span><br><span class="line"><span class="string">        [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[enabled boolValue]];</span></span><br><span class="line"><span class="string">          ^</span></span><br><span class="line"><span class="string">    1 error generated.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Could not build the application for the simulator.</span></span><br><span class="line"><span class="string">Error launching application on iPhone Xʀ.</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>解决方案：</strong></p>
 <hr>
@@ -1351,7 +1385,12 @@
           <li><a class="flat-box"
             title="/categories/Swift/" href="/categories/Swift/"
             id="categoriesSwift"
-            ><div class='name'>Swift</div><div class='badge'>(9)</div></a></li>
+            ><div class='name'>Swift</div><div class='badge'>(8)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Swift/" href="/categories/Swift/"
+            id="categoriesSwift"
+            ><div class='name'>-Swift</div><div class='badge'>(1)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/iOS/" href="/categories/iOS/"
@@ -1380,7 +1419,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
+      <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">-Swift Method</a> <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 17.33px; color: #828282">Flutter的坑</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 

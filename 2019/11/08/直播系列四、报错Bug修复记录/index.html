@@ -378,15 +378,17 @@
           <ol>
 <li>./build-ffmpeg.sh</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang is unable to create an executable file.</span><br><span class="line">C compiler test failed.</span><br><span class="line"></span><br><span class="line">If you think configure made a mistake, make sure you are using the latest</span><br><span class="line">version from Git. If the latest version fails, report the problem to the</span><br><span class="line">ffmpeg-user@ffmpeg.org mailing list or IRC #ffmpeg on irc.freenode.net.</span><br><span class="line">Include the log file &quot;config.log&quot; produced by configure as this will help</span><br><span class="line">solve the problem.</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xcrun -sdk iphoneos clang is unable to create an executable file.</span><br><span class="line">C compiler <span class="built_in">test</span> failed.</span><br><span class="line"></span><br><span class="line">If you think configure made a mistake, make sure you are using the latest</span><br><span class="line">version from Git. If the latest version fails, report the problem to the</span><br><span class="line">ffmpeg-user@ffmpeg.org mailing list or IRC <span class="comment">#ffmpeg on irc.freenode.net.</span></span><br><span class="line">Include the <span class="built_in">log</span> file <span class="string">"config.log"</span> produced by configure as this will <span class="built_in">help</span></span><br><span class="line">solve the problem.</span><br></pre></td></tr></table></figure>
 <p>解决方法：</p>
-<pre><code>sudo xcode-select --switch /Applications/Xcode.app</code></pre><ol start="2">
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select --switch /Applications/Xcode.app</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
 <li>armv7</li>
 </ol>
 <p><a href="https://www.jianshu.com/p/2669370bee23" target="_blank" rel="noopener">https://www.jianshu.com/p/2669370bee23</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;libavutil&#x2F;arm&#x2F;asm.S:50:9: error: unknown directive</span><br><span class="line">       .arch armv7-a</span><br><span class="line">       ^</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./libavutil/arm/asm.S:50:9: error: unknown directive</span><br><span class="line">       .arch armv7<span class="_">-a</span></span><br><span class="line">       ^</span><br></pre></td></tr></table></figure>
 <p>删除<code>armv7compile-ffmpeg.sh</code>文件中 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FF_ALL_ARCHS_IOS8_SDK&#x3D;&quot;armv7 arm64 i386 x86_64&quot;</span><br><span class="line"></span><br><span class="line">改为 FF_ALL_ARCHS_IOS8_SDK&#x3D;&quot;arm64 i386 x86_64&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FF_ALL_ARCHS_IOS8_SDK=<span class="string">"armv7 arm64 i386 x86_64"</span></span><br><span class="line"></span><br><span class="line">改为 FF_ALL_ARCHS_IOS8_SDK=<span class="string">"arm64 i386 x86_64"</span></span><br></pre></td></tr></table></figure>
           
             <br>
             
@@ -454,10 +456,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-17T15:52:13+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-03T14:32:25+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：2020年3月17日</p>
+    <p>更新于：2020年4月3日</p>
   </a>
 </div>
 
