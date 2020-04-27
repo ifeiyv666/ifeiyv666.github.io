@@ -318,6 +318,903 @@
       
         
   <h2 class="title">
+    <a href="/2019/08/15/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BContainer%20Widget/">
+      Flutter开发之Container Widget
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月15日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="Container-Widget"><a href="#Container-Widget" class="headerlink" title="Container Widget"></a>Container Widget</h3><blockquote>
+<p>一个方便的小部件, 结合了普通的绘画、定位和大小的小部件。</p>
+</blockquote>
+<p>容器首先用填充物（由装饰中存在的任何边界膨胀）包围子对象，然后对填充范围应用附加约束（如果其中一个为非空，则将宽度和高度合并为约束）。然后容器被从边缘描述的额外的空白空间包围。</p>
+<p>在绘画过程中，容器首先应用给定的变换，然后绘制装饰填充填充范围，然后绘制子对象，最后绘制前场装饰，也填充填充填充范围。</p>
+<p>没有子对象的容器尽量大，除非传入的约束是无限的，在这种情况下，它们尽量小。有子对象的容器会根据子对象的大小来调整大小。构造函数的width、height和constraints参数重写了这一点。</p>
+<h4 id="布局行为介绍-Layout-behavior"><a href="#布局行为介绍-Layout-behavior" class="headerlink" title="布局行为介绍(Layout behavior)"></a>布局行为介绍(Layout behavior)</h4><blockquote>
+<p>有关框布局模型的介绍，请参阅<a href="https://api.flutter.dev/flutter/rendering/BoxConstraints-class.html" target="_blank" rel="noopener">BoxConstraints</a>。</p>
+</blockquote>
+<p>由于Container结合了许多其他小部件，每个小部件都有自己的布局行为，因此Container的布局行为有点复杂。</p>
+<p>摘要：容器尝试按顺序：遵循对齐，将自身大小调整为子对象，以符合宽度，高度和约束，以扩展以适合父对象，尽可能小。</p>
+<p>进一步来说：</p>
+<p>如果窗口小部件没有子节点，没有高度，没有宽度，没有约束，并且父节点提供无限制约束，则Container尝试尽可能小。</p>
+<p>如果窗口小部件没有子节点且没有对齐，但提供了高度，宽度或约束，则在给定这些约束和父节点约束的组合的情况下，Container会尽可能小。</p>
+<p>如果窗口小部件没有子节点，没有高度，没有宽度，没有约束，没有对齐，但是父节点提供了有界约束，那么Container会扩展以适应父节点提供的约束。</p>
+<p>如果窗口小部件具有对齐，并且父窗口提供无限制约束，则Container会尝试围绕子窗口调整自身大小。</p>
+<p>如果窗口小部件具有对齐，并且父窗口提供有界约束，则Container会尝试展开以适合父窗口，然后根据对齐方式将子项置于其自身内部。</p>
+<p>否则，窗口小部件具有子级但没有高度，没有宽度，没有约束，也没有对齐，并且Container将约束从父级传递给子级并调整其大小以匹配子级。</p>
+<p>边距和填充属性也会影响布局，如这些属性的文档中所述。 （它们的效果仅仅增加了上述规则。）装饰可以隐含地增加填充（例如，BoxDecoration中的边界有助于填充）;请参阅<a href="https://api.flutter.dev/flutter/widgets/Container/padding.html" target="_blank" rel="noopener">Decoration.padding</a>。</p>
+<p><strong>此示例显示一个48x48琥珀色方块（放置在中心小部件内，以防父小部件对容器应采用的大小有自己的意见），并留有一个空白，使其远离相邻小部件：</strong><br><img src="https://upload-images.jianshu.io/upload_images/11100630-9aafd0dda6e7ffd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/567" alt="Container"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Center(</span><br><span class="line">  child: Container(</span><br><span class="line">    margin: const EdgeInsets.all(10.0),</span><br><span class="line">    color: Colors.amber[600],</span><br><span class="line">    width: 48.0,</span><br><span class="line">    height: 48.0,</span><br><span class="line">  ),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p><strong>这个例子展示了如何同时使用容器的许多特性。这些约束被设置为适合字体大小加上足够的垂直净空，同时水平展开以适合父级。填充用于确保内容和文本之间有空间。这个颜色使盒子变成蓝色。对齐会使子项在框中居中。最后，变换对整个装置应用轻微的旋转以完成效果:</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/11100630-8872dd960763226b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2019-05-25 下午6.39.27.png"></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Container(</span><br><span class="line">  constraints: BoxConstraints.expand(</span><br><span class="line">    height: Theme.of(context).textTheme.display1.fontSize * <span class="number">1.1</span> + <span class="number">200.0</span>,</span><br><span class="line">  ),</span><br><span class="line">  padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">8.0</span>),</span><br><span class="line">  color: Colors.blue[<span class="number">600</span>],</span><br><span class="line">  alignment: Alignment.center,</span><br><span class="line">  child: Text(<span class="string">'Hello World'</span>,</span><br><span class="line">    style: Theme.of(context)</span><br><span class="line">        .textTheme</span><br><span class="line">        .display1</span><br><span class="line">        .copyWith(color: Colors.white)),</span><br><span class="line">  transform: Matrix4.rotationZ(<span class="number">0.1</span>),</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>也可以看看：</strong></p>
+<p><em>AnimatedContainer，一种在变化时平滑动画属性的变体。<br>边框，其中包含大量使用Container的示例。<br>墨水，在材质上绘制装饰，允许InkResponse和InkWell喷溅在它们上面绘画。<br>布局小部件的目录。</em></p>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
+<p>创建一个小部件, 结合了普通的绘画、定位和大小调整小部件。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Container(&#123;Key key, </span><br><span class="line">    AlignmentGeometry alignment,</span><br><span class="line">    EdgeInsetsGeometry padding, </span><br><span class="line">    Color color, </span><br><span class="line">    Decoration decoration, </span><br><span class="line">    Decoration foregroundDecoration, </span><br><span class="line">    <span class="built_in">double</span> width, </span><br><span class="line">    <span class="built_in">double</span> height, </span><br><span class="line">    BoxConstraints constraints, EdgeInsetsGeometry margin, </span><br><span class="line">    Matrix4 transform, </span><br><span class="line">    Widget child </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><p>alignment → AlignmentGeometry</p>
+</li>
+<li><p><em>对齐内部的子级</em></p>
+</li>
+<li><p>child → Widget</p>
+</li>
+<li><p><em>容器内部的子级</em></p>
+</li>
+<li><p>constraints → BoxConstraints </p>
+</li>
+<li><p><em>要应用于子级的附加约束</em></p>
+</li>
+<li><p>decoration → Decoration</p>
+<ul>
+<li><em>子级背后的装饰</em></li>
+<li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
+<li><em>需要注意的是 <code>deoration</code>和 <code>color</code> 背景颜色不能共存，二者同时只能有一个</em><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">decoration: <span class="keyword">new</span> BoxDecoration(</span><br><span class="line">               border: <span class="keyword">new</span> Border.all(width: <span class="number">2.0</span>, color: Colors.red),</span><br><span class="line">               color: Colors.grey,</span><br><span class="line">               borderRadius: <span class="keyword">new</span> BorderRadius.all(<span class="keyword">new</span> Radius.circular(<span class="number">20.0</span>)),</span><br><span class="line">               image: <span class="keyword">new</span> DecorationImage(</span><br><span class="line">                 image: <span class="keyword">new</span> NetworkImage(<span class="string">'http://b-ssl.duitang.com/uploads/item/201609/26/20160926203611_HXQxk.jpeg'</span>),</span><br><span class="line">                 centerSlice: <span class="keyword">new</span> Rect.fromLTRB(<span class="number">270.0</span>, <span class="number">180.0</span>, <span class="number">1360.0</span>, <span class="number">730.0</span>),</span><br><span class="line">               ),</span><br><span class="line">             ),</span><br></pre></td></tr></table></figure></li>
+<li><img src alt="nodecoration">)<img src alt="nodecoration"></li>
+<li><em>第一张图设置了背景色，未使用decoration；第二张图设置了decoration，未设置背景色</em></li>
+</ul>
+</li>
+<li><p>foregroundDecoration → Decoration</p>
+<ul>
+<li><em>在子级前面的装饰</em></li>
+<li><em>可以设置边框、背景色、背景图片、圆角等属性</em></li>
+<li><em><code>foregroundDecoration</code>和 <code>color</code> 背景颜色可以共存，但是<code>color</code>有可能被遮挡</em></li>
+<li><em>会遮挡child</em></li>
+<li><img src alt="nodecoration"></li>
+</ul>
+</li>
+<li><p>margin → EdgeInsetsGeometry</p>
+</li>
+<li><p><em>我的理解就是外边距</em></p>
+</li>
+<li><p>padding → EdgeInsetsGeometry</p>
+</li>
+<li><p><em>我的理解就是内边距</em></p>
+</li>
+<li><p>transform → Matrix4</p>
+<ul>
+<li><em>在绘制容器之前要应用的转换矩阵</em></li>
+</ul>
+</li>
+<li><p>hashCode → int</p>
+</li>
+<li><p><em>此对象的哈希代码</em></p>
+</li>
+<li><p>key → Key</p>
+<ul>
+<li><em>控制一个小部件如何替换树中的另一个小部件</em></li>
+</ul>
+</li>
+<li><p>runtimeType → Type</p>
+<ul>
+<li><em>对象的运行时类型</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="方法（Methods）"><a href="#方法（Methods）" class="headerlink" title="方法（Methods）"></a>方法（Methods）</h4><ul>
+<li><p>build(BuildContext context) → Widget</p>
+<blockquote>
+<p>描述此窗口小部件表示的用户界面部分</p>
+</blockquote>
+</li>
+<li><p>debugFillProperties(DiagnosticPropertiesBuilder properties) → void</p>
+<blockquote>
+<p>添加与节点关联的其他属性</p>
+</blockquote>
+</li>
+<li><p>createElement() → StatelessElement</p>
+<blockquote>
+<p>创建StatelessElement以管理此窗口小部件在树中的位置</p>
+</blockquote>
+</li>
+<li><p>debugDescribeChildren() → List<DiagnosticsNode></DiagnosticsNode></p>
+<blockquote>
+<p>返回描述此节点的子节点的DiagnosticsNode对象列表。</p>
+</blockquote>
+</li>
+<li><p>noSuchMethod(Invocation invocation) → dynamic</p>
+<blockquote>
+<p>访问不存在的方法或属性时调用</p>
+</blockquote>
+</li>
+<li><p>toDiagnosticsNode({String name, DiagnosticsTreeStyle style }) → DiagnosticsNode</p>
+<blockquote>
+<p>返回调试工具和DiagnosticsNode.toStringDeep使用的对象的调试表示形式</p>
+</blockquote>
+</li>
+<li><p>toString({DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回此对象的字符串表示形式</p>
+</blockquote>
+</li>
+<li><p>toStringDeep({String prefixLineOne: ‘’, String prefixOtherLines, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回此节点及其后代的字符串表示形式</p>
+</blockquote>
+</li>
+<li><p>toStringShallow({String joiner: ‘, ‘, DiagnosticLevel minLevel: DiagnosticLevel.debug }) → String</p>
+<blockquote>
+<p>返回对象的单行详细描述</p>
+</blockquote>
+</li>
+<li><p>toStringShort() → String</p>
+<blockquote>
+<p>这个小部件的简短文字描述</p>
+</blockquote>
+</li>
+</ul>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/14/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BBottomNavigationBar%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F/">
+      Flutter开发之BottomNavigationBar底部导航栏
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月14日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="BottomNavigationBar"><a href="#BottomNavigationBar" class="headerlink" title="BottomNavigationBar"></a>BottomNavigationBar</h3><blockquote>
+<p>显示在应用程序的底部，用于在少量视图中进行选择，通常在三到五之间。</p>
+</blockquote>
+<p>底部导航栏通常与<code>Scaffold</code>结合使用，它作为<code>Scaffold.bottomNavigationBar</code>参数提供。</p>
+<p>底部导航栏的类型更改其项目的显示方式。如果未指定，则当少于四个项时它会自动设置为<code>BottomNavigationBarType.fixed</code>，否则为<code>BottomNavigationBarType.shifting</code>。</p>
+<p><code>BottomNavigationBarType.fixed</code>，当少于四个项目时的默认值。如果选中的项目为非null，则使用<code>selectedItemColor</code>渲染所选项目，否则使用主题的<code>ThemeData.primaryColor</code>。如果<code>backgroundColor</code>为<code>null</code>，则导航栏的背景颜色默认为<code>Material</code>背景颜色<code>ThemeData.canvasColor</code>（基本上是不透明的白色）。</p>
+<p><code>BottomNavigationBarType.shifting</code>，当有四个或更多项时的默认值。如果<code>selectedItemColor</code>为<code>null</code>，则所有项目都以白色呈现。导航栏的背景颜色与所选项目的<code>BottomNavigationBarItem.backgroundColor</code>相同。在这种情况下，假设每个项目将具有不同的背景颜色，并且背景颜色将与白色形成鲜明对比。</p>
+<p><strong>此示例显示BottomNavigationBar，因为它在Scaffold小部件中使用。 BottomNavigationBar有三个BottomNavigationBarItem小部件，currentIndex设置为索引0.所选项目为琥珀色。 _onItemTapped函数更改所选项的索引，并在Scaffold的中心显示相应的消息:</strong></p>
+<p><img src="https://flutter.github.io/assets-for-api-docs/assets/material/bottom_navigation_bar.png" alt="IMG"> </p>
+<p><strong>源码：</strong></p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> _selectedIndex = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> TextStyle optionStyle = TextStyle(fontSize: <span class="number">30</span>, fontWeight: FontWeight.bold);</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="built_in">List</span>&lt;Widget&gt; _widgetOptions = &lt;Widget&gt;[</span><br><span class="line">  Text(</span><br><span class="line">    <span class="string">'Index 0: Home'</span>,</span><br><span class="line">    style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     <span class="string">'Index 1: Business'</span>,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">  Text(</span><br><span class="line">     <span class="string">'Index 2: School'</span>,</span><br><span class="line">     style: optionStyle,</span><br><span class="line">  ),</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> _onItemTapped(<span class="built_in">int</span> index) &#123;</span><br><span class="line">  setState(() &#123;</span><br><span class="line">    _selectedIndex = index;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@override</span></span><br><span class="line">Widget build(BuildContext context) &#123;</span><br><span class="line">  <span class="keyword">return</span> Scaffold(</span><br><span class="line">    appBar: AppBar(</span><br><span class="line">      title: <span class="keyword">const</span> Text(<span class="string">'BottomNavigationBar Sample'</span>),</span><br><span class="line">    ),</span><br><span class="line">    body: Center(</span><br><span class="line">      child: _widgetOptions.elementAt(_selectedIndex),</span><br><span class="line">    ),</span><br><span class="line">    bottomNavigationBar: BottomNavigationBar(</span><br><span class="line">      items: <span class="keyword">const</span> &lt;BottomNavigationBarItem&gt;[</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.home),</span><br><span class="line">          title: Text(<span class="string">'Home'</span>),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.business),</span><br><span class="line">          title: Text(<span class="string">'Business'</span>),</span><br><span class="line">        ),</span><br><span class="line">        BottomNavigationBarItem(</span><br><span class="line">          icon: Icon(Icons.school),</span><br><span class="line">          title: Text(<span class="string">'School'</span>),</span><br><span class="line">        ),</span><br><span class="line">      ],</span><br><span class="line">      currentIndex: _selectedIndex,</span><br><span class="line">      selectedItemColor: Colors.amber[<span class="number">800</span>],</span><br><span class="line">      onTap: _onItemTapped,</span><br><span class="line">    ),</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><blockquote>
+<p>创建一个底部导航栏，通常用作Scaffold的Scaffold.bottomNavigationBar参数。</p>
+</blockquote>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BottomNavigationBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    <span class="meta">@required</span> <span class="built_in">List</span>&lt;BottomNavigationBarItem&gt; items, </span><br><span class="line">    ValueChanged&lt;<span class="built_in">int</span>&gt; onTap, </span><br><span class="line">    <span class="built_in">int</span> currentIndex: <span class="number">0</span>, </span><br><span class="line">    <span class="built_in">double</span> elevation: <span class="number">8.0</span>, </span><br><span class="line">    BottomNavigationBarType type, </span><br><span class="line">    Color fixedColor, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    <span class="built_in">double</span> iconSize: <span class="number">24.0</span>, </span><br><span class="line">    Color selectedItemColor, </span><br><span class="line">    Color unselectedItemColor, </span><br><span class="line">    <span class="built_in">double</span> selectedFontSize: <span class="number">14.0</span>, </span><br><span class="line">    <span class="built_in">double</span> unselectedFontSize: <span class="number">12.0</span>, </span><br><span class="line">    <span class="built_in">bool</span> showSelectedLabels: <span class="keyword">true</span>, </span><br><span class="line">    <span class="built_in">bool</span> showUnselectedLabels </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li><code>backgroundColor → Color</code></li>
+</ul>
+<blockquote>
+<p>背景颜色</p>
+</blockquote>
+<ul>
+<li><code>currentIndex → int</code></li>
+</ul>
+<blockquote>
+<p>当前活动<code>BottomNavigationBarItem</code>的项目索引(一般就是当前选中的那个项目索引)</p>
+</blockquote>
+<ul>
+<li><code>elevation → double</code></li>
+</ul>
+<blockquote>
+<p>此底部导航栏的Z坐标</p>
+</blockquote>
+<ul>
+<li><code>fixedColor → Color</code></li>
+</ul>
+<blockquote>
+<p>选中项目颜色的值（只读）</p>
+</blockquote>
+<ul>
+<li><code>iconSize → double</code></li>
+</ul>
+<blockquote>
+<p>所有<code>BottomNavigationBarItem</code>图标的大小</p>
+</blockquote>
+<ul>
+<li><code>items → List&lt;BottomNavigationBarItem&gt;</code></li>
+</ul>
+<blockquote>
+<p>定义在底部导航栏中排列的按钮项的外观</p>
+</blockquote>
+<ul>
+<li><code>onTap → ValueChanged&lt;int&gt;</code></li>
+</ul>
+<blockquote>
+<p>点击其中一个项目时响应事件</p>
+</blockquote>
+<ul>
+<li><code>selectedFontSize → double</code></li>
+</ul>
+<blockquote>
+<p>选中时<code>BottomNavigationBarItem</code>标签的字体大小</p>
+</blockquote>
+<ul>
+<li><code>selectedItemColor → Color</code></li>
+</ul>
+<blockquote>
+<p>选中时<code>BottomNavigationBarItem.icon</code>和<code>BottomNavigationBarItem.label</code>的颜色</p>
+</blockquote>
+<ul>
+<li><code>showSelectedLabels → bool</code></li>
+</ul>
+<blockquote>
+<p>是否为未选择的<code>BottomNavigationBarItems</code>显示标签</p>
+</blockquote>
+<ul>
+<li><code>showUnselectedLabels → bool</code></li>
+</ul>
+<blockquote>
+<p>是否为选定的<code>BottomNavigationBarItem</code>显示标签</p>
+</blockquote>
+<ul>
+<li><code>type → BottomNavigationBarType</code></li>
+</ul>
+<blockquote>
+<p>定义<code>BottomNavigationBar</code>的布局和行为</p>
+</blockquote>
+<ul>
+<li><code>unselectedFontSize → double</code></li>
+</ul>
+<blockquote>
+<p>未选中<code>BottomNavigationBarItem</code>标签的字体大小</p>
+</blockquote>
+<ul>
+<li><code>unselectedItemColor → Color</code></li>
+</ul>
+<blockquote>
+<p>未选中的<code>BottomNavigationBarItem.icon</code>和<code>BottomNavigationBarItem.labels</code>的颜色</p>
+</blockquote>
+<ul>
+<li><code>hashCode → int</code></li>
+</ul>
+<blockquote>
+<p>对象的哈希值（只读）</p>
+</blockquote>
+<ul>
+<li><code>key → Key</code></li>
+</ul>
+<blockquote>
+<p>控制一个小部件如何替换树中的另一个小部件</p>
+</blockquote>
+<ul>
+<li><p><code>runtimeType → Type</code></p>
+<blockquote>
+<p>表示对象的运行时类型(只读)</p>
+</blockquote>
+</li>
+</ul>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/13/Flutter%E5%BC%80%E5%8F%91%E4%B9%8BAppBar%20Widget/">
+      Flutter开发之AppBar Widget
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a>AppBar</h3><p>应用栏通常用于Scaffold.appBar属性，该属性将应用栏放置在屏幕顶部的固定高度小部件中。对于可滚动的应用栏，请参阅<a href="https://api.flutter.dev/flutter/material/SliverAppBar-class.html" target="_blank" rel="noopener">SliverAppBar</a>，它将一个AppBar嵌入到一个条子中，以便在CustomScrollView中使用。</p>
+<p>AppBar在底部（如果有）上方显示工具栏小部件，前导，标题和操作。底部通常用于TabBar。如果指定了flexibleSpace窗口小部件，则它将堆叠在工具栏和底部窗口小部件后面。下图显示了当编写语言从左到右（例如英语）时，每个插槽在工具栏中的显示位置：<br><img src="https://flutter.github.io/assets-for-api-docs/assets/material/app_bar.png" alt="image"></p>
+<p>如果省略了前导小部件，但AppBar位于带有抽屉的脚手架中，则会插入一个按钮以打开抽屉。否则，如果最近的导航器具有任何先前的路径，则会插入BackButton。可以通过将automatedImplyLeading设置为false来关闭此行为。在这种情况下，空的前导小部件将导致中间/标题小部件拉伸开始。</p>
+<h4 id="构造方法（Constructors）"><a href="#构造方法（Constructors）" class="headerlink" title="构造方法（Constructors）"></a>构造方法（Constructors）</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(&#123;</span><br><span class="line">    Key key, </span><br><span class="line">    Widget leading, </span><br><span class="line">    <span class="built_in">bool</span> automaticallyImplyLeading: <span class="keyword">true</span>, </span><br><span class="line">    Widget title, </span><br><span class="line">    <span class="built_in">List</span>&lt;Widget&gt; actions, </span><br><span class="line">    Widget flexibleSpace, </span><br><span class="line">    PreferredSizeWidget bottom, </span><br><span class="line">    <span class="built_in">double</span> elevation, </span><br><span class="line">    ShapeBorder shape, </span><br><span class="line">    Color backgroundColor, </span><br><span class="line">    Brightness brightness, </span><br><span class="line">    IconThemeData iconTheme, </span><br><span class="line">    IconThemeData actionsIconTheme, </span><br><span class="line">    TextTheme textTheme, </span><br><span class="line">    <span class="built_in">bool</span> primary: <span class="keyword">true</span>, </span><br><span class="line">    <span class="built_in">bool</span> centerTitle, <span class="built_in">double</span> titleSpacing: NavigationToolbar.kMiddleSpacing, </span><br><span class="line">    <span class="built_in">double</span> toolbarOpacity: <span class="number">1.0</span>, </span><br><span class="line">    <span class="built_in">double</span> bottomOpacity: <span class="number">1.0</span> </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>eg:</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">AppBar(</span><br><span class="line">  title: Text(<span class="string">'My Fancy Dress'</span>),</span><br><span class="line">  actions: &lt;Widget&gt;[</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_play),</span><br><span class="line">      tooltip: <span class="string">'Air it'</span>,</span><br><span class="line">      onPressed: _airDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add),</span><br><span class="line">      tooltip: <span class="string">'Restitch it'</span>,</span><br><span class="line">      onPressed: _restitchDress,</span><br><span class="line">    ),</span><br><span class="line">    IconButton(</span><br><span class="line">      icon: Icon(Icons.playlist_add_check),</span><br><span class="line">      tooltip: <span class="string">'Repair it'</span>,</span><br><span class="line">      onPressed: _repairDress,</span><br><span class="line">    ),</span><br><span class="line">  ],</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="属性（Properties）"><a href="#属性（Properties）" class="headerlink" title="属性（Properties）"></a>属性（Properties）</h4><ul>
+<li>actions → List<Widget></Widget></li>
+</ul>
+<blockquote>
+<p>要在标题小部件后显示的小部件</p>
+</blockquote>
+<ul>
+<li>actionsIconTheme → IconThemeData</li>
+</ul>
+<blockquote>
+<p>用于应用栏操作中显示的图标的颜色，不透明度和大小。仅当操作的主题不同于应用栏的主要小部件中显示的图标时，才应使用此选项</p>
+</blockquote>
+<ul>
+<li>automaticallyImplyLeading → bool</li>
+</ul>
+<blockquote>
+<p>Controls whether we should try to imply the leading widget if null. […]</p>
+</blockquote>
+<ul>
+<li>backgroundColor → Color</li>
+</ul>
+<blockquote>
+<p>用于应用栏材质的颜色。通常这应该与亮度，iconTheme，textTheme一起设置。</p>
+</blockquote>
+<ul>
+<li>bottom → PreferredSizeWidget</li>
+</ul>
+<blockquote>
+<p>此小组件显示在应用栏的底部</p>
+</blockquote>
+<ul>
+<li>bottomOpacity → double</li>
+</ul>
+<blockquote>
+<p>应用栏底部的不透明程度(0.0 - 1.0)</p>
+</blockquote>
+<ul>
+<li>brightness → Brightness</li>
+</ul>
+<blockquote>
+<p>应用栏材质的亮度。通常，这与backgroundColor，iconTheme，textTheme一起设置</p>
+</blockquote>
+<ul>
+<li>centerTitle → bool</li>
+</ul>
+<blockquote>
+<p>标题是否居中</p>
+</blockquote>
+<ul>
+<li>elevation → double</li>
+</ul>
+<blockquote>
+<p>放置此应用程序栏相对于其父应用程序栏的Z坐标</p>
+</blockquote>
+<ul>
+<li>flexibleSpace → Widget</li>
+</ul>
+<blockquote>
+<p>此小组件堆叠在工具栏和选项卡栏后面。它的高度与应用栏的整体高度相同</p>
+</blockquote>
+<ul>
+<li>iconTheme → IconThemeData</li>
+</ul>
+<blockquote>
+<p>用于应用栏图标的颜色，不透明度和大小。通常，这与backgroundColor，brightness，textTheme一起设置</p>
+</blockquote>
+<ul>
+<li>leading → Widget</li>
+</ul>
+<blockquote>
+<p>要在标题之前显示的小部件</p>
+</blockquote>
+<ul>
+<li>preferredSize → Size</li>
+</ul>
+<blockquote>
+<p>高度为kToolbarHeight和底部窗口小部件首选高度之和的大小</p>
+</blockquote>
+<ul>
+<li>primary → bool</li>
+</ul>
+<blockquote>
+<p>此应用栏是否显示在屏幕顶部</p>
+</blockquote>
+<ul>
+<li>shape → ShapeBorder</li>
+</ul>
+<blockquote>
+<p>形状和阴影</p>
+</blockquote>
+<ul>
+<li>textTheme → TextTheme</li>
+</ul>
+<blockquote>
+<p>应用栏中用于文本的排版样式。通常，这与亮度backgroundColor，iconTheme一起设置</p>
+</blockquote>
+<ul>
+<li>title → Widget</li>
+</ul>
+<blockquote>
+<p>appbar中显示的主要小部件</p>
+</blockquote>
+<ul>
+<li>titleSpacing → double</li>
+</ul>
+<blockquote>
+<p>横轴上标题内容周围的间距。即使没有前导内容或操作，也会应用此间距。如果希望title占用所有可用空间，请将此值设置为0.0</p>
+</blockquote>
+<ul>
+<li><p>toolbarOpacity → double</p>
+<blockquote>
+<p>应用栏的工具栏部分透明度(0.0-1.0)</p>
+</blockquote>
+</li>
+</ul>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/12/Flutter%E5%BC%80%E5%8F%91%E4%B9%8B%E5%9F%BA%E7%A1%80%20Widgets/">
+      Flutter开发之基础 Widgets
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年8月12日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="基础-Widgets"><a href="#基础-Widgets" class="headerlink" title="基础 Widgets"></a>基础 Widgets</h3><ol>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Container-class.html" target="_blank" rel="noopener">Container</a></p>
+<blockquote>
+<p>一个拥有绘制、定位、调整大小的 widget。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Row-class.html" target="_blank" rel="noopener">Row</a></p>
+<blockquote>
+<p>在水平方向上排列子widget的列表。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Column-class.html" target="_blank" rel="noopener">Column</a></p>
+<blockquote>
+<p>在垂直方向上排列子widget的列表。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Image-class.html" target="_blank" rel="noopener">Image</a></p>
+<blockquote>
+<p>一个显示图片的widget。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Text-class.html" target="_blank" rel="noopener">Text</a></p>
+<blockquote>
+<p>单一格式的文本。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Icon-class.html" target="_blank" rel="noopener">Icon</a></p>
+<blockquote>
+<p>图标。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/material/RaisedButton-class.html" target="_blank" rel="noopener">RaisedButton</a></p>
+<blockquote>
+<p>Material Design中的button，一个凸起的材质矩形按钮</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/material/Scaffold-class.html" target="_blank" rel="noopener">Scaffold</a></p>
+<blockquote>
+<p>Material Design布局结构的基本实现。此类提供了用于显示drawer、snackbar和底部sheet的API。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/material/AppBar-class.html" target="_blank" rel="noopener">AppBar</a></p>
+<blockquote>
+<p>一个Material Design应用程序栏，由工具栏和其他可能的widget（如TabBar和FlexibleSpaceBar）组成。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/material/FlutterLogo-class.html" target="_blank" rel="noopener">FlutterLogo</a></p>
+<blockquote>
+<p>Flutter logo,以widget形式,这个widget遵从IconTheme。</p>
+</blockquote>
+</li>
+<li><p><a href="https://docs.flutter.io/flutter/widgets/Placeholder-class.html" target="_blank" rel="noopener">Placeholder</a></p>
+<blockquote>
+<p>一个绘制了一个盒子的的widget，代表日后有widget将会被添加到该盒子中</p>
+</blockquote>
+</li>
+</ol>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/07/19/Flutter-go%E8%BF%90%E8%A1%8C%E6%8A%A5%E9%94%99%EF%BC%88FIRAnalyticsConfiguration%EF%BC%89/">
+      Flutter-go运行报错（FIRAnalyticsConfiguration）
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Flutter/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Flutter</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2019年7月19日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="flutter-go-项目下载后，运行报如下错误："><a href="#flutter-go-项目下载后，运行报如下错误：" class="headerlink" title="flutter go 项目下载后，运行报如下错误："></a>flutter go 项目下载后，运行报如下错误：</h3><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Launching lib/main.dart <span class="keyword">on</span> iPhone Xʀ <span class="keyword">in</span> debug mode...</span><br><span class="line">Running Xcode build...                                                  </span><br><span class="line">                                                   </span><br><span class="line">Xcode build done.                                            <span class="number">3.3</span>s</span><br><span class="line">Failed to build iOS app</span><br><span class="line">Error output from Xcode build:</span><br><span class="line">↳</span><br><span class="line">    ** BUILD FAILED **</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Xcode<span class="string">'s output:</span></span><br><span class="line"><span class="string">↳</span></span><br><span class="line"><span class="string">    === BUILD TARGET firebase_analytics OF PROJECT Pods WITH CONFIGURATION Debug ===</span></span><br><span class="line"><span class="string">    /Users/l/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_analytics-2.1.1+2/ios/Classes/FirebaseAnalyticsPlu</span></span><br><span class="line"><span class="string">    gin.m:60:7: error: use of undeclared identifier '</span>FIRAnalyticsConfiguration<span class="string">'</span></span><br><span class="line"><span class="string">        [[FIRAnalyticsConfiguration sharedInstance] setAnalyticsCollectionEnabled:[enabled boolValue]];</span></span><br><span class="line"><span class="string">          ^</span></span><br><span class="line"><span class="string">    1 error generated.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Could not build the application for the simulator.</span></span><br><span class="line"><span class="string">Error launching application on iPhone Xʀ.</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方案：</strong></p>
+<hr>
+<p>将根目录下<code>pubspec.yaml</code>文件中 <code>firebase_analytics: ^2.0.2+1</code> 改为 <code>firebase_analytics: ^3.0.1</code> 之后运行flutter run</p>
+<hr>
+<p><em>执行通过</em></p>
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/07/05/Flutter%20Flutter.h%20file%20not%20found/">
       Flutter Flutter.h file not found
     </a>
@@ -828,478 +1725,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/17/Swift%E7%AE%80%E5%8D%95%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/">
-      Swift 简单链表实现
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Swift/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Swift</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h4 id="Swift-简单链表实现"><a href="#Swift-简单链表实现" class="headerlink" title="Swift 简单链表实现"></a>Swift 简单链表实现</h4><blockquote>
-<p>链表中的元素在内存中不是顺序存储的，查找慢，插入、删除只需要对元素指针重新赋值，效率高；数组元素在内存上连续存放，可以通过下标查找元素；插入、删除需要移动大量元素，比较适用于元素很少变化的情况</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> UIKit</span><br><span class="line"></span><br><span class="line"><span class="comment">//链表节点</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> value: <span class="type">T</span> <span class="comment">//节点存储数据</span></span><br><span class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> next: <span class="type">Node?</span> <span class="comment">//节点链接到的下一个节点</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">weak</span> <span class="keyword">var</span> previous: <span class="type">Node?</span><span class="comment">//节点链接到的上一个节点</span></span><br><span class="line">     </span><br><span class="line">    <span class="keyword">init</span>(value: <span class="type">T</span>) &#123;</span><br><span class="line">      <span class="keyword">self</span>.value = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//自定义链表</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NodeList</span>:<span class="title">CustomStringConvertible</span></span>&#123;</span><br><span class="line">    <span class="comment">//链表起点节点</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> head:<span class="type">Node?</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//链表终点节点</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> tail:<span class="type">Node?</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//链表内数据是否为空</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> isEmpty:<span class="type">Bool</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> head == <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回第一个节点</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> first:<span class="type">Node?</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> head</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回最后一个节点</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> last:<span class="type">Node?</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> tail</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//添加一个链接节点数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">append</span><span class="params">(value:T)</span></span>&#123;</span><br><span class="line">        <span class="keyword">let</span> newNode = <span class="type">Node</span>(value: value)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> tailNode = tail&#123;</span><br><span class="line">            newNode.previous = tailNode</span><br><span class="line">            tailNode.next = newNode</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            head = newNode</span><br><span class="line">        &#125;</span><br><span class="line">        tail = newNode</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//删除节点</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">remove</span><span class="params">(node:Node)</span></span> -&gt; <span class="type">T</span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//保存要删除节点的上一个和下一个节点</span></span><br><span class="line">        <span class="keyword">let</span> prev = node.previous</span><br><span class="line">        <span class="keyword">let</span> next = node.next</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//如果要删处节点的上一节点不为空</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">let</span> prev = prev &#123;</span><br><span class="line">            <span class="comment">//上一个节点链接到的下一个节点，修改为要删除的下一个节点</span></span><br><span class="line">            prev.next = next</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="comment">//如果要删处节点的上一节点为空，说明要删除的是链表起点节点</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//把下一个节点改为起点节点</span></span><br><span class="line">            head = next</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//要删出的上一个节点，链接到上一个节点</span></span><br><span class="line">        next?.previous = prev</span><br><span class="line">        <span class="keyword">if</span> next == <span class="literal">nil</span> &#123;</span><br><span class="line">            <span class="comment">//next为nil说明要删除的是最后一个，把倒数以前倒数第二个，置为最后一个</span></span><br><span class="line">            tail = prev</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        node.previous = <span class="literal">nil</span></span><br><span class="line">        node.next = <span class="literal">nil</span></span><br><span class="line">        <span class="keyword">return</span> node.value</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除所有节点数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">removeAll</span><span class="params">()</span></span> &#123;</span><br><span class="line">      head = <span class="literal">nil</span></span><br><span class="line">      tail = <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//取对应索引的节点</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">nodeAt</span><span class="params">(index: Int)</span></span> -&gt; <span class="type">Node?</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> index &gt;= <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> node = head</span><br><span class="line">        <span class="keyword">var</span> i = index</span><br><span class="line">        <span class="keyword">while</span> node != <span class="literal">nil</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> i == <span class="number">0</span> &#123; <span class="keyword">return</span> node &#125;</span><br><span class="line">          i -= <span class="number">1</span></span><br><span class="line">          node = node!.next</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//输出节点数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">var</span> description: <span class="type">String</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> text = <span class="string">""</span></span><br><span class="line">        <span class="keyword">var</span> node = head</span><br><span class="line">        <span class="keyword">while</span> node != <span class="literal">nil</span> &#123;</span><br><span class="line">            text += <span class="string">"\(node!.value)"</span></span><br><span class="line">            </span><br><span class="line">            node = node!.next</span><br><span class="line">            <span class="keyword">if</span> node != <span class="literal">nil</span> &#123;</span><br><span class="line">                text += <span class="string">","</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"["</span> + text + <span class="string">"]"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/17/touch%E5%8F%96%E6%B6%88textfield%E7%9A%84%E7%AC%AC%E4%B8%80%E5%93%8D%E5%BA%94/">
-      touch取消textfield的第一响应
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Swift/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Swift</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">touchesEnded</span><span class="params">(<span class="number">_</span> touches: Set&lt;UITouch&gt;, with event: UIEvent?)</span></span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> touch:<span class="type">AnyObject</span> <span class="keyword">in</span> touches &#123;</span><br><span class="line">        <span class="keyword">let</span> t:<span class="type">UITouch</span> = touch <span class="keyword">as</span>! <span class="type">UITouch</span></span><br><span class="line">        <span class="comment">//检测当前触摸的view是否是textField</span></span><br><span class="line">        <span class="keyword">if</span> t.view == pwdField || t.view == pwdField || t.view == phoneField&#123;</span><br><span class="line">            t.view?.becomeFirstResponder()</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            phoneField.resignFirstResponder()</span><br><span class="line">            pwdField.resignFirstResponder()</span><br><span class="line">            verificationField.resignFirstResponder()</span><br><span class="line">            <span class="keyword">self</span>.resignFirstResponder()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/17/SwiftResponsder/">
-      Swift Responsder
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Swift/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Swift</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="通过响应者链获取对应的第一个符合条件的Responsder"><a href="#通过响应者链获取对应的第一个符合条件的Responsder" class="headerlink" title="通过响应者链获取对应的第一个符合条件的Responsder"></a>通过响应者链获取对应的第一个符合条件的Responsder</h3><blockquote>
-<p>传入响应检测的起点<code>Responsder</code>，一般用于UIView中查找响应者链中的控制器</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nextResponder</span><span class="params">(currentView:UIView)</span></span>-&gt;<span class="type">UIViewController</span>&#123;</span><br><span class="line"><span class="keyword">var</span> vc:<span class="type">UIResponder</span> = currentView</span><br><span class="line"><span class="keyword">while</span> vc.isKind(of: <span class="type">UIViewController</span>.<span class="keyword">self</span>) != <span class="literal">true</span> &#123;</span><br><span class="line">vc = vc.next!</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> vc <span class="keyword">as</span>! <span class="type">UIViewController</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/17/Swift%E4%B8%ADString%E8%BD%AC%E7%B1%BB%E5%90%8DClass/">
-      Swift中String转类名Class
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Swift/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Swift</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="String-gt-Class"><a href="#String-gt-Class" class="headerlink" title="String-&gt;Class"></a>String-&gt;Class</h3><blockquote>
-<p>Swift中引入了命名空间的概念，转Class需要拼接命名空间</p>
-</blockquote>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//这是一个简单的通过字符串类名，转Class然后初始化后跳转的一个小例子</span></span><br><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">OnClick</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//控制器字符串名称</span></span><br><span class="line">    <span class="keyword">let</span> vcNameString = <span class="string">"OneViewController"</span></span><br><span class="line">    <span class="comment">//获取命名空间也就是项目名称</span></span><br><span class="line">    <span class="keyword">let</span> clsName = <span class="type">Bundle</span>.main.infoDictionary![<span class="string">"CFBundleExecutable"</span>] <span class="keyword">as</span>? <span class="type">String</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//拼接</span></span><br><span class="line">    <span class="keyword">let</span> className=clsName! + <span class="string">"."</span> + vcNameString</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//字符串转Class 需要注意的是这里的`UIViewController`强转必须带上`.Type`,否则转换不成功</span></span><br><span class="line">    <span class="keyword">let</span> classT = <span class="type">NSClassFromString</span>(className)! <span class="keyword">as</span>! <span class="type">UIViewController</span>.<span class="type">Type</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="type">URLRouter</span>.shared.pushViewController(viewController:classT.<span class="keyword">init</span>()  , animated: <span class="literal">true</span>)</span><br><span class="line">&#125;<span class="comment">//成功完成跳转</span></span><br></pre></td></tr></table></figure>
-      
-        
-          <div class="button readmore ">
-            <a href="/2019/06/17/Swift%E4%B8%ADString%E8%BD%AC%E7%B1%BB%E5%90%8DClass/">
-              阅读全部 <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2019/06/17/Android%20%E6%8A%A5%E9%94%99/">
-      Android报错
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Android/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Android</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2019年6月17日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h5 id="1-MISSING-ACCESSIBILITY-LABEL-WHERE-MINSDK-lt-17-YOU-SHOULD-PROVIDE-AN-‘ANDROID-HINT’"><a href="#1-MISSING-ACCESSIBILITY-LABEL-WHERE-MINSDK-lt-17-YOU-SHOULD-PROVIDE-AN-‘ANDROID-HINT’" class="headerlink" title="1.*MISSING ACCESSIBILITY LABEL: WHERE MINSDK &lt; 17, YOU SHOULD PROVIDE AN ‘ANDROID:HINT’ *"></a>1.*<em>MISSING ACCESSIBILITY LABEL: WHERE MINSDK &lt; 17, YOU SHOULD PROVIDE AN ‘ANDROID:HINT’ *</em></h5><blockquote>
-<p>在布局文件（默认为main_activity.xml）添加</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">  </span><br><span class="line">tools:ignore=<span class="string">"LabelFor"</span></span><br></pre></td></tr></table></figure>
-
-
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1407,12 +1832,7 @@
           <li><a class="flat-box"
             title="/categories/Flutter/" href="/categories/Flutter/"
             id="categoriesFlutter"
-            ><div class='name'>Flutter</div><div class='badge'>(20)</div></a></li>
-        
-          <li><a class="flat-box child"
-            title="/categories/Flutter/Android/" href="/categories/Flutter/Android/"
-            id="categoriesFlutterAndroid"
-            ><div class='name'>Android</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>Flutter</div><div class='badge'>(23)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
@@ -1444,6 +1864,11 @@
             id="categoriesvim"
             ><div class='name'>vim</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box"
+            title="/categories/%E6%94%B6%E8%97%8F/" href="/categories/%E6%94%B6%E8%97%8F/"
+            id="categoriesE694B6E8978F"
+            ><div class='name'>收藏</div><div class='badge'>(1)</div></a></li>
+        
       </ul>
     </div>
   </section>
@@ -1466,7 +1891,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 20.67px; color: #6c6c6c">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">android黑屏</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Android黑屏</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 24px; color: #555">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Bug/" style="font-size: 14px; color: #999">Flutter Bug</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">Flutter开发</a> <a href="/tags/Flutter%E6%8A%A5%E9%94%99/" style="font-size: 14px; color: #999">Flutter报错</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/flutter%E5%BA%93/" style="font-size: 14px; color: #999">flutter库</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%94%B6%E8%97%8F%E7%BD%91%E7%AB%99/" style="font-size: 14px; color: #999">收藏网站</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 
