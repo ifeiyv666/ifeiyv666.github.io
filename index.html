@@ -577,6 +577,10 @@
           
         
           
+        
+          
+        
+          
             
               <div class='post-wrapper'>
                 <article class="post white-box shadow reveal ">
@@ -590,7 +594,7 @@
       
         
   <h2 class="title">
-    <a href="/2020/04/27/collectUrlNew/">
+    <a href="/2020/04/27/collectUrl/">
       收藏的网站
     </a>
   </h2>
@@ -1098,6 +1102,216 @@
       
     
     
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/05/08/Mac%E4%B8%8B%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98%E6%97%A0%E6%B3%95%E8%AF%BB%E5%8F%96%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+      Mac下移动硬盘无法读取解决方案(以前是可以读取的)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Mac/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Mac</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年5月8日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="Mac下移动硬盘无法读取-以前是可以读取的"><a href="#Mac下移动硬盘无法读取-以前是可以读取的" class="headerlink" title="Mac下移动硬盘无法读取(以前是可以读取的)"></a>Mac下移动硬盘无法读取(以前是可以读取的)</h4><blockquote>
+<p>不进行处理的话，一般连接移动硬盘半个小时左右就会显示了；不想等待的话就执行以下命令，强制加载</p>
+</blockquote>
+<p>可以在终端中执行以下命令：<code>diskutil list</code>  ,控制台输出信息如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@ls--MacBook-Air  ~ $ diskutil list</span><br><span class="line">/dev/disk<span class="number">0</span> (internal, physical)<span class="symbol">:</span></span><br><span class="line">   <span class="comment">#:                       TYPE NAME                    SIZE       IDENTIFIER</span></span><br><span class="line">   <span class="number">0</span>:      GUID_partition_scheme                        *<span class="number">121.3</span> GB   disk<span class="number">0</span></span><br><span class="line">   <span class="number">1</span>:                        EFI EFI                     <span class="number">209.7</span> MB   disk0s1</span><br><span class="line">   <span class="number">2</span>:                 Apple_APFS Container disk1         <span class="number">121.1</span> GB   disk0s2</span><br><span class="line"></span><br><span class="line">/dev/disk1 (synthesized)<span class="symbol">:</span></span><br><span class="line">   <span class="comment">#:                       TYPE NAME                    SIZE       IDENTIFIER</span></span><br><span class="line">   <span class="number">0</span>:      APFS Container Scheme -                      +<span class="number">121.1</span> GB   disk1</span><br><span class="line">                                 Physical Store disk0s2</span><br><span class="line">   <span class="number">1</span>:                APFS Volume Macintosh HD - 数据     <span class="number">95.8</span> GB    disk1s1</span><br><span class="line">   <span class="number">2</span>:                APFS Volume Preboot                 <span class="number">82.4</span> MB    disk1s2</span><br><span class="line">   <span class="number">3</span>:                APFS Volume Recovery                <span class="number">528.5</span> MB   disk1s3</span><br><span class="line">   <span class="number">4</span>:                APFS Volume VM                      <span class="number">3.2</span> GB     disk1s4</span><br><span class="line">   <span class="number">5</span>:                APFS Volume Macintosh HD            <span class="number">10.9</span> GB    disk1s5</span><br><span class="line"></span><br><span class="line">/dev/disk2 (external, physical)<span class="symbol">:</span></span><br><span class="line">   <span class="comment">#:                       TYPE NAME                    SIZE       IDENTIFIER</span></span><br><span class="line">   <span class="number">0</span>:      GUID_partition_scheme                        *<span class="number">1.0</span> TB     disk2</span><br><span class="line">   <span class="number">1</span>:                        EFI EFI                     <span class="number">209.7</span> MB   disk2s1</span><br><span class="line">   <span class="number">2</span>:       Microsoft Basic Data LPF                     <span class="number">1000.0</span> GB  disk2s2</span><br></pre></td></tr></table></figure>
+
+<p>通过以上输出信息，可以找到移动硬盘挂载路径：<code>/dev/disk2</code> ,根据输出显示实际挂载路径填写。</p>
+<p>执行命令：<code>sudo diskutil mount /dev/disk2</code> ，控制台输出信息如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ls-MacBook-Air  ~ $ sudo diskutil mountDisk /dev/disk2</span><br><span class="line">Volume(s) mounted successfully</span><br></pre></td></tr></table></figure>
+
+<p>输出以上信息表示移动硬盘挂载成功了，如果输出以下信息：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> @ls-MacBook-Air  ~ $ sudo diskutil mount /dev/disk2</span><br><span class="line"><span class="symbol">Password:</span></span><br><span class="line">Volume on disk2 failed to mount</span><br><span class="line">Perhaps the operation is <span class="keyword">not</span> supported (kDAReturnUnsupported)</span><br><span class="line">If it has a partitioning scheme, use <span class="string">"diskutil mountDisk"</span></span><br><span class="line">If you think the volume is supported but damaged, try the <span class="string">"readOnly"</span> option</span><br></pre></td></tr></table></figure>
+
+<p>输出以上信息表示不支持 <code>sudo diskutil mount /dev/disk2</code> 这种装载方式，使用以下方式进行装载</p>
+<p>执行命令： <code>sudo diskutil mountDisk /dev/disk2</code> , 而不是  <code>sudo diskutil mount /dev/disk2</code></p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@ls-MacBook-Air  ~ $ sudo diskutil mountDisk /dev/disk2</span><br><span class="line">Volume(s) mounted successfully</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2020/04/30/%E5%90%84%E7%B1%BB%E6%96%87%E4%BB%B6MIME_TYPE%E5%AF%B9%E7%85%A7%E8%A1%A8%E5%92%8CApple%E5%AE%98%E6%96%B9%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/">
+      各类文件MIME_TYPE对照表和Apple官方指定文件类型
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E6%94%B6%E8%97%8F/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>收藏</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年4月30日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">".3gp"</span>,    <span class="string">"video/3gpp"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".apk"</span>,    <span class="string">"application/vnd.android.package-archive"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".asf"</span>,    <span class="string">"video/x-ms-asf"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".avi"</span>,    <span class="string">"video/x-msvideo"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".bin"</span>,    <span class="string">"application/octet-stream"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".bmp"</span>,    <span class="string">"image/bmp"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".c"</span>,  <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".class"</span>,  <span class="string">"application/octet-stream"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".conf"</span>,   <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".cpp"</span>,    <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".doc"</span>,    <span class="string">"application/msword"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".docx"</span>,   <span class="string">"application/vnd.openxmlformats-officedocument.wordprocessingml.document"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".xls"</span>,    <span class="string">"application/vnd.ms-excel"</span>&#125;,    </span><br><span class="line">&#123;<span class="string">".xlsx"</span>,   <span class="string">"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".exe"</span>,    <span class="string">"application/octet-stream"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".gif"</span>,    <span class="string">"image/gif"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".gtar"</span>,   <span class="string">"application/x-gtar"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".gz"</span>, <span class="string">"application/x-gzip"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".h"</span>,  <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".htm"</span>,    <span class="string">"text/html"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".html"</span>,   <span class="string">"text/html"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".jar"</span>,    <span class="string">"application/java-archive"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".java"</span>,   <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".jpeg"</span>,   <span class="string">"image/jpeg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".jpg"</span>,    <span class="string">"image/jpeg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".js"</span>, <span class="string">"application/x-javascript"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".log"</span>,    <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m3u"</span>,    <span class="string">"audio/x-mpegurl"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m4a"</span>,    <span class="string">"audio/mp4a-latm"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m4b"</span>,    <span class="string">"audio/mp4a-latm"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m4p"</span>,    <span class="string">"audio/mp4a-latm"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m4u"</span>,    <span class="string">"video/vnd.mpegurl"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".m4v"</span>,    <span class="string">"video/x-m4v"</span>&#125;,    </span><br><span class="line">&#123;<span class="string">".mov"</span>,    <span class="string">"video/quicktime"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".mp2"</span>,    <span class="string">"audio/x-mpeg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".mp3"</span>,    <span class="string">"audio/x-mpeg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".mp4"</span>,    <span class="string">"video/mp4"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".mpc"</span>,    <span class="string">"application/vnd.mpohun.certificate"</span>&#125;,          </span><br><span class="line">&#123;<span class="string">".mpe"</span>,    <span class="string">"video/mpeg"</span>&#125;,     </span><br><span class="line">&#123;<span class="string">".mpeg"</span>,   <span class="string">"video/mpeg"</span>&#125;,     </span><br><span class="line">&#123;<span class="string">".mpg"</span>,    <span class="string">"video/mpeg"</span>&#125;,     </span><br><span class="line">&#123;<span class="string">".mpg4"</span>,   <span class="string">"video/mp4"</span>&#125;,      </span><br><span class="line">&#123;<span class="string">".mpga"</span>,   <span class="string">"audio/mpeg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".msg"</span>,    <span class="string">"application/vnd.ms-outlook"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".ogg"</span>,    <span class="string">"audio/ogg"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".pdf"</span>,    <span class="string">"application/pdf"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".png"</span>,    <span class="string">"image/png"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".pps"</span>,    <span class="string">"application/vnd.ms-powerpoint"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".ppt"</span>,    <span class="string">"application/vnd.ms-powerpoint"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".pptx"</span>,   <span class="string">"application/vnd.openxmlformats-officedocument.presentationml.presentation"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".prop"</span>,   <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".rc"</span>, <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".rmvb"</span>,   <span class="string">"audio/x-pn-realaudio"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".rtf"</span>,    <span class="string">"application/rtf"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".sh"</span>, <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".tar"</span>,    <span class="string">"application/x-tar"</span>&#125;,      </span><br><span class="line">&#123;<span class="string">".tgz"</span>,    <span class="string">"application/x-compressed"</span>&#125;,    </span><br><span class="line">&#123;<span class="string">".txt"</span>,    <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".wav"</span>,    <span class="string">"audio/x-wav"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".wma"</span>,    <span class="string">"audio/x-ms-wma"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".wmv"</span>,    <span class="string">"audio/x-ms-wmv"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".wps"</span>,    <span class="string">"application/vnd.ms-works"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".xml"</span>,    <span class="string">"text/plain"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".z"</span>,  <span class="string">"application/x-compress"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">".zip"</span>,    <span class="string">"application/x-zip-compressed"</span>&#125;,   </span><br><span class="line">&#123;<span class="string">""</span>,        <span class="string">"*/*"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="官方指定的文件类型-Document-Content-Type-UTIs"><a href="#官方指定的文件类型-Document-Content-Type-UTIs" class="headerlink" title="官方指定的文件类型 Document Content Type UTIs"></a>官方指定的文件类型 Document Content Type UTIs</h4><p><a href="https://developer.apple.com/library/ios/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html#//apple_ref/doc/uid/TP40009259-SW1" target="_blank" rel="noopener">官方指定的文件类型</a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dict</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleTypeRole<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>Viewer<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>LSHandlerRank<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>Owner<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleTypeIconFiles<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>CFBundleTypeName<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">string</span>&gt;</span>文件共享<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">key</span>&gt;</span>LSItemContentTypes<span class="tag">&lt;/<span class="name">key</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.data<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.microsoft.excel.xls<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.text<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.plain-text <span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.image<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.jpeg<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>public.png<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.microsoft.bmp <span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.compuserve.gif <span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.adobe.pdf<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.microsoft.powerpoint.ppt<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">string</span>&gt;</span>com.microsoft.word.doc<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dict</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
       
         
       
@@ -1711,221 +1925,6 @@
       
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2020/04/03/flutter%E8%BE%93%E5%85%A5%E6%A1%86%E9%94%AE%E7%9B%98%E5%BC%B9%E8%B5%B7%E9%81%AE%E6%8C%A1%E9%97%AE%E9%A2%98/">
-      flutter输入框键盘弹起被遮挡问题
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Flutter/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Flutter</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2020年4月3日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h4 id="解决键盘弹起遮挡问题"><a href="#解决键盘弹起遮挡问题" class="headerlink" title="解决键盘弹起遮挡问题"></a>解决键盘弹起遮挡问题</h4><ul>
-<li>Scaffold的resizeToAvoidBottomPadding属性（v1.1.9之后已废弃）</li>
-<li>resizeToAvoidBottomInset：为true键盘弹起输入框会自动上移，为false不移动，如果输入框靠下，有可能被遮挡住。默认为true</li>
-</ul>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// <span class="markdown">This flag is deprecated, please use [resizeToAvoidBottomInset]</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">instead.</span></span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// <span class="markdown">Originally the name referred [MediaQueryData.padding]. Now it refers</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">[MediaQueryData.viewInsets], so using [resizeToAvoidBottomInset]</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">should be clearer to readers.</span></span></span><br><span class="line"><span class="meta">@Deprecated</span>(</span><br><span class="line">  <span class="string">'Use resizeToAvoidBottomInset to specify if the body should resize when the keyboard appears. '</span></span><br><span class="line">  <span class="string">'This feature was deprecated after v1.1.9.'</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">final</span> <span class="built_in">bool</span> resizeToAvoidBottomPadding;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// <span class="markdown">If true the [body] and the scaffold's floating widgets should size</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">themselves to avoid the onscreen keyboard whose height is defined by the</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">ambient [MediaQuery]'s [MediaQueryData.viewInsets] <span class="code">`bottom`</span> property.</span></span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// <span class="markdown">For example, if there is an onscreen keyboard displayed above the</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">scaffold, the body can be resized to avoid overlapping the keyboard, which</span></span></span><br><span class="line"><span class="comment">/// <span class="markdown">prevents widgets inside the body from being obscured by the keyboard.</span></span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// <span class="markdown">Defaults to true.</span></span></span><br><span class="line"><span class="keyword">final</span> <span class="built_in">bool</span> resizeToAvoidBottomInset;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>如果以上配置报错（键盘弹起，布局溢出）界面布局可以用滚动容器承载。eg:把当前界面放到SingleChildScrollView上</li>
-</ul>
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2020/04/02/Flutter%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4/">
-      Flutter创建项目命令
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Flutter/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Flutter</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2020年4月2日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h4 id="创建flutter项目命令"><a href="#创建flutter项目命令" class="headerlink" title="创建flutter项目命令"></a>创建flutter项目命令</h4><blockquote>
-<p>进入到要创建项目的位置，在当前目录下创建项目名称为mydemo的项目</p>
-</blockquote>
-<ul>
-<li><p>基本默认创建  flutter create  mydemo</p>
-</li>
-<li><p>创建一个 iOS 基于 Swift  ，Android基于Java的flutter项目</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create  --ios-language swift --android-language kotlin mydemo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建一个 iOS 基于 Swift  ，Android基于kotlin的flutter项目</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create  --ios-language swift --android-language kotlin mydemo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建一个 iOS 基于 OC  ，Android基于kotlin的flutter项目</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create  --ios-language objc --android-language kotlin mydemo</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建一个 iOS 基于 OC  ，Android基于java的flutter项目</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flutter create  --ios-language objc --android-language java mydemo</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>VSCode 配置创建<blockquote>
-<p>配置路径 code&gt;preferences&gt;Settings — User &gt; Extensions &gt; Dart &amp; Flutter</p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/2020/04/02/Flutter%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4/1.png" alt="flutter"></p>
-<p><img src="/2020/04/02/Flutter%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4/2.png" alt="flutter"></p>
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1934,7 +1933,7 @@
       <div class="prev-next">
         
         <p class="current">
-          1 / 8
+          1 / 9
         </p>
         
           <a class="next" rel="next" href="/page/2/">
@@ -2032,7 +2031,7 @@
           <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
             id="categoriesMac"
-            ><div class='name'>Mac</div><div class='badge'>(3)</div></a></li>
+            ><div class='name'>Mac</div><div class='badge'>(4)</div></a></li>
         
           <li><a class="flat-box"
             title="/categories/Objective-C/" href="/categories/Objective-C/"
@@ -2062,7 +2061,7 @@
           <li><a class="flat-box"
             title="/categories/%E6%94%B6%E8%97%8F/" href="/categories/%E6%94%B6%E8%97%8F/"
             id="categoriesE694B6E8978F"
-            ><div class='name'>收藏</div><div class='badge'>(1)</div></a></li>
+            ><div class='name'>收藏</div><div class='badge'>(2)</div></a></li>
         
       </ul>
     </div>
@@ -2086,7 +2085,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Android黑屏</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 24px; color: #555">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Bug/" style="font-size: 14px; color: #999">Flutter Bug</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">Flutter开发</a> <a href="/tags/Flutter%E6%8A%A5%E9%94%99/" style="font-size: 14px; color: #999">Flutter报错</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/flutter%E5%BA%93/" style="font-size: 14px; color: #999">flutter库</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%94%B6%E8%97%8F%E7%BD%91%E7%AB%99/" style="font-size: 14px; color: #999">收藏网站</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Android黑屏</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 24px; color: #555">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Bug/" style="font-size: 14px; color: #999">Flutter Bug</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">Flutter开发</a> <a href="/tags/Flutter%E6%8A%A5%E9%94%99/" style="font-size: 14px; color: #999">Flutter报错</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/MIME-TYPE/" style="font-size: 14px; color: #999">MIME_TYPE</a> <a href="/tags/Mac/" style="font-size: 14px; color: #999">Mac</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 20.67px; color: #6c6c6c">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/flutter%E5%BA%93/" style="font-size: 14px; color: #999">flutter库</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%94%B6%E8%97%8F%E7%BD%91%E7%AB%99/" style="font-size: 14px; color: #999">收藏网站</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" style="font-size: 14px; color: #999">移动硬盘</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 
