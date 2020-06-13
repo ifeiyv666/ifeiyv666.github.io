@@ -318,6 +318,97 @@
       
         
   <h2 class="title">
+    <a href="/2017/03/05/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/">
+      字符串函数(Objc)
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Objective-C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Objective-C</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2017年3月5日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h4 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  myString.c</span></span><br><span class="line"><span class="comment">//  字符串函数</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by 刘晓磊 on 15/12/16.</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2015年 刘晓磊. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"myString.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">size_t</span> <span class="title">myStrlen</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">size_t</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//参数合法性判断</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == s) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Input Param is invalid!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//因为字符串是以\0结尾的特殊常量，那么\0就可以作为一个结束标记</span></span><br><span class="line">    <span class="comment">//通常对于字符串的操作都是采用while</span></span><br><span class="line">    <span class="keyword">while</span> (*s != <span class="string">'\0'</span>) &#123;</span><br><span class="line">        count++;</span><br><span class="line">        s++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">myStrcpy</span><span class="params">(<span class="keyword">char</span> * dst, <span class="keyword">const</span> <span class="keyword">char</span> * src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//需要一个指针变量，来保存dst的首地址</span></span><br><span class="line">    <span class="keyword">char</span> * ptemp = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//参数合法性判断</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == dst || <span class="literal">NULL</span> == src) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Input Param is invalid!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//保证传入的首地址变量里面的内容不要更改，始终保佑这个地址</span></span><br><span class="line">    ptemp = dst;</span><br><span class="line">    <span class="keyword">while</span> (*src != <span class="string">'\0'</span>) &#123;</span><br><span class="line">        *ptemp = *src;</span><br><span class="line">        ptemp++;</span><br><span class="line">        src++;</span><br><span class="line">    &#125;</span><br><span class="line">    *ptemp = <span class="string">'\0'</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dst;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span> * <span class="title">myStrcat</span><span class="params">(<span class="keyword">char</span> * dst, <span class="keyword">const</span> <span class="keyword">char</span> * src)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> * ptemp = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//参数合法性判断</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">NULL</span> == dst || <span class="literal">NULL</span> == src) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Input Param is invalid!\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ptemp = dst;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//1.找到dst的\0</span></span><br><span class="line">    <span class="keyword">while</span> (*ptemp != <span class="string">'\0'</span>) &#123;</span><br><span class="line">        ptemp++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找到之后，ptemp刚刚好停在'\0'的位置</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (*src != <span class="string">'\0'</span>) &#123;</span><br><span class="line">        *ptemp = *src;</span><br><span class="line">        ptemp++;</span><br><span class="line">        src++;</span><br><span class="line">    &#125;</span><br><span class="line">    *ptemp = <span class="string">'\0'</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dst;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">myStrcmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> * s1, <span class="keyword">const</span> <span class="keyword">char</span> * s2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//参数合法性判断</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">NULL</span> == s1 || <span class="literal">NULL</span> == s2) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Input param is invalid!\n"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找两个字符串不同的位置，以及'\0'的位置</span></span><br><span class="line">    <span class="comment">//这里有一个条件不符合，我们都要跳出循环</span></span><br><span class="line">    <span class="keyword">while</span> (*s1 == *s2 &amp;&amp; *s1 != <span class="string">'\0'</span> &amp;&amp; *s2 != <span class="string">'\0'</span>) &#123;</span><br><span class="line">        s1++;</span><br><span class="line">        s2++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> *s1 - *s2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+        
+      
+    </div>
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post white-box shadow reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2017/03/03/UILabel/">
       UILabel(Objc)
     </a>
@@ -1124,97 +1215,6 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow reveal ">
-  
-
-
-  <section class='meta'>
-    
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2017/02/13/UITextFieldDelegate/">
-      UITextFieldDelegate
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="/" rel="nofollow">
-    <img src="/img/head.jpg">
-    <p>飞羽</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Objective-C/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Objective-C</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：2017年2月13日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#import <span class="meta-string">"RootViewController.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">RootViewController</span> ()&lt;<span class="title">UITextFieldDelegate</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">RootViewController</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</span><br><span class="line">    [<span class="keyword">super</span> viewDidLoad];</span><br><span class="line">    </span><br><span class="line">    [<span class="keyword">self</span> createTextField];</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建UITextField</span></span><br><span class="line">-(<span class="keyword">void</span>)createTextField&#123;</span><br><span class="line"><span class="comment">//    初始化UITextField</span></span><br><span class="line">    <span class="built_in">UITextField</span> *textField = [[<span class="built_in">UITextField</span> alloc]initWithFrame:<span class="built_in">CGRectMake</span>(<span class="number">100</span>, <span class="number">400</span>, <span class="number">180</span>, <span class="number">50</span>)];</span><br><span class="line"><span class="comment">//    设置背景色</span></span><br><span class="line">    textField.backgroundColor = [<span class="built_in">UIColor</span> yellowColor];</span><br><span class="line"><span class="comment">//    设置边框样式</span></span><br><span class="line">    textField.borderStyle = <span class="built_in">UITextBorderStyleRoundedRect</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="comment">//    一键清除butotn</span></span><br><span class="line">    textField.clearButtonMode = <span class="built_in">UITextFieldViewModeWhileEditing</span>;</span><br><span class="line">    </span><br><span class="line">    textField.delegate = <span class="keyword">self</span>;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    添加到视图</span></span><br><span class="line">    [<span class="keyword">self</span>.view addSubview:textField];</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> mark - delegate</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//点击return键，执行的方法</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textFieldShouldReturn:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"点击了return"</span>);</span><br><span class="line"><span class="comment">//    注销第一响应</span></span><br><span class="line">    [textField resignFirstResponder];</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//是否能进入编辑</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textFieldShouldBeginEditing:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要开始编辑"</span>);</span><br><span class="line"><span class="comment">//    YES:可以进入编辑</span></span><br><span class="line"><span class="comment">//    NO:不能进入编辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当上面的方法返回YES的时候，才会调用此代理方法</span></span><br><span class="line">-(<span class="keyword">void</span>)textFieldDidBeginEditing:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"已经开始编辑"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//将要结束编辑</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textFieldShouldEndEditing:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"将要结束编辑"</span>);</span><br><span class="line">    <span class="comment">//    YES:可以结束编辑</span></span><br><span class="line">    <span class="comment">//    NO:不能结束编辑</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//当上面的方法返回YES的时候，才会调用此代理方法</span></span><br><span class="line"><span class="comment">//已经结束编辑</span></span><br><span class="line">-(<span class="keyword">void</span>)textFieldDidEndEditing:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"已经结束编辑"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//点击clearButton时调用的方法</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textFieldShouldClear:(<span class="built_in">UITextField</span> *)textField&#123;</span><br><span class="line"><span class="comment">//    当textField.text值是1的时候，不允许删除</span></span><br><span class="line">    <span class="keyword">if</span> ([textField.text isEqualToString:<span class="string">@"1"</span>]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NO</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//    YES:允许删除</span></span><br><span class="line"><span class="comment">//    NO:不允许删除</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获得每一次输入的字符</span></span><br><span class="line">-(<span class="built_in">BOOL</span>)textField:(<span class="built_in">UITextField</span> *)textField shouldChangeCharactersInRange:(<span class="built_in">NSRange</span>)range replacementString:(<span class="built_in">NSString</span> *)string&#123;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//    NSLog(@"string = %@",string);</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//    根据每次输入的字符，组成一个字符串</span></span><br><span class="line">    <span class="built_in">NSMutableString</span> *mutableString = [[<span class="built_in">NSMutableString</span> alloc]initWithString:textField.text];</span><br><span class="line">    [mutableString insertString:string atIndex:range.location];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"%@"</span>,mutableString);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
-
-
-      
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
     
   </section>
   
@@ -1325,6 +1325,11 @@
             ><div class='name'>Flutter</div><div class='badge'>(23)</div></a></li>
         
           <li><a class="flat-box"
+            title="/categories/Git/" href="/categories/Git/"
+            id="categoriesGit"
+            ><div class='name'>Git</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
             title="/categories/Mac/" href="/categories/Mac/"
             id="categoriesMac"
             ><div class='name'>Mac</div><div class='badge'>(4)</div></a></li>
@@ -1381,7 +1386,7 @@
 
 
     <div class='content'>
-      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Android黑屏</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Bugly/" style="font-size: 14px; color: #999">Bugly</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 24px; color: #555">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Bug/" style="font-size: 14px; color: #999">Flutter Bug</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">Flutter开发</a> <a href="/tags/Flutter%E6%8A%A5%E9%94%99/" style="font-size: 14px; color: #999">Flutter报错</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/MIME-TYPE/" style="font-size: 14px; color: #999">MIME_TYPE</a> <a href="/tags/Mac/" style="font-size: 14px; color: #999">Mac</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 24px; color: #555">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/dSYM%E7%AC%A6%E5%8F%B7%E8%A1%A8/" style="font-size: 14px; color: #999">dSYM符号表</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/didSet/" style="font-size: 14px; color: #999">didSet</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/flutter%E5%BA%93/" style="font-size: 14px; color: #999">flutter库</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/willSet/" style="font-size: 14px; color: #999">willSet</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%94%B6%E8%97%8F%E7%BD%91%E7%AB%99/" style="font-size: 14px; color: #999">收藏网站</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" style="font-size: 14px; color: #999">移动硬盘</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%A1%B6%E5%B1%82%E6%8E%A7%E5%88%B6%E5%99%A8/" style="font-size: 14px; color: #999">顶层控制器</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
+      <a href="/tags/Android/" style="font-size: 24px; color: #555">Android</a> <a href="/tags/Android-Studio/" style="font-size: 14px; color: #999">Android Studio</a> <a href="/tags/Android%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Android黑屏</a> <a href="/tags/AutomaticKeepAliveClientMixin/" style="font-size: 14px; color: #999">AutomaticKeepAliveClientMixin</a> <a href="/tags/Bugly/" style="font-size: 14px; color: #999">Bugly</a> <a href="/tags/Class/" style="font-size: 14px; color: #999">Class</a> <a href="/tags/DarkMode/" style="font-size: 14px; color: #999">DarkMode</a> <a href="/tags/Flutter/" style="font-size: 24px; color: #555">Flutter</a> <a href="/tags/Flutter-AppBar/" style="font-size: 14px; color: #999">Flutter AppBar</a> <a href="/tags/Flutter-BottomNavigationBar/" style="font-size: 14px; color: #999">Flutter BottomNavigationBar</a> <a href="/tags/Flutter-Bug/" style="font-size: 14px; color: #999">Flutter Bug</a> <a href="/tags/Flutter-Container/" style="font-size: 14px; color: #999">Flutter Container</a> <a href="/tags/Flutter-Image/" style="font-size: 14px; color: #999">Flutter Image</a> <a href="/tags/Flutter-RaisedButton/" style="font-size: 14px; color: #999">Flutter RaisedButton</a> <a href="/tags/Flutter-Row/" style="font-size: 14px; color: #999">Flutter Row</a> <a href="/tags/Flutter-Scaffold/" style="font-size: 14px; color: #999">Flutter Scaffold</a> <a href="/tags/Flutter-Text/" style="font-size: 14px; color: #999">Flutter Text</a> <a href="/tags/Flutter-Widgets/" style="font-size: 14px; color: #999">Flutter Widgets</a> <a href="/tags/Flutter-%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Flutter 字符串</a> <a href="/tags/Flutter-go/" style="font-size: 14px; color: #999">Flutter-go</a> <a href="/tags/Flutter%E5%91%BD%E4%BB%A4/" style="font-size: 17.33px; color: #828282">Flutter命令</a> <a href="/tags/Flutter%E5%BC%80%E5%8F%91/" style="font-size: 14px; color: #999">Flutter开发</a> <a href="/tags/Flutter%E6%8A%A5%E9%94%99/" style="font-size: 14px; color: #999">Flutter报错</a> <a href="/tags/Flutter%E7%9A%84%E5%9D%91/" style="font-size: 20.67px; color: #6c6c6c">Flutter的坑</a> <a href="/tags/Flutter%E9%BB%91%E5%B1%8F/" style="font-size: 14px; color: #999">Flutter黑屏</a> <a href="/tags/Git/" style="font-size: 14px; color: #999">Git</a> <a href="/tags/HandyJSON/" style="font-size: 14px; color: #999">HandyJSON</a> <a href="/tags/MAC/" style="font-size: 14px; color: #999">MAC</a> <a href="/tags/MIME-TYPE/" style="font-size: 14px; color: #999">MIME_TYPE</a> <a href="/tags/Mac/" style="font-size: 14px; color: #999">Mac</a> <a href="/tags/Moya/" style="font-size: 14px; color: #999">Moya</a> <a href="/tags/NavgationController/" style="font-size: 14px; color: #999">NavgationController</a> <a href="/tags/OC%E7%94%BB%E5%9B%BE/" style="font-size: 14px; color: #999">OC画图</a> <a href="/tags/Objective-C/" style="font-size: 14px; color: #999">Objective-C</a> <a href="/tags/Responsder/" style="font-size: 17.33px; color: #828282">Responsder</a> <a href="/tags/RxSwift/" style="font-size: 14px; color: #999">RxSwift</a> <a href="/tags/Swift/" style="font-size: 24px; color: #555">Swift</a> <a href="/tags/Swift-Method/" style="font-size: 14px; color: #999">Swift Method</a> <a href="/tags/Swift%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 14px; color: #999">Swift关键字</a> <a href="/tags/Swift%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14px; color: #999">Swift字符串</a> <a href="/tags/TextField/" style="font-size: 14px; color: #999">TextField</a> <a href="/tags/Touch/" style="font-size: 14px; color: #999">Touch</a> <a href="/tags/Transform/" style="font-size: 14px; color: #999">Transform</a> <a href="/tags/UIActionSheet/" style="font-size: 14px; color: #999">UIActionSheet</a> <a href="/tags/UIActivityIndicatorView/" style="font-size: 14px; color: #999">UIActivityIndicatorView</a> <a href="/tags/UIAlertController/" style="font-size: 14px; color: #999">UIAlertController</a> <a href="/tags/UIAlertView/" style="font-size: 14px; color: #999">UIAlertView</a> <a href="/tags/UIImageView/" style="font-size: 14px; color: #999">UIImageView</a> <a href="/tags/UILabel/" style="font-size: 14px; color: #999">UILabel</a> <a href="/tags/UIProgressView/" style="font-size: 14px; color: #999">UIProgressView</a> <a href="/tags/UIScrollView/" style="font-size: 14px; color: #999">UIScrollView</a> <a href="/tags/UISlider/" style="font-size: 14px; color: #999">UISlider</a> <a href="/tags/UIStepper/" style="font-size: 14px; color: #999">UIStepper</a> <a href="/tags/UISwitch/" style="font-size: 14px; color: #999">UISwitch</a> <a href="/tags/UITableBarController/" style="font-size: 14px; color: #999">UITableBarController</a> <a href="/tags/UITableView/" style="font-size: 14px; color: #999">UITableView</a> <a href="/tags/UITextField/" style="font-size: 14px; color: #999">UITextField</a> <a href="/tags/UITextFieldDelegate/" style="font-size: 14px; color: #999">UITextFieldDelegate</a> <a href="/tags/UIView-Animation/" style="font-size: 14px; color: #999">UIView Animation</a> <a href="/tags/UIWebView/" style="font-size: 14px; color: #999">UIWebView</a> <a href="/tags/UIsegementControl/" style="font-size: 14px; color: #999">UIsegementControl</a> <a href="/tags/VSCode/" style="font-size: 14px; color: #999">VSCode</a> <a href="/tags/View%E5%B1%82%E7%BA%A7/" style="font-size: 14px; color: #999">View层级</a> <a href="/tags/android/" style="font-size: 17.33px; color: #828282">android</a> <a href="/tags/dSYM%E7%AC%A6%E5%8F%B7%E8%A1%A8/" style="font-size: 14px; color: #999">dSYM符号表</a> <a href="/tags/delegate/" style="font-size: 14px; color: #999">delegate</a> <a href="/tags/delegate%E5%8F%8D%E5%90%91%E4%BC%A0%E5%80%BC/" style="font-size: 14px; color: #999">delegate反向传值</a> <a href="/tags/didSet/" style="font-size: 14px; color: #999">didSet</a> <a href="/tags/flutter/" style="font-size: 14px; color: #999">flutter</a> <a href="/tags/flutter-1-12-x/" style="font-size: 14px; color: #999">flutter 1.12.x</a> <a href="/tags/flutter%E5%BA%93/" style="font-size: 14px; color: #999">flutter库</a> <a href="/tags/jks/" style="font-size: 14px; color: #999">jks</a> <a href="/tags/path-provider/" style="font-size: 14px; color: #999">path_provider</a> <a href="/tags/python/" style="font-size: 14px; color: #999">python</a> <a href="/tags/python3/" style="font-size: 14px; color: #999">python3</a> <a href="/tags/scrapy/" style="font-size: 14px; color: #999">scrapy</a> <a href="/tags/shared-preferences/" style="font-size: 14px; color: #999">shared_preferences</a> <a href="/tags/swift/" style="font-size: 14px; color: #999">swift</a> <a href="/tags/touch/" style="font-size: 14px; color: #999">touch</a> <a href="/tags/vim/" style="font-size: 14px; color: #999">vim</a> <a href="/tags/willSet/" style="font-size: 14px; color: #999">willSet</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%94%AE%E7%9B%98/" style="font-size: 14px; color: #999">代码模拟键盘</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E6%A8%A1%E6%8B%9F%E9%BC%A0%E6%A0%87%E7%82%B9%E5%87%BB/" style="font-size: 14px; color: #999">代码模拟鼠标点击</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%8A%A0%E8%BD%BD/" style="font-size: 14px; color: #999">图片加载</a> <a href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" style="font-size: 14px; color: #999">图片合成</a> <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0/" style="font-size: 14px; color: #999">字符串函数</a> <a href="/tags/%E6%89%8B%E6%9C%BA%E6%99%83%E5%8A%A8%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">手机晃动事件</a> <a href="/tags/%E6%94%B6%E8%97%8F%E7%BD%91%E7%AB%99/" style="font-size: 14px; color: #999">收藏网站</a> <a href="/tags/%E6%96%87%E4%BB%B6%E5%B7%B2%E6%8D%9F%E5%9D%8F%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">文件已损坏解决办法</a> <a href="/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" style="font-size: 14px; color: #999">文件操作</a> <a href="/tags/%E6%9C%AA%E7%9F%A5%E5%BC%80%E5%8F%91%E8%80%85%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" style="font-size: 14px; color: #999">未知开发者解决办法</a> <a href="/tags/%E6%B2%99%E7%9B%92%E8%B7%AF%E5%BE%84/" style="font-size: 14px; color: #999">沙盒路径</a> <a href="/tags/%E7%9B%B4%E6%92%AD/" style="font-size: 24px; color: #555">直播</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98/" style="font-size: 14px; color: #999">移动硬盘</a> <a href="/tags/%E7%AE%97%E6%B3%95%E9%A2%98/" style="font-size: 14px; color: #999">算法题</a> <a href="/tags/%E8%84%9A%E6%9C%AC%E5%BD%95%E5%88%B6/" style="font-size: 14px; color: #999">脚本录制</a> <a href="/tags/%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%9E%90/" style="font-size: 14px; color: #999">路径解析</a> <a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 14px; color: #999">链表</a> <a href="/tags/%E9%94%AE%E7%9B%98%E7%9B%91%E5%90%AC/" style="font-size: 14px; color: #999">键盘监听</a> <a href="/tags/%E9%94%AE%E7%9B%98%E9%81%AE%E6%8C%A1/" style="font-size: 14px; color: #999">键盘遮挡</a> <a href="/tags/%E9%A1%B6%E5%B1%82%E6%8E%A7%E5%88%B6%E5%99%A8/" style="font-size: 14px; color: #999">顶层控制器</a> <a href="/tags/%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6/" style="font-size: 14px; color: #999">鼠标事件</a>
     </div>
   </section>
 

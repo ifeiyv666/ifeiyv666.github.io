@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>Git命令 - 飞羽的博客</title>
+  
+    <meta name="keywords" content="Git">
+  
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            <RED>飞</RED><YELLOW>羽</YELLOW><GREEN>博</GREEN><BLUE>客</BLUE> <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-rss fa-fw'></i>
+                  
+                  博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/06/13/Git%E5%91%BD%E4%BB%A4/">
+        Git命令
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="/" rel="nofollow">
+    <img src="/img/head.jpg">
+    <p>飞羽</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Git/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Git</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：2020年6月13日</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h3 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h3><p>安装Git就不在这里记录了，只记录使用。并且是在MAC环境下，Window环境可能会有少许的差异。</p>
+<h4 id="一-、初始化一个本地化仓库"><a href="#一-、初始化一个本地化仓库" class="headerlink" title="一 、初始化一个本地化仓库"></a>一 、初始化一个本地化仓库</h4><ol>
+<li><p>首先选择一个要存储的目录,创建一个要管理的 <code>GitStudy</code>目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir GitStudy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入到<code>GitStudy</code>目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd  GitStudy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>git init</code>初始化仓库,会在 <code>GitStudy</code>目录下创建一个 <code>.git</code> 的隐藏文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="二、版本控制"><a href="#二、版本控制" class="headerlink" title="二、版本控制"></a>二、版本控制</h4><ol>
+<li><p><code>git add &lt;file&gt;</code> 把改动或新建的文件添加到暂存区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add readme.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>git commit -m &lt;message&gt;</code> 确认把暂存区的文件提交到当前的分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m "add readme.txt"</span><br></pre></td></tr></table></figure>
+
+<p>提交后输出信息</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[master (root-commit) <span class="number">80</span>af25d] add readme<span class="variable">.txt</span></span><br><span class="line"> <span class="number">1</span> file changed, <span class="number">0</span> insertions(+), <span class="number">0</span> deletions(-)</span><br><span class="line"> create mode <span class="number">100644</span> readme<span class="variable">.txt</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>版本回退</p>
+<ul>
+<li>git log 查看历史记录</li>
+<li>git log –pretty=oneline (只会输出版本号和提交的message日志)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git reset #回退上一个版本</span><br><span class="line"></span><br><span class="line">git reset --hard HEAD^  #回退上一个版本</span><br><span class="line"></span><br><span class="line">git reset --hard &lt;版本号&gt; #回退到版本号对应的版本，回退之后，也可以通过这个命令返回回退之前的版本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>如果记不住版本号可以用 <code>git reflog</code>命令查看记录,最前面的字符串就是&lt;版本号&gt;</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">143</span>e5ea (HEAD -&gt; master) HEAD@&#123;<span class="number">0</span>&#125;: commit: add code1<span class="variable">.txt</span></span><br><span class="line"><span class="number">80</span>af25d HEAD@&#123;<span class="number">1</span>&#125;: commit (<span class="keyword">initial</span>): add readme<span class="variable">.txt</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>丢弃工作区的修改：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果没有git add 加入缓存区，此文件所有更改被撤销</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果已经被 git add 或者 git commit 回退没有效果</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果 git add 或者 git commit 之后进行修改了，回退到 git add 或者 git commit 之后的状态</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="三、添加远程库"><a href="#三、添加远程库" class="headerlink" title="三、添加远程库"></a>三、添加远程库</h4><ol>
+<li><p>在本地的 <code>GitStudy</code>  （根据实际情况，我上面创建的是GitStudy目录）目录下面运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://gitee.com/用户名/GitStudy.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把本地库推送到远程分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="四、从远程库克隆"><a href="#四、从远程库克隆" class="headerlink" title="四、从远程库克隆"></a>四、从远程库克隆</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone -b master https://gitee.com/用户名/GitStudy.git</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="五、创建与合并分支"><a href="#五、创建与合并分支" class="headerlink" title="五、创建与合并分支"></a>五、创建与合并分支</h4><ol>
+<li><p>创建dev分支，切换到dev</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">log</span>  </span></span><br><span class="line"><span class="meta">#</span><span class="bash">Switched to a new branch <span class="string">'dev'</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> -b 表示创建并且进行切换,相当于执行了以下两个命令</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> git branch dev （创建dev分支）</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> git checkout dev （切换到 dev分支）</span></span><br></pre></td></tr></table></figure>
+
+<p>或者 新版本加入了 <code>switch</code> 切换分支命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git switch -c dev #创建并切换到新的dev分支</span><br><span class="line"></span><br><span class="line">git switch dev #直接切换到已有的dev分支</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>查看当前分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">log</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> *dev</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> master</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 前面带*，表示当前所在的分支</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>合并分支,假设要把dev分支合并到master分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">如果当前在dev分支,首先要切换到master分支，如果当前是在master分支，则不需要切换分支</span></span><br><span class="line"></span><br><span class="line">git checkout master #当前已经切换到master分支</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">执行合并命令</span></span><br><span class="line"></span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果上面dev分支不需要了，可以保留，也可以进行删除</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ****删除的时候当前分支不要是处于被删除的分支***</span></span><br><span class="line"></span><br><span class="line">git branch -d dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">log</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Deleted branch dev (was f23g67u).</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果检出一个分支用来开发新分支，进行开发。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在后来不进行合并，直接删除，会提示分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用大写的-D参数</span></span><br><span class="line">git branch -D test  #强制删除 test 分支</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解决冲突</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">找到冲突文件,打开</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容的冲突部分</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 根据情况删除掉不要的， git add &lt;filename&gt; 暂存 ，commit提交</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Bug分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">使用场景</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当前dev分支任务未完成，不能提交。而在另外一个<span class="built_in">test</span>分支又需要进行修改。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这个时候需要把现在的工作现场 存储 起来，等以后继续操作。</span></span><br><span class="line">git stash #暂存当前工作现场</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">这个时候就可以切换到其他分支，做其他工作了</span></span><br><span class="line">git checkout test</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">如果<span class="built_in">test</span>分支工作完成了，并且已经提交。要切换回我们的dev分支，继续进行未完的工作。</span></span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">接下来就要恢复现场，有两种方式</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">git stash list #可以查看所有的已经存储的现场</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 第一种方式</span></span><br><span class="line">git stash apply #恢复现场 但是stash存储的内容并不删除</span><br><span class="line">git stash drop  #删除stash存储的数据</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 第二种方式</span></span><br><span class="line">git stash pop #恢复现场，并且删除stash存储的数据</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="五、tag标签"><a href="#五、tag标签" class="headerlink" title="五、tag标签"></a>五、tag标签</h4><ol>
+<li><p>创建tag标签</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看tag标签</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git tag</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">log</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> v1.0</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>操作标签</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git tag -d v1.0 #删除标签（删除本地标签）</span><br><span class="line"></span><br><span class="line">git push origin v1.0 #推送tag标签到远程</span><br><span class="line"></span><br><span class="line">git push origin --tags #推送全部尚未推送到远程的本地标签</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">如果要删除推送到远程的tag标签需要两步：</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 1.先删除本地的标签</span></span><br><span class="line">git tag -d v1.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> 2.删除远程的tag标签</span></span><br><span class="line">git push origin :refs/tags/v1.0</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>著作权归作者所有,转载请注明出处。</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://ifeiyv666.github.io/2020/06/13/Git%E5%91%BD%E4%BB%A4/>https://ifeiyv666.github.io/2020/06/13/Git%E5%91%BD%E4%BB%A4/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <fancybox><img src='/img/wx2.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+      
+        <fancybox><img src='/img/wx1.jpg'
+        
+          height='64px'
+        ></fancybox>
+      
+    
+  </div>
+</section>
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-06-13T19:09:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：2020年6月13日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Git/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Git</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://ifeiyv666.github.io/2020/06/13/Git%E5%91%BD%E4%BB%A4/&title=Git命令 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://ifeiyv666.github.io/2020/06/13/Git%E5%91%BD%E4%BB%A4/&title=Git命令 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://ifeiyv666.github.io/2020/06/13/Git%E5%91%BD%E4%BB%A4/&title=Git命令 - 飞羽的博客&summary="
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/05/26/Bugly/'>
+                <p class='title'>iOS Bugly集成<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>Bugly iOS SDK 使用指南SDK 集成Bugly提供两种集成方式供iOS开发者选择：
+
+通过CocoaPods集成
+手动集成
+
+如果您是从Bugly 2.0以下版本升级过来的，请查看i...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Git命令',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Git命令"><span class="toc-text">Git命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一-、初始化一个本地化仓库"><span class="toc-text">一 、初始化一个本地化仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、版本控制"><span class="toc-text">二、版本控制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、添加远程库"><span class="toc-text">三、添加远程库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、从远程库克隆"><span class="toc-text">四、从远程库克隆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、创建与合并分支"><span class="toc-text">五、创建与合并分支</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#五、tag标签"><span class="toc-text">五、tag标签</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="mailto:719507339@qq.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/zz1521"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        
+      
+    
+      
+        本站
+        <a href="" target="_blank" class="codename"><red>飞</red><yellow>羽</yellow><green>博</green><blue>客</blue></a>
+        属于个人博客
+        
+          ，
+          总访问量为
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          次
+        
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="/">Copyright © 2017-2020 ifeiyv</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
